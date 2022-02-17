@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net" />
+  </configSections>
+  <log4net>
+    <!-- 通常ログ：日付分割 -->
+    <appender name="InfoLogDailyAppender" type="log4net.Appender.RollingFileAppender">
+      <param name="File" value="Log\Info_" />
+      <param name="DatePattern" value='yyyyMMdd".log"' />
+      <param name="RollingStyle" value="date" />
+      <param name="StaticLogFileName" value="false" />
+      <AppendToFile value="true" />
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <param name="LevelMax" value="Fatal" />
+        <param name="LevelMin" value="Debug" />
+        <!--
+            Fatal システム停止するような致命的な障害
+            Error システム停止はしないが、問題となる障害
+            Warn 障害ではない注意警告
+            Info 操作ログなどの情報
+            Debug 開発用のデバッグメッセージ
+            trace 詳細なデバッグの出力
+        -->
+      </filter>
+      <layout type="log4net.Layout.PatternLayout">
+        <ConversionPattern value="%date [%-5level] %class %method - %message%n" />
+      </layout>
+      <Encoding value="UTF-8"/>
+    </appender>
+
+    <!-- 通常ログ：サイズ分割 -->
+    <appender name="InfoLogSizeAppender" type="log4net.Appender.RollingFileAppender">
+      <param name="File" value="Log\Error_.log" />
+      <param name="RollingStyle" value="Size" />
+      <param name="StaticLogFileName" value="true" />
+      <param name="AppendToFile" value="true" />
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <param name="LevelMax" value="Fatal" />
+        <param name="LevelMin" value="Info" />
+        <!--
+            Fatal システム停止するような致命的な障害
+            Error システム停止はしないが、問題となる障害
+            Warn 障害ではない注意警告
+            Info 操作ログなどの情報
+            Debug 開発用のデバッグメッセージ
+            trace 詳細なデバッグの出力
+        -->
+      </filter>
+      <param name="MaximumFileSize" value="100KB" />
+      <param name="MaxSizeRollBackups" value="3" />
+      <layout type="log4net.Layout.PatternLayout">
+        <ConversionPattern value="%date [%-5level] %class %method - %message%n" />
+      </layout>
+      <Encoding value="UTF-8"/>
+    </appender>
+
+    <root>
+      <!-- 使用する Appender -->
+      <appender-ref ref="InfoLogDailyAppender" />
+      <!--
+      <appender-ref ref="InfoLogSizeAppender" />
+      -->
+    </root>
+
+  </log4net>
+</configuration>

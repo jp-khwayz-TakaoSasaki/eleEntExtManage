@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <General>
+    <!--ログファイル保管日数-->
+    <LogFilePreserveDay>5</LogFilePreserveDay>
+  </General>
+  <SQLServer>
+    <!--SQLServerサーバー名 -->
+    <ServerName>LAPTOP-5QB0A9FK\SQLEXPRESS</ServerName>
+    <!--データベース名 -->
+    <DatabaseName>ELEMATEC</DatabaseName>
+    <!--ログインユーザ名 -->
+    <UserName>sa</UserName>
+    <!--ログインパスワード -->
+    <Password>password@2019</Password>
+  </SQLServer>
+  <Import>
+    <!--成功／失敗フォルダに移動した連携ファイル保管日数-->
+    <FilePreserveDay>5</FilePreserveDay>
+    <!--取込成功フォルダパス-->
+    <SuccessedFolderPath>C:\@Business\@KW\エレマテック\Import\Success</SuccessedFolderPath>
+    <!--取込失敗フォルダパス-->
+    <FailedFolderPath>C:\@Business\@KW\エレマテック\Import\Faild</FailedFolderPath>
+    <!--ファイル連携フォルダパス-->
+    <ReceiveFolderPath>C:\@Business\@KW\エレマテック\Import\Receive</ReceiveFolderPath>
+    <!--連携作業フォルダパス-->
+    <WorkFolderPath>C:\@Business\@KW\エレマテック\Import\Work</WorkFolderPath>
+    <!--エラーファイルフォルダパス-->
+    <ErrorFolderPath>C:\@Business\@KW\エレマテック\Import\Error</ErrorFolderPath>
+    <!--入庫予定ファイル名（システム用）※拡張子なし-->
+    <WarehousingBaseName>NYUKOYOTEI</WarehousingBaseName>
+    <!--無償品ファイル名　※拡張子なし-->
+    <FreeProductBaseName>MUSHOUHIN</FreeProductBaseName>
+    <!--連携ファイルチェック用ファイル拡張子-->
+    <CheckFileExtension>dat</CheckFileExtension>
+    <!--連携ファイル拡張子-->
+    <ImportFileExtension>csv</ImportFileExtension>
+    <!--受信監視の間隔　※ミリ秒-->
+    <ReceiveInterval>60000</ReceiveInterval>
+  </Import>
+  <Mail>
+    <!--SMTPサーバアドレス-->
+    <SmtpServer>smtp.office365.com</SmtpServer>
+    <!--SMTP認証有無-->
+    <SmtpAuth>1</SmtpAuth>
+    <!--SMTPユーザー-->
+    <SmtpUser>rfid-notification@elematec.com</SmtpUser>
+    <!--SMTPパスワード-->
+    <SmtpPassword>Kob03336</SmtpPassword>
+    <!--SMTPポート-->
+    <SmtpPort>587</SmtpPort>
+    <!--SSL送信有無-->
+    <EnableSSL>1</EnableSSL>
+    <!--送信先メールアドレス-->
+    <ToAddress>takahiro.minuma@khwayz.jp</ToAddress>
+    <!--送信元メールアドレス-->
+    <FromAddress>rfid-notification@elematec.com</FromAddress>
+  </Mail>
+</configuration>
