@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<General>
+		<!--ログファイル保存日数(Default:30日)-->
+		<LogPreserveDay>1</LogPreserveDay>
+    <!-- 完了判断ミリ秒(Default:10秒 -->
+    <!-- ファイル書き込み完了したと判断するミリ秒(Default:10秒) -->
+    <CompJudgMillisecond>10000</CompJudgMillisecond>
+    <!-- ファイルの書き込みの監視発生間隔(Default:5秒) -->
+    <!-- ミリ秒で設定してください -->
+    <MonitoringInterval>5000</MonitoringInterval>
+    <!--監視フォルダのパス-->
+    <MonitoringFolder>C:\Users\g091\Desktop\TEST</MonitoringFolder>
+    <!--ファイルを出力するフォルダのパス-->
+    <OutputFolder>C:\Users\g091\Desktop\TEST</OutputFolder>
+		<!--監視ファイルの拡張子-->
+    <MonitoringFileExtension>*.csv</MonitoringFileExtension>
+    <!--出力ファイルの拡張子-->
+    <OutputFileExtension>txt</OutputFileExtension>
+	</General>
+  <Mail>
+    <!--SMTPサーバアドレス-->
+    <SmtpServer>smtp.office365.com</SmtpServer>
+    <!--SMTP認証有無-->
+    <SmtpAuth>1</SmtpAuth>
+    <!--SMTPユーザー-->
+    <SmtpUser>rfid-notification@elematec.com</SmtpUser>
+    <!--SMTPパスワード-->
+    <SmtpPassword>Kob03336</SmtpPassword>
+    <!--SMTPポート-->
+    <SmtpPort>587</SmtpPort>
+    <!--SSL送信有無-->
+    <EnableSSL>1</EnableSSL>
+    <!--送信先メールアドレス-->
+    <ToAddress>masataka.sudo@khwayz.jp</ToAddress>
+    <!--送信元メールアドレス-->
+    <FromAddress>rfid-notification@elematec.com</FromAddress>
+  </Mail>
+</configuration>
