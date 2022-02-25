@@ -34,7 +34,6 @@ namespace Elematec.EntExtManage_RFIDSystem_FileWatcher
             // 
             // serviceProcessInstaller
             // 
-            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller.Password = null;
             this.serviceProcessInstaller.Username = null;
             // 
@@ -42,7 +41,7 @@ namespace Elematec.EntExtManage_RFIDSystem_FileWatcher
             // 
             this.serviceInstaller.Description = "フォルダを監視してファイル拡張子返還を行うサービス";
             this.serviceInstaller.DisplayName = "入出庫管理システムファイル監視";
-            this.serviceInstaller.ServiceName = "FileWatcher";
+            this.serviceInstaller.ServiceName = "RFIDSysFileWatcher";
             this.serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
