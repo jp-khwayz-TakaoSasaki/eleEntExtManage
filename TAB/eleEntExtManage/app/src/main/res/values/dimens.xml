@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ActivityMain -->
+    <dimen name="text_size_header_text">24sp</dimen>
+    <dimen name="text_size_subHeader_text">14sp</dimen>
+
+    <!-- 設定 -->
+    <!-- seek bar -->
+    <dimen name="text_size_setting">20sp</dimen>
+    <dimen name="seek_bar_thickness">10dp</dimen>
+    <dimen name="seek_bar_thumb_size">20dp</dimen>
+
+    <!-- ログイン -->
+    <dimen name="text_size_login">20sp</dimen>
+    <dimen name="text_size_login_et">19sp</dimen>
+
+    <!-- メニュー -->
+    <dimen name="button_text_size_menu">22sp</dimen>
+
+    <!-- 最終梱包 -->
+    <dimen name="weight_margin">15dp</dimen>
+    <dimen name="final_packing_et_width">120dp</dimen>
+    <dimen name="packing_work_content_width">350dp</dimen>
+    <dimen name="packing_work_content_count_width">80dp</dimen>
+    <dimen name="packing_number_of_sheets_width">120dp</dimen>
+    <dimen name="final_weight_et_width">180dp</dimen>
+
+    <!-- ダイアログ -->
+    <dimen name="dialog_button_text_size">20sp</dimen>
+    <dimen name="dialog_message_text_size">20sp</dimen>
+    <dimen name="dialog_item_margin">10dp</dimen>
+    <dimen name="dialog_parent_margin">20dp</dimen>
+    <dimen name="dialog_progress_bottom_margin">40dp</dimen>
+
+    <dimen name="default_padding">10dp</dimen>
+    <dimen name="default_margin">10dp</dimen>
+    <dimen name="horizontal_line_height">2dp</dimen>
+    <dimen name="vertical_line_width">2dp</dimen>
+
+    <dimen name="list_header_padding">6dp</dimen>
+
+    <dimen name="text_size_bogai_text">30sp</dimen>
+    <dimen name="text_size_meisai_disp">22sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_extra_large">18sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_middle">15sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+
+    <dimen name="button_text_size_large">20sp</dimen>
+    <dimen name="button_text_size_middle">18sp</dimen>
+    <dimen name="button_text_size_small">14sp</dimen>
+    <dimen name="button_margin_normal">5dp</dimen>
+
+    <!-- リスト関連 -->
+    <dimen name="text_size_list_header">18sp</dimen>
+    <dimen name="text_size_list_row">18sp</dimen>
+
+
+    <!-- 貨物ステータス確認 -->
+    <dimen name="cargo_status_header_sprit_vr">20dp</dimen>
+    <dimen name="cargo_status_header_sprit_hr">60dp</dimen>
+
+    <!-- ケースマーク貼付け -->
+    <dimen name="casemark_paste_detail_casemark_hr">10dp</dimen>
+    <dimen name="casemark_paste_detail_sprit_hr">20dp</dimen>
+
+    <!-- 描画位置関連 -->
+    <dimen name="list_header_margin_sort_vr">72dp</dimen>
+    <dimen name="list_header_margin_vr">40dp</dimen>
+    <dimen name="list_header_margin_hr">50dp</dimen>
+    <dimen name="list_small_header_margin_hr">250dp</dimen>
+
+
+</resources>

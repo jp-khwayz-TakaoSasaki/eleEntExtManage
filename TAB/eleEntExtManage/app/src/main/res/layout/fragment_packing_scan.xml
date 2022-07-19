@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline85"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline84"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/include9"
+        app:layout_constraintEnd_toEndOf="@id/include9"
+        app:layout_constraintStart_toStartOf="@id/include9"
+        app:layout_constraintTop_toTopOf="@id/guideline85">
+
+        <!-- Invoice番号 -->
+        <TextView
+            android:id="@+id/packing_scan_label_invoice_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_label_invoice_no"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/packing_scan_view_invoice_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="19UT-0092"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintStart_toEndOf="@id/packing_scan_label_invoice_no"
+            app:layout_constraintTop_toTopOf="@id/packing_scan_label_invoice_no" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline86"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.32" />
+
+        <TextView
+            android:id="@+id/packing_scan_label_carton_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_label_carton_count"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline86"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/packing_scan_view_carton_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="0"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintStart_toEndOf="@id/packing_scan_label_carton_count"
+            app:layout_constraintTop_toTopOf="@id/packing_scan_label_carton_count" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <TextView
+            android:id="@+id/packing_scan_label_read_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_label_read_count"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline27"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/packing_scan_view_read_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="0"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintStart_toEndOf="@id/packing_scan_label_read_count"
+            app:layout_constraintTop_toTopOf="@id/packing_scan_label_read_count" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+            android:id="@+id/packing_scan_button_off_book"
+            android:layout_width="230dp"
+            android:layout_height="55dp"
+            android:background="@drawable/button_round_green"
+            android:text="@string/common_view_off_book"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/button_text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include
+        android:id="@+id/include9"
+        layout="@layout/packing_scan_header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="@dimen/list_header_margin_hr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline84" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/packing_scan_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/include9"
+        app:layout_constraintStart_toStartOf="@+id/include9"
+        app:layout_constraintTop_toBottomOf="@+id/include9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

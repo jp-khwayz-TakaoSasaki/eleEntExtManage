@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/casemark_print_row"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.53" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_03"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_04"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.87" />
+
+    <TextView
+        android:id="@+id/casemark_print_row_invoice_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:text="@string/invoice_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_extra_large"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_01"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/casemark_print_row_destination"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:text="@string/destination"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_extra_large"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_02"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/casemark_print_row_invoice_no"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/casemark_print_row_ship_date"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:text="@string/ship_date"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_extra_large"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_03"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/casemark_print_row_destination"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/casemark_print_row_shipping_mode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:text="@string/shipping_mode"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_extra_large"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_04"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/casemark_print_row_ship_date"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/casemark_print_row_print_status"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:text="@string/print"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_extra_large"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/casemark_print_row_shipping_mode"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

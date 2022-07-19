@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.0"
+
+    defaultConfig {
+        applicationId "jp.co.khwayz.eleEntExtManage"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // nav
+    def nav_version = "2.2.0"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+    // lombok
+    def lombok_version = "1.18.16"
+    compileOnly "org.projectlombok:lombok:$lombok_version"
+    annotationProcessor "org.projectlombok:lombok:$lombok_version"
+    /* SP1 */
+    implementation project(':DENSOScannerSDK')
+    /* OK_HTTP */
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    /* log4j */
+    implementation 'log4j:log4j:1.2.17'
+    implementation 'de.mindpipe.android:android-logging-log4j:1.0.3'
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    /* GSON */
+    implementation 'com.google.code.gson:gson:2.8.9'
+}

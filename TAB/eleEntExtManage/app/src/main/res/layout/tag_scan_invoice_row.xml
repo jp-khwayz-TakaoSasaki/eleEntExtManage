@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cargo_scan_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minHeight="50dp">
+
+    <TextView
+        android:id="@+id/cargo_scan_row_order_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_branch_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.06"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/cargo_scan_row_orders_res_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_item_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.13"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.13"
+        android:background="@drawable/text_black_border"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_shipment_quantity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_shipment_unit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:background="@drawable/text_black_border"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cargo_scan_row_stock_quantity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/cargo_scan_row_packing"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:background="@drawable/text_black_border"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/cargo_scan_row_location_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:background="@drawable/text_black_border"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+</LinearLayout>

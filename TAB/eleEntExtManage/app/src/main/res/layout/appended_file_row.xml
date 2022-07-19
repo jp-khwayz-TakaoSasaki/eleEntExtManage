@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/appended_files_row"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.61" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <TextView
+        android:id="@+id/file_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/frame_download_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="@id/guideline56"
+        app:layout_constraintEnd_toStartOf="@id/frame_print_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button_download"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/button_margin_normal"
+        android:layout_marginHorizontal="@dimen/button_margin_normal"
+        android:layout_marginVertical="@dimen/button_margin_normal"
+        android:text="@string/printing_related_button_download"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/button_text_size_middle"
+        android:textStyle="bold"
+        android:background="@drawable/button_round_blue_2"
+        app:layout_constraintTop_toTopOf="@id/frame_download_button"
+        app:layout_constraintBottom_toBottomOf="@id/frame_download_button"
+        app:layout_constraintStart_toStartOf="@id/frame_download_button"
+        app:layout_constraintEnd_toEndOf="@id/frame_download_button" />
+
+    <View
+        android:id="@+id/frame_print_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="@id/guideline57"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button_print"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/button_margin_normal"
+        android:text="@string/printing_related_button_printing"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/button_text_size_middle"
+        android:textStyle="bold"
+        android:background="@drawable/button_round_blue_2"
+        app:layout_constraintTop_toTopOf="@id/frame_print_button"
+        app:layout_constraintBottom_toBottomOf="@id/frame_print_button"
+        app:layout_constraintStart_toStartOf="@id/frame_print_button"
+        app:layout_constraintEnd_toEndOf="@id/frame_print_button" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

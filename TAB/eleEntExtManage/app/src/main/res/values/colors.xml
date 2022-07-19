@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#c00000</color>
+    <color name="colorPrimaryDark">#880000</color>
+    <color name="colorAccent">#fb4c2e</color>
+
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGray">#9e9e9e</color>
+    <color name="colorLightGray">#cfcfcf</color>
+    <color name="colorCyan400A">#00e5ff</color>
+    <color name="colorInputAccent">#0000ff</color>
+    <color name="colorRed">#ff2800</color>
+
+    <!-- seek bar -->
+    <color name="seek_bar_background">#80ababab</color>
+    <color name="seek_bar_progress">#0000ff</color>
+    <color name="seek_bar_secondary_progress">#803399CC</color>
+</resources>

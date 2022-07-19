@@ -1,0 +1,495 @@
+<resources>
+    <string name="app_name">eleEntExtManage</string>
+    <string name="logo">logo</string>
+    <string name="login_id">ログインID</string>
+    <string name="password">パスワード</string>
+    <string name="login">ログイン</string>
+    <string name="cancel">キャンセル</string>
+    <string name="login_error_message">ログインできませんでした。\nログインID・パスワードを確認して下さい。</string>
+    <string name="menu">メニュー</string>
+    <string name="receipt">入庫</string>
+    <string name="storage">蔵置</string>
+    <string name="move">移動</string>
+    <string name="packing_change">梱包変更</string>
+    <string name="setting">設定</string>
+    <string name="reader">リーダー</string>
+    <string name="connect">接続</string>
+    <string name="receive">受信</string>
+    <string name="detail">明細</string>
+    <string name="previous">前へ</string>
+    <string name="confirm">確定</string>
+    <string name="tag_issue">荷札発行</string>
+    <string name="confirm_and_send">確定・送信</string>
+    <string name="login_id_text">ID : </string>
+    <string name="button_label_finish">完了</string>
+    <string name="button_label_multiple_packing">複数梱包</string>
+    <string name="button_label_final_packing">最終梱包</string>
+    <string name="button_label_instructions_check">指示内容確認</string>
+    <string name="button_label_on_hold">保留</string>
+    <string name="button_label_qr">QR</string>
+    <string name="button_label_rfid">RFID</string>
+
+    <!-- 共通 -->
+    <string name="common_list_header_cno_slash">C/No</string>
+    <string name="common_list_header_remarks">備考</string>
+    <string name="common_list_header_branch_no">枝番</string>
+    <string name="common_label_invoice_no">Invoice番号：</string>
+    <string name="common_label_reply_date">リスト返信希望日：</string>
+    <string name="common_label_ship_date">出荷日：</string>
+    <string name="common_label_read_count">読取件数：</string>
+    <string name="common_label_receipt_day">入庫日</string>
+    <string name="common_label_carton_count">カートン数：</string>
+    <string name="common_view_off_book">簿外あり</string>
+    <string name="common_check_instructions">/梱包指示確認</string>
+    <string name="common_check_shipping_instructions">/出荷指示確認</string>
+    <string name="common_list_header_packing_quantity_coron">梱包数：</string>
+    <string name="common_list_header_cno_slash_coron">C/No：</string>
+    <string name="common_list_header_lwh_coron">LWH：</string>
+    <string name="common_list_header_nw_coron">NW：</string>
+    <string name="common_list_header_gw_coron">GW：</string>
+    <string name="common_list_header_remarks_coron">備考：</string>
+    <string name="common_list_header_count">件</string>
+    <string name="common_list_header_no">No</string>
+    <string name="common_list_header_stock">在庫数量</string>
+    <string name="common_list_header_shipment_quantity">出荷数量</string>
+    <string name="common_list_header_shipment_unit">出荷単位</string>
+    <string name="common_list_header_packing_form">梱包形態</string>
+    <string name="common_list_header_over_pack">オーバーパック</string>
+    <string name="common_pickingdata_del_message">ピッキング作業内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_packingdata_del_message">梱包作業内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_singlepackingdata_del_message">変更した単独梱包内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_finalpackingdata_del_message">変更した最終梱包内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_multiplepackingdata_del_message">変更した複数梱包内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_casemark_paste_scandata_del_message">ケースマーク貼付作業内容は破棄されます。\nよろしいですか？</string>
+    <string name="common_issue_regist_sacandata_del_message">出庫確認作業内容は破棄されます。\nよろしいですか？</string>
+
+    <!-- 画面ID -->
+    <!-- メニュー -->
+    <string name="screen_id_menu">M01</string>
+    <string name="screen_id_setting_menu">Y01</string>
+    <string name="screen_id_setting_device">Y02</string>
+    <string name="screen_id_setting_rfid">Y03</string>
+    <string name="screen_id_pairing_reader">Y04</string>
+    <string name="screen_id_picking_search">P01</string>
+    <string name="screen_id_picking_scan">P02</string>
+    <string name="screen_id_picking_offbook">P03</string>
+    <string name="screen_id_packing_search">K01</string>
+    <string name="screen_id_packing_list">K02</string>
+    <string name="screen_id_packing_scan">K03</string>
+    <string name="screen_id_packing_offbook">K04</string>
+    <string name="screen_id_packing_single">K05</string>
+    <string name="screen_id_packing_final">K06</string>
+    <string name="screen_id_packing_multiple">K07</string>
+    <string name="screen_id_casemark_print">C01</string>
+    <string name="screen_id_registration_search">S01</string>
+    <string name="screen_id_registration_check">S02</string>
+    <string name="screen_id_cargo_status_check">X01</string>
+    <string name="screen_id_check_inst_p">P04</string>
+    <string name="screen_id_check_inst_k">K08</string>
+    <string name="screen_id_check_shipping_inst_p">P05</string>
+    <string name="screen_id_check_shipping_inst_k">K09</string>
+    <string name="screen_id_printing_related_p">P06</string>
+    <string name="screen_id_printing_related_k">K10</string>
+
+
+
+    <!-- パスワード再設定 -->
+    <string name="set_password">パスワード変更</string>
+    <string name="title_set_password">新しいパスワードを設定してください</string>
+    <string name="new_password">新しいパスワード</string>
+    <string name="new_password_confirmation">新しいパスワード(確認用)</string>
+
+    <!-- ピッキング -->
+    <string name="picking">ピッキング</string>
+    <string name="picking_invoice_search">/Invoice検索</string>
+    <string name="picking_invoice_scan">/貨物スキャン</string>
+    <string name="picking_invoice_scan_off_book">/簿外確認</string>
+
+    <!-- ピッキング：Invoice明細ヘッダ -->
+    <string name="picking_list_header_cool">保冷</string>
+    <string name="picking_list_header_dangerous">危険品</string>
+
+    <!-- ピッキング：貨物スキャン -->
+    <string name="cargo_scan_label_location_no">ロケ番号：</string>
+    <string name="cargo_scan_list_header_ref_stock">参考在庫数量</string>
+    <string name="cargo_scan_list_header_packing">入荷荷姿</string>
+
+    <string name="cargo_scan_msg_location_no_read">ロケーション番号を読み取ってください</string>
+    <string name="cargo_scan_msg_location_no_title">ロケ番号：</string>
+    <string name="cargo_scan_msg_cargo_read">荷札を読み取って下さい</string>
+    <string name="cargo_scan_msg_cargo_read2">ロケ番号：N1-100　　　　　荷札を読み取って下さい</string>
+
+    <!-- ピッキング：貨物スキャン：簿外確認 -->
+    <string name="off_book_confirm_view_off_book">簿外</string>
+
+    <!-- ピッキング：印刷関連 -->
+    <string name="invoice_no_appended">Invoice番号毎指示添付</string>
+    <string name="title_printing_related">/印刷関連</string>
+    <string name="printing_related_button_download">ダウンロード</string>
+    <string name="printing_related_button_printing">印刷</string>
+
+    <!-- 梱包 -->
+    <string name="packing">梱包</string>
+    <string name="packing_invoice_search">/Invoice検索</string>
+    <string name="packing_list">/梱包一覧</string>
+    <string name="packing_scan">/梱包スキャン</string>
+    <string name="final_packing_input">/最終梱包入力</string>
+    <string name="packing_single_packing_input">/単独梱包入力</string>
+    <string name="packing_multiple_packing">/複数梱包指示</string>
+    <string name="final_packing_explanation">最終出庫荷姿に対する作業内容の登録</string>
+    <string name="single_packing_explanation">１明細に対する作業内容の登録</string>
+    <string name="multiple_packing_explanation">複数明細→１内装梱包の作業内容の登録</string>
+
+    <!-- 梱包一覧 -->
+    <string name="packing_list_destination">仕向け地：</string>
+    <string name="packing_list_header_final_packing_appearance">最終梱包荷姿</string>
+    <string name="packing_list_header_inner_package">インナーパッケージ</string>
+    <string name="packing_list_button_label_cancel">取消</string>
+    <string name="packing_list_button_label_new">新規</string>
+
+    <!-- 梱包スキャン -->
+    <string name="packing_scan_header_over_pack">複数\n梱包</string>
+    <string name="packing_scan_header_stock_quantity">在庫\n数量</string>
+    <string name="packing_scan_header_shipment_quantity">出荷\n数量</string>
+    <string name="packing_scan_header_shipment_unit">出荷\n単位</string>
+    <string name="packing_scan_header_receipt_appearance">入庫\n荷姿</string>
+    <string name="packing_scan_header_bundled_number">同梱\n番号</string>
+    <string name="packing_scan_button_label_single_packaging">単独梱包</string>
+
+    <!-- 梱包：添付指示確認 -->
+    <string name="packing_attached_header_invoice_packing">Invoice梱包指示</string>
+    <string name="packing_attached_header_line_packing_method">行梱包方法</string>
+    <string name="packing_attached_header_ice_pack">保冷剤</string>
+    <string name="packing_attached_header_packing">入庫荷姿</string>
+
+    <string name="packing_attached_destination">仕向地：</string>
+
+    <!-- 梱包：単独梱包入力 -->
+    <string name="packing_single_packaging_dangerous_goods_packing">危険品梱包</string>
+    <string name="packing_single_packaging_internal_capacity">内容量</string>
+    <string name="packing_single_packaging_unit">単位</string>
+    <string name="packing_single_packaging_interior_container">内装容器</string>
+    <string name="packing_single_packaging_danger_number">内装容器数</string>
+    <string name="packing_single_packaging_outer_container">外装容器</string>
+    <string name="packing_single_packaging_number_of_outer_container">外装容器個数</string>
+    <string name="packing_single_packaging_same_item">同一明細あり</string>
+
+    <!-- 梱包：最終梱包入力 -->
+    <string name="final_packing_input_label_blue_ice">ブルーアイス(KG)</string>
+    <string name="final_packing_input_label_dry_ice">ドライアイス(KG)</string>
+    <string name="final_packing_input_button_label_input">入力</string>
+    <string name="final_packing_input_label_packing_name">梱包名</string>
+    <string name="final_packing_input_label_palette_breakdown">パレット内訳</string>
+    <string name="l_label">L(cm)</string>
+    <string name="w_label">W(cm)</string>
+    <string name="h_label">H(cm)</string>
+    <string name="multiple_date">複数日付</string>
+
+    <!-- 梱包指示確認 -->
+    <!-- TODO:暫定のため最終的には削除すること -->
+    <string name="instruction_text">○輸送に関する特記事項\n\tA197とかKeep&#x20;Coolとかシラチャーとか\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n○梱包指示\n\tラベル・写真梱包\n\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n○保冷剤指示\nブルー／ドライと追加量指示＋備考：２日に１回満タンとか\n○セット品とかの備考\nNo1(1012345678)はドライアイス10KG/CTNのような書き方\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\n</string>
+
+    <!-- 梱包：オーバーパック -->
+    <string name="packing_material_1">梱包資材1</string>
+    <string name="packing_material_2">梱包資材2</string>
+
+    <!-- ケースマーク印刷 -->
+    <string name="casemark">ケースマーク</string>
+    <string name="casemark_print">/印刷</string>
+    <string name="print_status">印刷状態</string>
+
+    <!-- ケースマーク貼付 -->
+    <string name="casemark_paste">ケースマーク貼付</string>
+    <string name="casemark_read">/ケースマーク読取</string>
+    <string name="casemark_detail">/ケースマーク詳細</string>
+    <string name="casemark_scan">/貨物スキャン</string>
+    <string name="casemark_paset_read_message">貼付するケースマークをスキャンして下さい。</string>
+    <string name="casemark_no">ケースマーク\n番号</string>
+
+
+    <!-- 出庫登録 -->
+    <string name="issue">出庫</string>
+    <string name="issue_registration">出庫登録</string>
+    <string name="issue_registration_invoice_search">/Invoice検索</string>
+    <string name="issue_registration_confirm">/出庫確認</string>
+    <string name="check_shortage">不足確認</string>
+    <string name="shortage_casmark">不足C/No</string>
+    <string name="shortage_casmark_invoice_no">Invoice番号：</string>
+
+    // 暫定：後で消す
+    <string name="issue_mask">出庫登録</string>
+
+
+    <!-- 貨物ステータス確認 -->
+    <string name="cargostatus_message">荷札をスキャンしてください</string>
+
+    <!-- C/No入力ダイアログ -->
+    <string name="input_case_mark_no_msg">登録するC/Noを入力\n連番ではない場合は、カンマ区切入力</string>
+    <string name="input_case_mark_no_tilde">～</string>
+
+    <!-- 設定画面 -->
+    <string name="device_setting">端末設定</string>
+    <string name="rfid_setting">RFID設定</string>
+    <string name="terminalID">端末ID</string>
+    <string name="affiliation_base">所属拠点</string>
+    <string name="access_point">API接続先</string>
+    <string name="session">セッション</string>
+    <string name="power_level">アンテナ出力</string>
+    <string name="channel">チャンネル</string>
+    <string name="buzzer">Beep音</string>
+    <string name="zero">0</string>
+
+
+    <string name="case_mark">ケースマーク</string>
+    <string name="data_receive">データ受信</string>
+    <string name="tag_scan">荷札スキャン</string>
+    <string name="tag_scan_complete">荷札スキャン完了</string>
+    <string name="packing_select">梱包選択</string>
+    <string name="packing_info_confirm">梱包情報確定</string>
+    <string name="tag_printer_select">荷札プリンター選択</string>
+    <string name="tag">荷札</string>
+    <string name="QR">QR</string>
+    <string name="location">ロケーション</string>
+
+    <string name="beep_sound">BEEP音</string>
+    <string name="encode">エンコードフィルター</string>
+    <string name="order_no">受注番号</string>
+    <string name="purchase_order_no_and_branch_no">発注番号+枝番</string>
+    <string name="item">品目</string>
+    <string name="item_code">品目コード</string>
+    <string name="item_name">品目名</string>
+    <string name="order_count2">受注数量</string>
+    <string name="pc">PC</string>
+    <string name="receipt_count">入庫数量</string>
+    <string name="branch_name">支店名</string>
+    <string name="charge_name">担当者名</string>
+    <string name="customer_name">得意先名</string>
+    <string name="shelf_number">棚番</string>
+    <string name="conversion">単位変換</string>
+    <string name="purchase_order_no">発注番号</string>
+    <string name="order_no_colon">発注番号 :</string>
+    <string name="pack_select">梱包選択</string>
+    <string name="break_down_input">内訳入力</string>
+    <string name="quantity">入数</string>
+    <string name="multiplication">×</string>
+    <string name="printer">プリンター</string>
+    <string name="place_order_unit">発注単位</string>
+    <string name="stock_unit">在庫単位</string>
+    <string name="receive_order_unit">受注単位</string>
+    <string name="kg">kg</string>
+    <string name="cans">CANS</string>
+    <string name="breakdown">内訳</string>
+    <string name="sum">合計</string>
+    <string name="issue_invoice_search">出庫(仮)前Invoice検索画面</string>
+    <string name="si_instruction_select">SI指示選択</string>
+    <string name="invoice_no_input">Invoice番号</string>
+    <string name="search">検索</string>
+    <string name="issue_invoice_text">※検索InvoiceNoのSINoに紐づく複数InvoiceNoを表示</string>
+    <string name="deadline">締め日</string>
+    <string name="packing_date">梱包日</string>
+    <string name="case_mark_printer_select">ケースマークプリンター選択</string>
+    <string name="si_no_colon">SINo :</string>
+    <string name="si_slash_no">SI/No</string>
+    <string name="invoice_no">Invoice番号</string>
+    <string name="destination">仕向地</string>
+    <string name="packing_instruction">梱包指示</string>
+    <string name="shipment_quantity_total">出荷数量合計</string>
+    <string name="shipment_unit">出荷単位</string>
+    <string name="packing_quantity">梱包数</string>
+    <string name="packing_type">梱包\n形態</string>
+    <string name="location_no">ロケ番号</string>
+    <string name="c_slash_no">C/No</string>
+    <string name="access_point_printer_select">接続先プリンター選択</string>
+    <string name="access_point_reader_select">接続先リーダー選択</string>
+    <string name="reader_select">リーダー選択</string>
+    <string name="printer_select">プリンター選択</string>
+<!--    <string name="packing_invoice_search">ピッキング済みInvoice検索</string>-->
+    <string name="select_invoice_no_colon">選択InvoiceNo :</string>
+    <string name="case_mark_output">ケースマーク出力</string>
+    <string name="case_mark_count">ケースマーク数</string>
+    <string name="read_case_mark_count">読取済み\nケースマーク数</string>
+    <string name="scaned_case_mark_count">スキャン済み\nケースマーク数</string>
+    <string name="label_instruction">ラベル\n指示</string>
+    <string name="attached_file">添付\n資料</string>
+    <string name="other">その他</string>
+    <string name="select_no_one_three">選択No : 1 ・ 3 </string>
+    <string name="work_info_one_packing">作業内容①梱包</string>
+    <string name="work_info_two_packing">作業内容②梱包</string>
+    <string name="work_info_three_packing">作業内容③梱包</string>
+    <string name="work_info_four_packing">作業内容④梱包</string>
+    <string name="label_quantity_input">危険品ラベル枚数入力</string>
+    <string name="refrigerate_frozen">冷蔵・冷凍</string>
+    <string name="ice_pack">保冷剤</string>
+    <string name="blue_ice">ブルーアイス</string>
+    <string name="dry_ice">ドライアイス</string>
+    <string name="l">L</string>
+    <string name="w">W</string>
+    <string name="h">H</string>
+    <string name="weight">重量</string>
+    <string name="dangerous_goods_packaging">危険品梱包</string>
+    <string name="on_off">on/off</string>
+    <string name="no_connect_reader_warning">リーダーと接続していません。\nリーダー接続を行ってください。</string>
+    <string name="add">追加</string>
+    <string name="cm">cm</string>
+    <string name="print">印刷</string>
+    <string name="print_all">一括印刷</string>
+    <string name="box">BOX</string>
+    <string name="read_count">読取件数</string>
+    <string name="order_num">4507028285</string>
+    <string name="case_mark_print">ケースマーク印刷</string>
+    <string name="case_mark_crucifixion">ケースマーク貼り付け</string>
+    <string name="picking_list">ピッキングリスト</string>
+    <string name="include_check">同梱チェック</string>
+    <string name="order_num2">1004010001</string>
+    <string name="cargo_status">貨物ステータス確認</string>
+    <string name="reply_date">リスト返信希望日</string>
+    <string name="ship_date">出荷日</string>
+    <string name="line_count">行数</string>
+    <string name="destination_input">仕向地</string>
+    <string name="cool_input">保冷</string>
+    <string name="dangerous_input">危険品</string>
+    <string name="dangerous_goods">危険物</string>
+    <string name="sort">ソート</string>
+    <string name="picking_list_header_onhold">保留</string>
+    <string name="brand_name">ブランド名</string>
+    <string name="sales_staff">営業担当者</string>
+    <string name="supplier_item_code">仕入先品目コード</string>
+    <string name="shipping_mode">輸送モード</string>
+    <string name="shipping_type">輸送区分</string>
+    <string name="lwh">LWH</string>
+    <string name="nw">NW(KG)</string>
+    <string name="gw">GW(KG)</string>
+    <string name="shipping_instructions">出荷指示欄</string>
+
+
+    <!-- ダイアログボタン -->
+    <string name="ok">OK</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="next">次へ</string>
+
+    <!-- アプリ保持メッセージ -->
+    <string name="msg_request_permission">アプリケーションの使用許可リクエストを許可してください。</string>
+    <string name="const_err_message_E0001">ログインIDを入力してください。</string>
+    <string name="const_err_message_E0002">パスワードを入力してください。</string>
+    <string name="const_err_message_E0003">ログイン認証できませんでした。\nログインID・パスワードを確認してください。</string>
+    <string name="const_err_message_E0004">新しいパスワードを入力してください。</string>
+    <string name="const_err_message_E0005">新しいパスワード(確認用)を入力してください。</string>
+    <string name="const_err_message_E0006">新しいパスワードと確認用が一致していません。</string>
+    <string name="const_err_message_E0007">パスワードがリセットされています。\n新しいパスワードを設定してください。</string>
+    <string name="const_err_message_E0008">パスワードが誤っています。\nパスワードを確認してください。</string>
+    <string name="const_err_message_E0009">認証情報が未登録です。\nシステム管理者に確認してください。</string>
+    <string name="const_err_message_E0010">データに不整合が発生しています。\n %1 を確認してください。</string>
+    <string name="const_err_message_E0011">端末IDを半角英数字で入力してください。</string>
+    <string name="const_err_message_E0012">API接続先をURL形式で入力してください。</string>
+    <string name="const_err_message_E0013">所属拠点を半角英数字で入力してください。</string>
+
+
+
+    <string name="auth_err_message_E1004">は半角英数字で入力してください。</string>
+    <string name="auth_err_message_E2018">API接続先をURL形式で入力してください。</string>
+    <string name="const_err_message_E9000">アプリケーションエラーが発生しました。\n管理者へ連絡してください。</string>
+    <string name="const_err_message_E9001">サーバー処理でエラーが発生しました。\n管理者へ連絡してください。</string>
+    <string name="auth_info_message_I0001">ログイン認証しています。\nしばらくお待ちください。</string>
+    <string name="auth_info_message_I0002">パスワードを変更しています。\nしばらくお待ちください。</string>
+    <string name="auth_info_message_I0003">マスタデータ取得中です。\nしばらくお待ちください。</string>
+    <string name="const_err_message_E9002">サーバへの接続がタイムアウトになりました。</string>
+    <string name="const_err_message_E9003">接続しようとしているWebAPIが見つかりません。</string>
+    <string name="const_err_message_E9004">サーバー通信でエラーが発生しました。\n管理者へ連絡してください。</string>
+
+
+
+
+    <!-- SQLiteのメッセージマスタのキー -->
+    <string name="err_message_E1000">E1000</string>
+    <string name="err_message_E1001">E1001</string>
+    <string name="err_message_E1002">E1002</string>
+    <string name="err_message_E1003">E1003</string>
+    <string name="err_message_E1004">E1004</string>
+    <string name="err_message_E1005">E1005</string>
+    <string name="err_message_E1006">E1006</string>
+    <string name="err_message_E1007">E1007</string>
+
+    <string name="err_message_E2000">E2000</string>
+    <string name="err_message_E2001">E2001</string>
+    <string name="err_message_E2002">E2002</string>
+    <string name="err_message_E2003">E2003</string>
+    <string name="err_message_E2004">E2004</string>
+    <string name="err_message_E2005">E2005</string>
+    <string name="err_message_E2006">E2006</string>
+    <string name="err_message_E2007">E2007</string>
+    <string name="err_message_E2008">E2008</string>
+    <string name="err_message_E2009">E2009</string>
+    <string name="err_message_E2010">E2010</string>
+    <string name="err_message_E2011">E2011</string>
+    <string name="err_message_E2012">E2012</string>
+    <string name="err_message_E2013">E2013</string>
+    <string name="err_message_E2014">E2014</string>
+    <string name="err_message_E2015">E2015</string>
+    <string name="err_message_E2016">E2016</string>
+    <string name="err_message_E2017">E2017</string>
+    <string name="err_message_E2018">E2018</string>
+    <string name="err_message_E2019">E2019</string>
+    <string name="err_message_E2020">E2020</string>
+    <string name="err_message_E2021">E2012</string>
+    <string name="err_message_E2022">E2022</string>
+    <string name="err_message_E2023">E2023</string>
+
+    <string name="err_message_E9000">E9000</string>
+    <string name="err_message_E9001">E9001</string>
+    <string name="err_message_E9002">E9002</string>
+    <string name="err_message_E9003">E9003</string>
+    <string name="err_message_E9004">E9004</string>
+    <string name="err_message_E9005">E9005</string>
+    <string name="err_message_E9006">E9006</string>
+    <string name="err_message_E9007">E9007</string>
+    <string name="err_message_E9008">E9008</string>
+    <string name="err_message_E9009">E9009</string>
+    <string name="err_message_E9010">E9010</string>
+    <string name="err_message_E9011">E9011</string>
+    <string name="err_message_E9012">E9012</string>
+    <string name="err_message_E9013">E9013</string>
+    <string name="err_message_E9014">E9014</string>
+
+
+
+    <string name="info_message_I1000">I1000</string>
+    <string name="info_message_I1001">I1001</string>
+    <string name="info_message_I1002">I1002</string>
+    <string name="info_message_I1003">I1003</string>
+    <string name="info_message_I1004">I1004</string>
+    <string name="info_message_I1005">I1005</string>
+    <string name="info_message_I1006">I1006</string>
+    <string name="info_message_I0007">I0007</string>
+    <string name="info_message_I0008">I0008</string>
+    <string name="info_message_I0014">I0014</string>
+    <string name="info_message_I0015">I0015</string>
+    <string name="info_message_I0016">I0016</string>
+    <string name="info_message_I0017">I0017</string>
+    <string name="info_message_I0018">I0018</string>
+    <string name="info_message_I0019">I0019</string>
+    <string name="info_message_I0020">I0020</string>
+    <string name="info_message_I0021">I0021</string>
+    <string name="info_message_I0022">I0022</string>
+    <string name="info_message_I0023">I0023</string>
+    <string name="info_message_I0024">I0024</string>
+    <string name="info_message_I0025">I0025</string>
+    <string name="info_message_I0026">I0026</string>
+    <string name="info_message_I0030">I0030</string>
+    <string name="info_message_I0031">I0031</string>
+
+
+    <string name="info_message_I2000">I2000</string>
+    <string name="info_message_I2001">I2001</string>
+    <string name="info_message_I2002">I2002</string>
+
+    <string name="info_message_I2017">I2007</string>
+    <string name="info_message_I3001">I3001</string>
+    <string name="info_message_I3002">I3002</string>
+    <string name="info_message_I3003">I3003</string>
+    <string name="info_message_I3004">I3004</string>
+    <string name="info_message_I3005">I3005</string>
+    <string name="info_message_I3006">I3006</string>
+    <string name="info_message_I3007">I3007</string>
+
+</resources>

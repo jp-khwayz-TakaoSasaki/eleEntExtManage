@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline103"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/single_packaging_input_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline102"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_final_vr_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline103">
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/common_label_receipt_day"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@+id/textView49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/work_info_one_packing"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@+id/textView50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/work_info_two_packing"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@+id/textView51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/work_info_three_packing"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@+id/textView52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView50" />
+
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/work_info_four_packing"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@+id/textView53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView51" />
+
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/label_quantity_input"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/textView54"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+        <TextView
+            android:id="@+id/textView54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@string/nw"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView53" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline112"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.24" />
+
+        <TextView
+            android:id="@+id/packing_single_packaging_receipt_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="2021/12/1"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toBottomOf="@+id/textView47"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView47" />
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner1"
+            android:layout_width="@dimen/packing_work_content_width"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView49"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView49" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_capacity1_Area"
+            android:layout_width="@dimen/packing_work_content_count_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/packing_single_packaging_spinner1"
+            app:layout_constraintStart_toEndOf="@+id/packing_single_packaging_spinner1"
+            app:layout_constraintTop_toTopOf="@+id/packing_single_packaging_spinner1">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_capacity1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner2"
+            android:layout_width="@dimen/packing_work_content_width"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView50"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView50" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_capacity2_Area"
+            android:layout_width="@dimen/packing_work_content_count_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/packing_single_packaging_spinner2"
+            app:layout_constraintStart_toEndOf="@+id/packing_single_packaging_spinner2"
+            app:layout_constraintTop_toTopOf="@+id/packing_single_packaging_spinner2">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_capacity2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner3"
+            android:layout_width="@dimen/packing_work_content_width"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView51"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView51" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_capacity3_Area"
+            android:layout_width="@dimen/packing_work_content_count_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/packing_single_packaging_spinner3"
+            app:layout_constraintStart_toEndOf="@+id/packing_single_packaging_spinner3"
+            app:layout_constraintTop_toTopOf="@+id/packing_single_packaging_spinner3">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_capacity3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner4"
+            android:layout_width="@dimen/packing_work_content_width"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView52"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView52" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_capacity4_Area"
+            android:layout_width="@dimen/packing_work_content_count_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/packing_single_packaging_spinner4"
+            app:layout_constraintStart_toEndOf="@+id/packing_single_packaging_spinner4"
+            app:layout_constraintTop_toTopOf="@+id/packing_single_packaging_spinner4">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_capacity4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_label_number_of_sheets_Area"
+            android:layout_width="@dimen/final_weight_et_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/textView53"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView53"
+            android:visibility="invisible">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_label_number_of_sheets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:maxLines="1"
+                android:maxLength="3"
+                android:inputType="number"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_net_weight_Area"
+            android:layout_width="@dimen/final_weight_et_width"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/textView54"
+            app:layout_constraintStart_toStartOf="@+id/guideline112"
+            app:layout_constraintTop_toTopOf="@+id/textView54" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_net_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_final_vr_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/single_packaging_input_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline102"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_final_vr_center"
+        app:layout_constraintTop_toTopOf="@+id/guideline103"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline105"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:elevation="1dp"
+            android:text="@string/packing_single_packaging_dangerous_goods_packing"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/default_margin"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/kikenhin_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="１明細に対する危険品明細の登録"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView57"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/textView57"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_internal_capacity"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView99"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@+id/kikenhin_note" />
+
+        <TextView
+            android:id="@+id/textView99"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_unit"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView100"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@id/textView57" />
+
+        <TextView
+            android:id="@+id/textView100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_interior_container"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView101"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@id/textView99" />
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_danger_number"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView102"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@id/textView100" />
+
+        <TextView
+            android:id="@+id/textView102"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_outer_container"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toTopOf="@id/textView105"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@id/textView101" />
+
+        <TextView
+            android:id="@+id/textView105"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_single_packaging_same_item"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toBottomOf="@id/view4"
+            app:layout_constraintStart_toStartOf="@+id/guideline105"
+            app:layout_constraintTop_toBottomOf="@id/textView102" />
+
+        <CheckBox
+            android:id="@+id/packing_single_packaging_check_same_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView105"
+            app:layout_constraintStart_toEndOf="@+id/textView105"
+            app:layout_constraintTop_toTopOf="@+id/textView105" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vr_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.26" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_internal_capacity_Area"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/textView57"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
+            app:layout_constraintTop_toTopOf="@+id/textView57" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_internal_capacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:nextFocusDown="@id/packing_single_packaging_packing_number"
+                android:inputType="numberDecimal"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner_unit"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView99"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
+            app:layout_constraintTop_toTopOf="@+id/textView99" />
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner_interior_container"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView100"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
+            app:layout_constraintTop_toTopOf="@+id/textView100" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_packing_number_Area"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/textView101"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
+            app:layout_constraintTop_toTopOf="@+id/textView101" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_packing_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:nextFocusDown="@id/packing_single_packaging_packing_number"
+                android:maxLines="1"
+                android:maxLength="5"
+                android:inputType="number"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/packing_single_packaging_spinner_outer_container"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView102"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
+            app:layout_constraintTop_toTopOf="@+id/textView102" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline102"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline102">
+
+        <TextView
+            android:id="@+id/textView104"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/common_list_header_remarks"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline114"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.13" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/packing_single_packaging_remarks_Area"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline114"
+            app:layout_constraintTop_toTopOf="parent" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/packing_single_packaging_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:nextFocusDown="@id/packing_single_packaging_packing_number"
+                android:maxLines="1"
+                android:maxLength="100"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

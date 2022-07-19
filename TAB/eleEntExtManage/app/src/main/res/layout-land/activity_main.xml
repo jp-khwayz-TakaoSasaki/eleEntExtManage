@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guid_header_info_start"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="readerConnectButton,logo"
+        tools:layout_editor_absoluteY="731dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_info"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/barrier2"
+        app:layout_constraintStart_toStartOf="@id/guid_header_info_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/barrier5">
+
+        <TextView
+            android:id="@+id/login_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginRight="10dp"
+            android:text="ID:"
+            android:textSize="@dimen/text_size_subHeader_text"
+            android:textColor="@color/colorBlack"
+            android:visibility="invisible"
+            android:gravity="right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/screen_id"
+            app:layout_constraintEnd_toStartOf="@id/login_id_text2" />
+
+        <TextView
+            android:id="@+id/login_id_text2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="10dp"
+            android:text=" "
+            android:textSize="@dimen/text_size_subHeader_text"
+            android:textColor="@color/colorBlack"
+            android:gravity="right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/login_id_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/screen_id"/>
+
+        <TextView
+            android:id="@+id/screen_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="10dp"
+            android:text=""
+            android:textSize="@dimen/text_size_subHeader_text"
+            android:textColor="@color/colorBlack"
+            android:gravity="right"
+            app:layout_constraintTop_toBottomOf="@id/login_id_text2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/barrier2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/sub_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/title_bg" />
+
+    <TextView
+        android:id="@+id/sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <TextView
+        android:id="@+id/sub_header_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <TextView
+        android:id="@+id/login_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="20dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="@+id/sub_title"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="login_id_text,sub_title,imageView2"
+        tools:layout_editor_absoluteY="731dp" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier5" />
+
+    <include
+        android:id="@+id/fragment_view"
+        layout="@layout/content_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/title_header_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline68"
+        app:layout_constraintStart_toStartOf="@+id/guideline68"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <View
+        android:id="@+id/title_header_1"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/barrier3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="back_button,footer_button2,footer_button3,footer_button1,footer_button5,footer_button4"
+        tools:layout_editor_absoluteY="731dp" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardImageButton
+        android:id="@+id/back_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/system_button_round"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <TextView
+        android:id="@+id/sijikakunin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="指示内容確認"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintEnd_toStartOf="@+id/footer_button2"
+        app:layout_constraintTop_toTopOf="@id/barrier3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/back_button" />
+
+    <CheckBox
+        android:id="@+id/sijikakunin_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/sijikakunin"
+        app:layout_constraintStart_toEndOf="@+id/sijikakunin"
+        app:layout_constraintTop_toTopOf="@+id/sijikakunin" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/footer_button1"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_round"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/footer_button2"
+        app:layout_constraintStart_toEndOf="@id/back_button" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/footer_button2"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_round"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/footer_button3"
+        app:layout_constraintStart_toEndOf="@id/footer_button1" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/footer_button3"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_round"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/footer_button4"
+        app:layout_constraintStart_toEndOf="@id/footer_button2" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/footer_button4"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_round"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/footer_button5"
+        app:layout_constraintStart_toEndOf="@id/footer_button3" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/footer_button5"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_round"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/footer_button4" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/sub_header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:constraint_referenced_ids="view5,login_id_text,sub_title,barrier5,imageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="view3,barrier2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="barrier3,title_header_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardImageButton
+        android:id="@+id/readerConnectButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/system_button_round"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/batteryStateImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/barrier2"
+        app:srcCompat="@drawable/ic_ht_on" />
+
+    <ImageView
+        android:id="@+id/batteryStateImage"
+        android:layout_width="34dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/barrier2"
+        app:srcCompat="@drawable/ic_battery_unknown" />
+
+    <View
+        android:id="@+id/disabled_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="#30e7e6e6"
+        android:translationZ="90dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline68"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

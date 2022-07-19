@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav"
+    app:startDestination="@id/startFragment">
+    <fragment
+        android:id="@+id/readerSelectFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.fragment.ReaderSelectFragment"
+        android:label="ReaderSelectFragment" />
+    <!-- ピッキング/Invoice検索画面 -->
+    <fragment
+        android:id="@+id/pickingInvoiceSearchFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.picking.PickingInvoiceSearchFragment"
+        android:label="PickingInvoiceSearchFragment" >
+        <action
+            android:id="@+id/action_pickingFragment_to_invoiceTagScanFragment"
+            app:destination="@id/pickingCargoScanFragment" />
+        <action
+            android:id="@+id/action_pickingInvoiceSearchFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <!-- 梱包：Invoice検索 -->
+    <fragment
+        android:id="@+id/packingInvoiceSearchFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingInvoiceSearchFragment"
+        android:label="PackingInvoiceSearchFragment">
+        <action
+            android:id="@+id/action_packingInvoiceSearchFragment_to_packingListDisplayFragment"
+            app:destination="@id/packingListDisplayFragment" />
+        <action
+            android:id="@+id/action_packingInvoiceSearchFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <!-- 梱包/梱包一覧 -->
+    <fragment
+        android:id="@+id/packingListDisplayFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingListDisplayFragment"
+        android:label="PackingListDisplayFragment">
+        <action
+            android:id="@+id/action_packingListDisplayFragment_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+        <action
+            android:id="@+id/action_packingListDisplayFragment_to_packingScanFragment"
+            app:destination="@id/packingScanFragment" />
+        <action
+            android:id="@+id/action_packingListDisplayFragment_to_packingInvoiceSearchFragment"
+            app:destination="@id/packingInvoiceSearchFragment" />
+    </fragment>
+    <!-- 梱包/梱包スキャン -->
+    <fragment
+        android:id="@+id/packingScanFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingScanFragment"
+        android:label="packingScanFragment">
+        <action
+            android:id="@+id/action_packingScanFragment_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+        <action
+            android:id="@+id/action_packingScanFragment_to_packingOffBookFragment"
+            app:destination="@id/packingOffBookFragment" />
+        <action
+            android:id="@+id/action_packingScanFragment_to_packingMultiplePackingFragment"
+            app:destination="@id/packingMultiplePackingFragment" />
+        <action
+            android:id="@+id/action_packingScanFragment_to_packingSinglePackingFragment"
+            app:destination="@id/packingSinglePackingFragment" />
+        <action
+            android:id="@+id/action_packingScanFragment_to_packingFinalPacking"
+            app:destination="@id/packingFinalPackingFragment" />
+        <action
+            android:id="@+id/action_packingScanFragment_to_packingListDisplayFragment"
+            app:destination="@id/packingListDisplayFragment" />
+    </fragment>
+    <!-- 梱包/梱包スキャン/簿外確認 -->
+    <fragment
+        android:id="@+id/packingOffBookFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingOffBookFragment"
+        android:label="PackingOffBookFragment">
+        <action
+            android:id="@+id/action_packingOffBookFragment_to_packingScanFragment"
+            app:destination="@id/packingScanFragment" />
+    </fragment>
+    <!-- 梱包/梱包スキャン/複数梱包 -->
+    <fragment
+        android:id="@+id/packingMultiplePackingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingMultiplePackingFragment"
+        android:label="PackingMultiplePackingFragment">
+        <action
+            android:id="@+id/action_packingMultiplePackingFragment_to_packingScanFragment"
+            app:destination="@id/packingScanFragment" />
+    </fragment>
+    <!-- 梱包/単独梱包入力 -->
+    <fragment
+        android:id="@+id/packingSinglePackingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingSinglePackingFragment"
+        android:label="PackingSinglePackingFragment">
+        <action
+            android:id="@+id/action_packingSinglePackingFragment_to_packingScanFragment"
+            app:destination="@id/packingScanFragment" />
+    </fragment>
+    <!-- ピッキング/貨物スキャン -->
+    <fragment
+        android:id="@+id/pickingCargoScanFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.picking.PickingCargoScanFragment"
+        android:label="PickingCargoScanFragment">
+        <action
+            android:id="@+id/action_pickingCargoScanFragment_to_pickingInvoiceSearchFragment"
+            app:destination="@id/pickingInvoiceSearchFragment" />
+        <action
+            android:id="@+id/action_pickingCargoScanFragment_to_invoiceTagScanOffBookFragment"
+            app:destination="@id/pickingOffBookFragment" />
+        <action
+            android:id="@+id/action_pickingCargoScanFragment_to_printingRelatedFragment"
+            app:destination="@id/printingRelatedFragment" />
+        <action
+            android:id="@+id/action_pickingCargoScanFragment_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pickingOffBookFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.picking.PickingOffBookFragment"
+        android:label="InvoiceTagScanOffBookFragment">
+        <action
+            android:id="@+id/action_invoiceTagScanOffBookFragment_to_pickingCargoScanFragment"
+            app:destination="@id/pickingCargoScanFragment" />
+    </fragment>
+    <!-- 梱包：最終梱包入力 -->
+    <fragment
+        android:id="@+id/packingFinalPackingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.packing.PackingFinalPackingFragment"
+        android:label="PackingFinalPackingFragment">
+        <action
+            android:id="@+id/action_packingFinalPacking_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+        <action
+            android:id="@+id/action_packingFinalPacking_to_packingListDisplayFragment"
+            app:destination="@id/packingListDisplayFragment" />
+        <action
+            android:id="@+id/action_packingFinalPackingFragment_to_packingScanFragment"
+            app:destination="@id/packingScanFragment" />
+    </fragment>
+    <!-- ケースマーク印刷 -->
+    <fragment
+        android:id="@+id/caseMarkPrintFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.casemark_print.CaseMarkPrintFragment"
+        android:label="CaseMarkPrintFragment">
+        <action
+            android:id="@+id/action_caseMarkPrintFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <!-- ケースマーク貼付/ケースマーク読取 -->
+    <fragment
+        android:id="@+id/caseMarkPasteReadFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.casemark_paste.CaseMarkPasteReadFragment"
+        android:label="CaseMarkPasteReadFragment" >
+        <action
+            android:id="@+id/action_caseMarkPasteReadFragment_to_caseMarkPasteDetailFragment"
+            app:destination="@id/caseMarkPasteDetailFragment" />
+        <action
+            android:id="@+id/action_caseMarkPasteReadFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <!-- ケースマーク貼付/ケースマーク詳細 -->
+    <fragment
+        android:id="@+id/caseMarkPasteDetailFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.casemark_paste.CaseMarkPasteDetailFragmet"
+        android:label="CaseMarkPasteDetailFragmet" >
+        <action
+            android:id="@+id/action_caseMarkPasteDetailFragment_to_caseMarkPasteScanFragment"
+            app:destination="@id/caseMarkPasteScanFragment" />
+        <action
+            android:id="@+id/action_caseMarkPasteDetailFragment_to_caseMarkPasteReadFragment"
+            app:destination="@id/caseMarkPasteReadFragment" />
+    </fragment>
+    <!-- ケースマーク貼付/貨物スキャン -->
+    <fragment
+        android:id="@+id/caseMarkPasteScanFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.casemark_paste.CaseMarkPasteScanFragment"
+        android:label="CaseMarkPasteScanFragment" >
+        <action
+            android:id="@+id/action_caseMarkPasteScan_to_caseMarkPasteReadFragment"
+            app:destination="@id/caseMarkPasteReadFragment" />
+        <action
+            android:id="@+id/action_caseMarkPasteScan_to_caseMarkPasteDetailFragment"
+            app:destination="@id/caseMarkPasteDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.fragment.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_issueLoginFragment"
+            app:destination="@id/issueLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueLoginFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.authentication.IssueLoginFragment"
+        android:label="IssueLoginFragment" >
+        <action
+            android:id="@+id/action_issueLoginFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cargoStatusCheckFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.cargostatus.CargoStatusCheckFragment"
+        android:label="CargoStatusCheckFragment">
+        <action
+            android:id="@+id/action_cargoStatusCheckFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueMenuFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.menu.IssueMenuFragment"
+        android:label="IssueMenuFragment" >
+        <action
+            android:id="@+id/action_issueMenuFragment_to_readerSelectFragment"
+            app:destination="@id/readerSelectFragment"
+            app:popUpTo="@id/issueMenuFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_issueLoginFragment"
+            app:destination="@id/issueLoginFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_pickingInvoiceSearchFragment"
+            app:destination="@id/pickingInvoiceSearchFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_packingInvoiceSearchFragment"
+            app:destination="@id/packingInvoiceSearchFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_casemarkPrintFragment"
+            app:destination="@id/caseMarkPrintFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_caseMarkPasteFragment"
+            app:destination="@id/caseMarkPasteReadFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_issueRegistrationInvoiceSearchFragment"
+            app:destination="@id/issueRegistrationInvoiceSearchFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_cargoStatusCheckFragment"
+            app:destination="@id/cargoStatusCheckFragment" />
+        <action
+            android:id="@+id/action_issueMenuFragment_to_issueSettingFragment"
+            app:destination="@id/issueSettingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueDeviceSettingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.setting.IssueDeviceSettingFragment"
+        android:label="IssueDeviceSettingFragment" />
+    <fragment
+        android:id="@+id/issueRegistrationInvoiceSearchFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.issueregist.IssueRegistrationInvoiceSearchFragment"
+        android:label="IssueRegistrationInvoiceSearchFragment">
+        <action
+            android:id="@+id/action_issueInvoiceFragment_to_issueRegistrationCheck"
+            app:destination="@id/issueRegistrationCheckFragment"
+            app:popUpTo="@id/issueRegistrationInvoiceSearchFragment" />
+        <action
+            android:id="@+id/action_issueInvoiceFragment_to_issueMenuFragment"
+            app:destination="@id/issueMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueRegistrationCheckFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.issueregist.IssueRegistrationCheckFragment"
+        android:label="IssueRegistrationCheckFragment">
+        <action
+            android:id="@+id/action_issueRegistrationCheckFragment_to_issueRegistrationInvoiceSearchFragment"
+            app:destination="@id/issueRegistrationInvoiceSearchFragment"
+            app:popUpTo="@id/issueRegistrationCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueTagScanFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.fragment.IssueTagScanFragment"
+        android:label="IssueTagScanFragment" >
+        <action
+            android:id="@+id/action_issueTagScanFragment_to_issueInvoiceFragment"
+            app:destination="@id/issueRegistrationInvoiceSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/issueRFIDSettingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.setting.IssueRFIDSettingFragment"
+        android:label="IssueRFIDSettingFragment" />
+    <fragment
+        android:id="@+id/issueSettingFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.setting.IssueSettingFragment"
+        android:label="IssueSettingFragment" >
+        <action
+            android:id="@+id/action_issueSettingFragment_to_issueDeviceSettingFragment"
+            app:destination="@id/issueDeviceSettingFragment"
+            app:popUpTo="@id/issueSettingFragment" />
+        <action
+            android:id="@+id/action_issueSettingFragment_to_issueRFIDSettingFragment"
+            app:destination="@id/issueRFIDSettingFragment"
+            app:popUpTo="@id/issueSettingFragment" />
+    </fragment>
+    <!-- 梱包指示確認画面 -->
+    <fragment
+        android:id="@+id/checkInstructionsFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.fragment.CheckPackInstructionsFragment"
+        android:label="CheckInstructionsFragment">
+        <action
+            android:id="@+id/action_checkInstructionsFragment_to_invoiceTagScanFragment"
+            app:destination="@id/pickingCargoScanFragment" />
+        <action
+            android:id="@+id/action_checkInstructionsFragment_to_issuePackingScanFragment"
+            app:destination="@id/packingScanFragment" />
+        <action
+            android:id="@+id/action_checkInstructionsFragment_to_issuePackingListFragment"
+            app:destination="@id/packingListDisplayFragment" />
+        <action
+            android:id="@+id/action_checkInstructionsFragment_to_printingRelatedFragment"
+            app:destination="@id/printingRelatedFragment" />
+        <action
+            android:id="@+id/action_checkInstructionsFragment_to_checkShippingInstructionsFragment"
+            app:destination="@id/checkShippingInstructions" />
+        <argument
+            android:name="screenId"
+            app:argType="string"
+            android:defaultValue='P03' />
+    </fragment>
+    <!-- ピッキング/印刷関連 -->
+    <fragment
+        android:id="@+id/printingRelatedFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.priting_related.PrintingRelatedFragment"
+        android:label="PrintingRelatedFragment">
+        <action
+            android:id="@+id/action_printingRelatedFragment_to_invoiceTagScanFragment"
+            app:destination="@id/pickingCargoScanFragment" />
+        <action
+            android:id="@+id/action_printingRelatedFragment_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+    </fragment>
+    <!-- 出荷指示確認 -->
+    <fragment
+        android:id="@+id/checkShippingInstructions"
+        android:name="jp.co.khwayz.eleEntExtManage.fragment.CheckShippingInstructionsFragment"
+        android:label="CheckShippingInstructions">
+        <action
+            android:id="@+id/action_checkShippingInstructions_to_checkInstructionsFragment"
+            app:destination="@id/checkInstructionsFragment" />
+    </fragment>
+</navigation>

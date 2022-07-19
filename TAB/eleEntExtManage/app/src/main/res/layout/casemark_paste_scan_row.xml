@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/casemark_paste_scan_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minHeight="50dp">
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.04"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"/>
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_cno"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.06"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_cno_slash"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_purchase_order_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/purchase_order_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_branch_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.06"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_branch_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_order_no"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/order_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_item_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/text_black_border"
+        android:layout_weight="0.10"
+        android:gravity="center|start"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/item_code"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"/>
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.18"
+        android:background="@drawable/text_black_border"
+        android:gravity="center|start"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/item_name"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_stock"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.09"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_stock"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_shipment_quantity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.09"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_shipment_quantity"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_shipment_unit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_shipment_unit"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_scan_packing_form"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_packing_form"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        android:background="@drawable/text_black_border" />
+
+</LinearLayout>

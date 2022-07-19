@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/picking_search_cond_input_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline81"
+        app:layout_constraintEnd_toEndOf="@id/guideline64"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="textView13,textView84,picking_replay_date_input_label"
+            tools:layout_editor_absoluteX="614dp" />
+
+        <!-- Invoice番号 -->
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/invoice_no_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/textView84"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/invoice_no_Area"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/barrier22"
+            app:layout_constraintTop_toTopOf="@+id/textView13"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            android:theme="@style/TextInputLayoutTheme">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/invoice_no_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_extra_large"
+                android:paddingStart="@dimen/default_padding"
+                android:maxLength="10"
+                android:inputType="textEmailAddress"
+                android:theme="@style/EditTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 仕向地 -->
+        <TextView
+            android:id="@+id/textView84"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/destination_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/picking_replay_date_input_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <Spinner
+            android:id="@+id/destination_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/textView84"
+            app:layout_constraintStart_toStartOf="@id/barrier22"
+            app:layout_constraintTop_toTopOf="@id/textView84" />
+
+        <!-- リスト返信希望日 -->
+        <TextView
+            android:id="@+id/picking_replay_date_input_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="リスト返信希望日"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/picking_ship_date_input_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView84" />
+
+        <TextView
+            android:id="@+id/textviewPickingdeadline"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="220dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/text_black_border"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/picking_replay_date_input_label"
+            app:layout_constraintStart_toStartOf="@+id/barrier22"
+            app:layout_constraintTop_toTopOf="@+id/picking_replay_date_input_label" />
+
+        <ImageButton
+            android:id="@+id/pickingdeadlineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/text_black_border"
+            app:layout_constraintBottom_toBottomOf="@+id/textviewPickingdeadline"
+            app:layout_constraintStart_toEndOf="@+id/textviewPickingdeadline"
+            app:layout_constraintTop_toTopOf="@+id/textviewPickingdeadline"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <!-- 出荷日 -->
+        <TextView
+            android:id="@+id/picking_ship_date_input_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="出荷日"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/picking_replay_date_input_label" />
+
+        <TextView
+            android:id="@+id/textviewShipDate"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="220dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/text_black_border"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/picking_ship_date_input_label"
+            app:layout_constraintStart_toStartOf="@+id/barrier22"
+            app:layout_constraintTop_toTopOf="@+id/picking_ship_date_input_label" />
+
+        <ImageButton
+            android:id="@+id/shipDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/text_black_border"
+            app:layout_constraintBottom_toBottomOf="@+id/textviewShipDate"
+            app:layout_constraintStart_toEndOf="@+id/textviewShipDate"
+            app:layout_constraintTop_toTopOf="@+id/textviewShipDate"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/picking_search_cond_input_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline81"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline64"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 保冷 -->
+        <TextView
+            android:id="@+id/text_cool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/cool_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/text_dangerous"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/cool_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/text_cool"
+            app:layout_constraintStart_toStartOf="@id/guideline83"
+            app:layout_constraintTop_toTopOf="@id/text_cool" />
+
+        <!-- 危険品 -->
+        <TextView
+            android:id="@+id/text_dangerous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/dangerous_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/text_transport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_cool" />
+
+        <Spinner
+            android:id="@+id/spinner_dangerous"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/text_dangerous"
+            app:layout_constraintStart_toStartOf="@id/guideline83"
+            app:layout_constraintTop_toTopOf="@id/text_dangerous" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline83"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.23" />
+
+        <!-- 輸送区分 -->
+        <TextView
+            android:id="@+id/text_transport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="輸送区分"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/text_work2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_dangerous" />
+
+        <Spinner
+            android:id="@+id/spinner_transport"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/text_transport"
+            app:layout_constraintStart_toStartOf="@id/guideline83"
+            app:layout_constraintTop_toTopOf="@id/text_transport" />
+
+        <TextView
+            android:id="@+id/text_work2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text=" "
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_transport" />
+
+        <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+            android:id="@+id/invoice_search_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/button_round"
+            android:text="@string/search"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/button_text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintBottom_toBottomOf="@id/text_work2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_work2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <!--    <View-->
+    <!--        android:id="@+id/view23"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:background="#f2f2f2"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
+
+    <!--    <View-->
+    <!--        android:id="@+id/view29"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:background="#f2f2f2"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--    <androidx.constraintlayout.widget.Barrier-->
+    <!--        android:id="@+id/barrier8"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:barrierDirection="bottom"-->
+    <!--        app:constraint_referenced_ids="destination_spinner,button4,txtPickingdeadline,packing_instruction_spinner"-->
+    <!--        tools:layout_editor_absoluteY="170dp" />-->
+
+    <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+        android:id="@+id/button_sort"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_round_blue"
+        android:text="@string/sort"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/button_text_size_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/include2"
+        app:layout_constraintStart_toStartOf="@id/include2" />
+
+    <TextView
+        android:id="@+id/detail_count_label"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="検索結果："
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintBottom_toTopOf="@id/include2"
+        app:layout_constraintEnd_toStartOf="@id/detail_count"/>
+
+    <TextView
+        android:id="@+id/detail_count"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="0"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintTop_toTopOf="@id/detail_count_label"
+        app:layout_constraintEnd_toStartOf="@id/detail_count_unit"/>
+
+    <TextView
+        android:id="@+id/detail_count_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="件"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintTop_toTopOf="@id/detail_count_label"
+        app:layout_constraintEnd_toEndOf="@id/include2"/>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/invoice_search_header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="@dimen/list_header_margin_hr"
+        android:layout_marginTop="@dimen/list_header_margin_sort_vr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/invoice_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@null"
+        app:layout_constraintEnd_toEndOf="@+id/include2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="picking_search_cond_input_left,picking_search_cond_input_right,guideline81"
+        tools:layout_editor_absoluteY="800dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

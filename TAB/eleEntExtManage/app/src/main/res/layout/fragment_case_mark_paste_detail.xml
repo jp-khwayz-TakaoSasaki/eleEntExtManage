@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_hr_01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tv_casemark_paste_casemark_12,tv_casemark_paste_casemark_05,tv_casemark_paste_remarks"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <!-- ヘッダ左側 -->
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="ELEMATEC"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="LAMPHUN"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_01" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="C/NO.1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_02" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="MADE IN JAPAN"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_03" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="KANAZAWA.BR"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_04" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク０６"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_05" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク０７"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_06" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_08"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク０８"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_07" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク０９"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_08" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク１０"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_09" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="ケースマーク１１"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_10" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_casemark_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_casemark_hr"
+        android:text="12345678901234567890"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_casemark_11" />
+
+    <!-- ヘッダ右側 -->
+    <TextView
+        android:id="@+id/tv_casemark_paste_packing_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/common_list_header_packing_quantity_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_casemark_01" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_packing_quantity_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_packing_quantity"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_packing_quantity" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_c_slash_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:text="@string/common_list_header_cno_slash_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_packing_quantity" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_c_slash_no_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 - 100"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_c_slash_no"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_c_slash_no" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_lwh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:text="@string/common_list_header_lwh_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_c_slash_no" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_lwh_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60 * 30 * 50 cm"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_lwh"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_lwh" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_nw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:text="@string/common_list_header_nw_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_lwh" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_nw_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="128"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_nw"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_nw" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_gw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:text="@string/common_list_header_gw_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_nw" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_gw_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_gw"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_gw" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_remarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:text="@string/common_list_header_remarks_coron"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_casemark_paste_gw" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_remarks_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="びこうびこうびこう"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/tv_casemark_paste_remarks"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_remarks" />
+
+    <!-- 下段 -->
+    <TextView
+        android:id="@+id/tv_casemark_paste_invoice_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/casemark_paste_detail_sprit_hr"
+        android:layout_marginEnd="20dp"
+        android:text="INVOICENO"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintEnd_toStartOf="@id/tv_casemark_paste_invoice_no_value"
+        app:layout_constraintTop_toBottomOf="@id/barrier_hr_01" />
+
+    <TextView
+        android:id="@+id/tv_casemark_paste_invoice_no_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="19UT-0092"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_casemark_paste_invoice_no" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

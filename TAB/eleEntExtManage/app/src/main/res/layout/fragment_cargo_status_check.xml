@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_03"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_04"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_vr_01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tv_purchase_order_no_and_branch_no,tv_brand_name,tv_item_code,tv_dangerous_goods,tv_sales_staff,tv_place_order_unit"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_vr_02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tv_order_no,tv_customer_name,tv_item_name,tv_shelf_number,tv_supplier_item_code"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tv_place_order_unit,tv_receive_order_unit,tv_stock_unit"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <!-- ヘッダ左側 -->
+    <TextView
+        android:id="@+id/tv_messsage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/cargostatus_message"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_purchase_order_no_and_branch_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/purchase_order_no_and_branch_no"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_messsage" />
+
+    <TextView
+        android:id="@+id/tv_brand_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/brand_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_purchase_order_no_and_branch_no" />
+
+    <TextView
+        android:id="@+id/tv_item_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/item_code"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_brand_name" />
+
+    <TextView
+        android:id="@+id/tv_dangerous_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/dangerous_goods"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_code" />
+
+    <TextView
+        android:id="@+id/tv_sales_staff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/sales_staff"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_dangerous_goods" />
+
+    <TextView
+        android:id="@+id/tv_purchase_order_no_and_branch_no_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="451023901+100"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_01"
+        app:layout_constraintTop_toTopOf="@id/tv_purchase_order_no_and_branch_no" />
+
+    <TextView
+        android:id="@+id/tv_brand_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="八王子支店"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_01"
+        app:layout_constraintTop_toTopOf="@id/tv_brand_name" />
+
+    <TextView
+        android:id="@+id/tv_item_code_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="ZZS2021KG"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_01"
+        app:layout_constraintTop_toTopOf="@id/tv_item_code" />
+
+    <TextView
+        android:id="@+id/tv_dangerous_goods_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="1993/3/-17"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_01"
+        app:layout_constraintTop_toTopOf="@id/tv_dangerous_goods" />
+
+    <TextView
+        android:id="@+id/tv_sales_staff_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="トモエ"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_01"
+        app:layout_constraintTop_toTopOf="@id/tv_sales_staff" />
+
+    <!-- ヘッダ右側 -->
+    <TextView
+        android:id="@+id/tv_order_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_no"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_03"
+        app:layout_constraintTop_toTopOf="@id/tv_purchase_order_no_and_branch_no" />
+
+    <TextView
+        android:id="@+id/tv_customer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/customer_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_03"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_no" />
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/item_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_03"
+        app:layout_constraintTop_toBottomOf="@id/tv_customer_name" />
+
+    <TextView
+        android:id="@+id/tv_shelf_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/shelf_number"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_03"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_name" />
+
+    <TextView
+        android:id="@+id/tv_supplier_item_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/supplier_item_code"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_03"
+        app:layout_constraintTop_toBottomOf="@id/tv_shelf_number" />
+
+    <TextView
+        android:id="@+id/tv_order_no_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="10046820"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_02"
+        app:layout_constraintTop_toTopOf="@id/tv_order_no" />
+
+    <TextView
+        android:id="@+id/tv_customer_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="エレマテックタイB040"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_02"
+        app:layout_constraintTop_toTopOf="@id/tv_customer_name" />
+
+    <TextView
+        android:id="@+id/tv_item_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="ZZS-202 1KG"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_02"
+        app:layout_constraintTop_toTopOf="@id/tv_item_name" />
+
+    <TextView
+        android:id="@+id/tv_shelf_number_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text="140"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_02"
+        app:layout_constraintTop_toTopOf="@id/tv_shelf_number" />
+
+    <TextView
+        android:id="@+id/tv_supplier_item_code_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toEndOf="@id/barrier_vr_02"
+        app:layout_constraintTop_toTopOf="@id/tv_supplier_item_code" />
+
+    <!-- ヘッダ下段 -->
+   <TextView
+        android:id="@+id/tv_place_order_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/place_order_unit"
+        android:textColor="@color/colorBlack"
+       android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_01"
+        app:layout_constraintTop_toBottomOf="@id/tv_sales_staff" />
+
+    <TextView
+        android:id="@+id/tv_receive_order_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/receive_order_unit"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_02"
+        app:layout_constraintTop_toBottomOf="@id/tv_sales_staff" />
+
+    <TextView
+        android:id="@+id/tv_stock_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cargo_status_header_sprit_vr"
+        android:text="@string/stock_unit"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        app:layout_constraintStart_toStartOf="@id/guideline_04"
+        app:layout_constraintTop_toBottomOf="@id/tv_sales_staff" />
+
+    <TextView
+        android:id="@+id/tv_place_order_unit_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pcs"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_meisai_disp"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        app:layout_constraintStart_toEndOf="@id/tv_place_order_unit"
+        app:layout_constraintTop_toTopOf="@id/tv_place_order_unit" />
+
+    <TextView
+        android:id="@+id/tv_receive_order_unit_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pcs"
+        android:textSize="@dimen/text_size_meisai_disp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        app:layout_constraintStart_toEndOf="@id/tv_receive_order_unit"
+        app:layout_constraintTop_toTopOf="@id/tv_receive_order_unit" />
+
+    <TextView
+        android:id="@+id/tv_stock_unit_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kg"
+        android:textSize="@dimen/text_size_meisai_disp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginStart="@dimen/cargo_status_header_sprit_hr"
+        app:layout_constraintStart_toEndOf="@id/tv_stock_unit"
+        app:layout_constraintTop_toTopOf="@id/tv_stock_unit" />
+
+
+    <!-- リスト -->
+    <include
+        android:id="@+id/include_header"
+        layout="@layout/cargo_status_header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier_header" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/invoice_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/include_header"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/include_header"
+        app:layout_constraintTop_toBottomOf="@+id/include_header" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

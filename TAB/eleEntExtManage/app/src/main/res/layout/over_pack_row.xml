@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/over_pack_row"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_row_over_pack_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_over_pack"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_row_purchase_order_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/purchase_order_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_02"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_row_over_pack_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_row_purchase_branch_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/common_list_header_branch_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_03"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_row_purchase_order_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_row_order_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/order_no"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_04"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_row_purchase_branch_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_row_bundled_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="@string/packing_scan_header_bundled_number"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_row_order_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

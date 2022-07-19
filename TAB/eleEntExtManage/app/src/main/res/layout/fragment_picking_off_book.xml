@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 簿外あり -->
+    <TextView
+        android:id="@+id/off_book_confirm_scan_text_off_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/off_book_confirm_view_off_book"
+        android:textColor="#0070c0"
+        android:textSize="@dimen/text_size_bogai_text"
+        app:layout_constraintEnd_toEndOf="@id/include9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline85"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline85"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/include9"
+        app:layout_constraintEnd_toEndOf="@id/include9"
+        app:layout_constraintStart_toStartOf="@id/include9"
+        app:layout_constraintTop_toTopOf="@id/guideline85">
+
+        <!-- Invoice番号 -->
+        <TextView
+            android:id="@+id/off_book_confirm_label_invoice_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_label_invoice_no"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/off_book_confirm_view_invoice_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="19UT-0092"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/off_book_confirm_label_invoice_no"
+            app:layout_constraintTop_toTopOf="@id/off_book_confirm_label_invoice_no" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline86"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <!-- 読取件数 -->
+        <TextView
+            android:id="@+id/off_book_confirm_label_read_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_label_read_count"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline86"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/off_book_confirm_view_read_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/0"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/off_book_confirm_label_read_count"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline87"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
+
+        <TextView
+            android:id="@+id/off_book_confirm_view_client"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elematec(Thailand)Co., Ltd"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline87"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include
+        android:id="@+id/include9"
+        layout="@layout/off_book_header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline84" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/off_book_confirm_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/include9"
+        app:layout_constraintStart_toStartOf="@+id/include9"
+        app:layout_constraintTop_toBottomOf="@+id/include9"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline84"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

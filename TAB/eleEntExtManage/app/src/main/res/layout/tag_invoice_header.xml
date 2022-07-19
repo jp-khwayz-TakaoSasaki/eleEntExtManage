@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="50dp"
+    android:background="#C00000">
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="@string/purchase_order_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.06"
+        android:gravity="center"
+        android:text="@string/common_list_header_branch_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="@string/order_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border"/>
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.13"
+        android:gravity="center"
+        android:text="@string/item_code"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.13"
+        android:gravity="center"
+        android:text="@string/item_name"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:gravity="center"
+        android:text="@string/shipment_quantity_total"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border"/>
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:gravity="center"
+        android:text="@string/shipment_unit"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.11"
+        android:gravity="center"
+        android:text="@string/cargo_scan_list_header_ref_stock"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:gravity="center"
+        android:text="@string/cargo_scan_list_header_packing"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border"/>
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.07"
+        android:gravity="center"
+        android:text="@string/location_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/text_black_border"/>
+
+</LinearLayout>

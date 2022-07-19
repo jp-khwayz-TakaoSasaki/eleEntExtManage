@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_header_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <!-- Invoice番号 -->
+    <TextView
+        android:id="@+id/over_pack_label_invoice_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_header_margin_hr"
+        android:text="@string/common_label_invoice_no"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_header_01"
+        app:layout_constraintBottom_toTopOf="@id/guideline_header"/>
+
+    <TextView
+        android:id="@+id/over_pack_view_invoice_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="19UT-0092"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@id/over_pack_label_invoice_no"
+        app:layout_constraintTop_toTopOf="@id/over_pack_label_invoice_no" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_header">
+
+        <include
+            android:id="@+id/include_header"
+            layout="@layout/over_pack_header"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/list_header_margin_hr"
+            android:layout_marginEnd="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/over_pack_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/include_header"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/include_header"
+            app:layout_constraintTop_toBottomOf="@+id/include_header"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vr"
+        app:layout_constraintTop_toTopOf="@id/guideline_header">
+
+        <include
+            android:id="@+id/include_delete"
+            layout="@layout/over_pack_delete_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginEnd="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 梱包資材１ -->
+        <TextView
+            android:id="@+id/tv_over_pack_packing_material_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/packing_material_1"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sp_over_pack_packing_material_1"
+            app:layout_constraintTop_toBottomOf="@id/include_delete"
+            app:layout_constraintBottom_toTopOf="@id/tv_over_pack_packing_material_2"/>
+
+        <Spinner
+            android:id="@+id/sp_over_pack_packing_material_1"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@id/tv_over_pack_packing_material_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_over_pack_packing_material_1"
+            app:layout_constraintBottom_toBottomOf="@id/tv_over_pack_packing_material_1" />
+
+        <!-- 梱包資材１ -->
+        <TextView
+            android:id="@+id/tv_over_pack_packing_material_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/packing_material_2"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sp_over_pack_packing_material_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_over_pack_packing_material_1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Spinner
+            android:id="@+id/sp_over_pack_packing_material_2"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:theme="@style/SpinnerStyle"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@id/tv_over_pack_packing_material_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_over_pack_packing_material_2"
+            app:layout_constraintBottom_toBottomOf="@id/tv_over_pack_packing_material_2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

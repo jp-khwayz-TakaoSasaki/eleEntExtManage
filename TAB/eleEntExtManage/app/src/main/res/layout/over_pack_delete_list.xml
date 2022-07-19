@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_header_over_pack_no"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/packing_scan_header_over_pack"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_list_header"
+        android:background="@drawable/text_black_border_header"
+        app:layout_constraintBottom_toTopOf="@id/tv_over_pack_no_value"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_delete"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_list_header"
+        android:background="@drawable/text_black_border_header"
+        app:layout_constraintBottom_toTopOf="@id/tv_over_pack_no_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_header_over_pack_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_no_value"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/text_black_border"
+        android:gravity="center_vertical|end"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_list_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_over_pack_header_over_pack_no" />
+
+    <TextView
+        android:id="@+id/tv_over_pack_delete_value"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_size_list_header"
+        android:background="@drawable/text_black_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_no_value"
+        app:layout_constraintTop_toBottomOf="@id/tv_over_pack_delete"/>
+
+    <Button
+        android:id="@+id/bt_over_pack_delete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/button_margin_normal"
+        android:background="@drawable/button_round_gray_2"
+        android:text="@string/packing_list_button_label_cancel"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/button_text_size_large"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/tv_over_pack_delete_value"
+        app:layout_constraintBottom_toBottomOf="@id/tv_over_pack_delete_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/tv_over_pack_no_value"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

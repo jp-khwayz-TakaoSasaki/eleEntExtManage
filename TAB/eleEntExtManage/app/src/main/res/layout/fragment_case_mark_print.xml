@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="casemark_print_cond_input_left,casemark_print_cond_input_right,guideline81"
+        tools:layout_editor_absoluteY="800dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/casemark_print_cond_input_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline81"
+        app:layout_constraintEnd_toEndOf="@id/guideline64"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_input_left_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="tv_casemark_print_invoice_no,tv_casemark_print_destination,tv_casemark_print_ship_date_label"
+            tools:layout_editor_absoluteX="614dp" />
+
+        <!-- Invoice番号 -->
+        <TextView
+            android:id="@+id/tv_casemark_print_invoice_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/invoice_no_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_casemark_print_destination"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_casemark_print_invoice_no_Area"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:theme="@style/TextInputLayoutTheme"
+            app:hintTextAppearance="@style/TextAppearanceHint"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_casemark_print_invoice_no"
+            app:layout_constraintStart_toStartOf="@+id/barrier_input_left_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_casemark_print_invoice_no">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_casemark_print_invoice_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:maxLength="10"
+                android:paddingStart="@dimen/default_padding"
+                android:textSize="@dimen/text_size_extra_large"
+                android:theme="@style/EditTextStyle" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 仕向地 -->
+        <TextView
+            android:id="@+id/tv_casemark_print_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/destination_input"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_casemark_print_ship_date_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_casemark_print_invoice_no" />
+
+        <Spinner
+            android:id="@+id/sp_casemark_print_destination"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:spinnerMode="dialog"
+            android:theme="@style/SpinnerStyle"
+            app:layout_constraintBottom_toBottomOf="@id/tv_casemark_print_destination"
+            app:layout_constraintStart_toStartOf="@id/barrier_input_left_label"
+            app:layout_constraintTop_toTopOf="@id/tv_casemark_print_destination" />
+
+        <!-- 出荷日 -->
+        <TextView
+            android:id="@+id/tv_casemark_print_ship_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="出荷日"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_print_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_casemark_print_destination" />
+
+        <TextView
+            android:id="@+id/tv_casemark_print_ship_date"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="220dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/text_black_border"
+            android:paddingStart="5dp"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_extra_large"
+            app:layout_constraintBottom_toBottomOf="@id/tv_casemark_print_ship_date_label"
+            app:layout_constraintStart_toStartOf="@+id/barrier_input_left_label"
+            app:layout_constraintTop_toTopOf="@+id/tv_casemark_print_ship_date_label" />
+
+        <ImageButton
+            android:id="@+id/bt_casemark_print_ship_date"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/text_black_border"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_casemark_print_ship_date"
+            app:layout_constraintStart_toEndOf="@+id/tv_casemark_print_ship_date"
+            app:layout_constraintTop_toTopOf="@+id/tv_casemark_print_ship_date"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <!-- 印刷状態 -->
+        <TextView
+            android:id="@+id/tv_print_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/print_status"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_casemark_print_ship_date_label" />
+
+        <Spinner
+            android:id="@+id/sp_print_status"
+            android:layout_width="180dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="104dp"
+            android:background="@drawable/text_black_border"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/tv_print_status"
+            app:layout_constraintStart_toStartOf="@id/barrier_input_left_label"
+            app:layout_constraintTop_toTopOf="@id/tv_print_status" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/casemark_print_cond_input_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline81"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline64"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.38" />
+
+        <Button
+            android:id="@+id/bt_invoice_search"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/button_round"
+            android:text="@string/search"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/button_text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.88" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <TextView
+        android:id="@+id/detail_count_label"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="検索結果："
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintBottom_toTopOf="@id/includeListHeader"
+        app:layout_constraintEnd_toStartOf="@id/detail_count"/>
+
+    <TextView
+        android:id="@+id/detail_count"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:text="0"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintTop_toTopOf="@id/detail_count_label"
+        app:layout_constraintEnd_toStartOf="@id/detail_count_unit"/>
+
+    <TextView
+        android:id="@+id/detail_count_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="件"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintTop_toTopOf="@id/detail_count_label"
+        app:layout_constraintEnd_toEndOf="@id/includeListHeader"/>
+
+    <include
+        android:id="@+id/includeListHeader"
+        layout="@layout/casemark_print_header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="@dimen/list_small_header_margin_hr"
+        android:layout_marginTop="@dimen/list_header_margin_vr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/invoice_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@null"
+        app:layout_constraintEnd_toEndOf="@+id/includeListHeader"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/includeListHeader"
+        app:layout_constraintTop_toBottomOf="@+id/includeListHeader" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

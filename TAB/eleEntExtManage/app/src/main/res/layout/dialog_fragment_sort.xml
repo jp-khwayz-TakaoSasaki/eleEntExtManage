@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="500dp"
+    android:layout_height="250dp">
+
+    <View
+        android:id="@+id/title_header_1"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="#C00000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="ソート"
+        android:textSize="@dimen/text_size_header_text"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_header_1" />
+
+    <View
+        android:id="@+id/title_header_2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="#C00000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_label" />
+
+    <Spinner
+        android:id="@+id/spinner_sort_field"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:theme="@style/SpinnerStyle"
+        android:spinnerMode="dialog"
+        android:layout_width="200dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline82" />
+
+    <TextView
+        android:id="@+id/asc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:textSize="@dimen/text_size_header_text"
+        android:text="昇順"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="@id/radio_group_sort"
+        app:layout_constraintEnd_toStartOf="@id/desc_label"
+        app:layout_constraintTop_toTopOf="@id/guide_radio_label_top" />
+
+    <TextView
+        android:id="@+id/desc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="@dimen/text_size_header_text"
+        android:text="降順"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="@id/radio_group_sort"
+        app:layout_constraintStart_toEndOf="@id/asc_label"
+        app:layout_constraintTop_toTopOf="@id/guide_radio_label_top" />
+
+    <Button
+        android:id="@+id/positive_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_round"
+        android:text="設定"
+        android:textSize="@dimen/button_text_size_large"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="2"
+        android:scaleY="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/title_bg" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline82"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_sort_field"
+        app:layout_constraintStart_toStartOf="@+id/guide_radio_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline82">
+
+        <RadioButton
+            android:id="@+id/radioAsc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/negative_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/system_button_round"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_radio_label_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.31" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_radio_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
+
+    <View
+        android:id="@+id/title_footer"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="#C00000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline22" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.IssueLoginFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_hr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vr01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vr02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_user_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_hr"
+        app:layout_constraintStart_toStartOf="@id/guideline_vr01"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vr02"
+        app:hintTextAppearance="@style/TextAppearanceHint"
+        android:theme="@style/TextInputLayoutTheme">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_login_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_id"
+            android:textSize="@dimen/text_size_login_et"
+            android:paddingStart="@dimen/default_padding"
+            android:maxLength="10"
+            android:inputType="textVisiblePassword"
+            android:theme="@style/EditTextStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_hr"
+        app:layout_constraintStart_toStartOf="@id/guideline_vr01"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vr02"
+        app:errorEnabled="false"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/TextAppearanceHint"
+        android:theme="@style/TextInputLayoutTheme">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textSize="@dimen/text_size_login_et"
+            android:paddingStart="@dimen/default_padding"
+            android:maxLength="10"
+            android:inputType="textPassword"
+            android:theme="@style/EditTextStyle"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

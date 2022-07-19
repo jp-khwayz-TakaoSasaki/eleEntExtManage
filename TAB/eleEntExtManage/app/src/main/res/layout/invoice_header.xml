@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#C00000">
+
+    <TextView
+        android:id="@+id/invoice_header_si_no"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/si_slash_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invoice_header_invoice_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/invoice_no"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/invoice_header_deadline"
+        app:layout_constraintStart_toEndOf="@+id/invoice_header_si_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invoice_header_deadline"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/deadline"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/invoice_header_destination"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invoice_header_destination"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/destination"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/invoice_header_packing_instruction"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invoice_header_packing_instruction"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/packing_instruction"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/invoice_header_packing_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invoice_header_packing_date"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/packing_date"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

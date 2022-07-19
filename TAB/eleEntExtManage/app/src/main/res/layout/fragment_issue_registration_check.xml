@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_header_margin_hr"
+        android:text="@string/si_no_colon"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintTop_toBottomOf="@id/guideline_01"
+        app:layout_constraintBottom_toTopOf="@id/guideline_02"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/si_no_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/casemarkContTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/case_mark_count"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@+id/si_no_text"
+        app:layout_constraintEnd_toStartOf="@+id/scanedCaseMarkCount"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0.9"/>
+
+    <TextView
+        android:id="@+id/scanedCaseMarkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="10"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@+id/casemarkContTitle"
+        app:layout_constraintEnd_toStartOf="@+id/casemarkContSepareter"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/casemarkContSepareter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="/"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@+id/scanedCaseMarkCount"
+        app:layout_constraintEnd_toStartOf="@+id/caseMarkCount"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/caseMarkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="100"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@+id/casemarkContSepareter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_02">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/include_header"
+                layout="@layout/issue_confirm_header"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/si_invoice_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/include_header"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/include_header"
+                app:layout_constraintTop_toBottomOf="@+id/include_header" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
