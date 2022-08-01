@@ -6,47 +6,14 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline26"
+        android:id="@+id/guideline01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.01" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="@id/include2"
-        app:layout_constraintStart_toStartOf="@id/include2"
-        app:layout_constraintTop_toTopOf="@id/guideline26"
-        app:layout_constraintBottom_toTopOf="@id/include2">
-
-        <!-- Invoice番号 -->
-        <TextView
-            android:id="@+id/cargo_scan_label_invoice_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_label_invoice_no"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_size_header_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/printing_invoice_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:text="19UT-0092"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_size_header_text"
-            app:layout_constraintStart_toEndOf="@id/cargo_scan_label_invoice_no"
-            app:layout_constraintTop_toTopOf="@id/cargo_scan_label_invoice_no" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline81"
+        android:id="@+id/guideline02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -62,10 +29,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline81" />
+        app:layout_constraintTop_toTopOf="@id/guideline02" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appended_files"
+        android:id="@+id/file_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:divider="@null"
@@ -74,5 +41,26 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/include2"
         app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+    <!-- Invoice番号 -->
+    <TextView
+        android:id="@+id/invoice_no_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/common_label_invoice_no"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintBottom_toBottomOf="@id/guideline02"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toTopOf="@id/guideline01" />
+    <TextView
+        android:id="@+id/invoice_no_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@id/invoice_no_title"
+        app:layout_constraintTop_toTopOf="@id/invoice_no_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

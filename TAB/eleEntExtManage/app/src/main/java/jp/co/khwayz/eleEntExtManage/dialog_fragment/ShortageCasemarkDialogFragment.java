@@ -19,28 +19,17 @@ import jp.co.khwayz.eleEntExtManage.issueregist.IssueShortageCasemarkRecyclerVie
 
 public class ShortageCasemarkDialogFragment extends DialogFragment {
 
-    // 画面オブジェクト
-    private TextView invoiceNoText;
-    private RecyclerView casemarkList;
-    private List<String> casemarkInfoList;
-    private IssueShortageCasemarkRecyclerViewAdapter casemarkAdapter;
-    private ImageButton backButton;
+    private String mInvoiceNo;
+    private List<String> mCaseMarkInfoList;
 
-    public ShortageCasemarkDialogFragment(List<String> casemarkList) {
-        this.casemarkInfoList = casemarkList;
+    public ShortageCasemarkDialogFragment(String invoiceNo, List<String> caseMarkList) {
+        this.mCaseMarkInfoList = caseMarkList;
+        this.mInvoiceNo = invoiceNo;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-//        Dialog dialog = getDialog();
-//        DisplayMetrics metrics = getResources().getDisplayMetrics();
-
-        // TODO:サイズについては要調整
-//        int width = (int)(metrics.widthPixels * 0.417);
-//        int height = (int)(metrics.heightPixels * 0.38);
-//
-//        dialog.getWindow().setLayout(width, height);
     }
 
     @NonNull
@@ -52,18 +41,22 @@ public class ShortageCasemarkDialogFragment extends DialogFragment {
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         dialog.setContentView(R.layout.dialog_fragment_shortage_casemark);
 
-        // 不足ケースマークList構築
-        this.casemarkList = dialog.findViewById(R.id.issue_shortage_casemark_list);
+        // InvoiceNo表示
+        TextView invoiceNoText = dialog.findViewById(R.id.tv_invoice_no_value);
+        invoiceNoText.setText(mInvoiceNo);
 
-        this.casemarkAdapter = new IssueShortageCasemarkRecyclerViewAdapter(this.casemarkInfoList);
+        // 不足ケースマークList構築
+        RecyclerView caseMarkList = dialog.findViewById(R.id.issue_shortage_casemark_list);
+
+        IssueShortageCasemarkRecyclerViewAdapter caseMarkAdapter = new IssueShortageCasemarkRecyclerViewAdapter(this.mCaseMarkInfoList);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        this.casemarkList.setHasFixedSize(true);
-        this.casemarkList.setLayoutManager(llm);
-        this.casemarkList.setAdapter(casemarkAdapter);
+        caseMarkList.setHasFixedSize(true);
+        caseMarkList.setLayoutManager(llm);
+        caseMarkList.setAdapter(caseMarkAdapter);
 
         // Left Allow ボタン
-        this.backButton = dialog.findViewById(R.id.issue_shortage_casemark_negative_button);
-        this.backButton.setOnClickListener(v -> dismiss());
+        ImageButton backButton = dialog.findViewById(R.id.issue_shortage_casemark_negative_button);
+        backButton.setOnClickListener(v -> dismiss());
         return dialog;
     }
 

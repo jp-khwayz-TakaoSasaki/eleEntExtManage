@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
+import jp.co.khwayz.eleEntExtManage.database.dao.InvoiceTempDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.KonpoInnerDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.KonpoOuterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.MessageMasterDao;
@@ -57,6 +58,7 @@ public class RfidDataBaseOpenHelper extends SQLiteOpenHelper {
         new KonpoInnerDao().createTable(db);
         /* オーバーパック梱包資材作成 */
         new OverpackKonpoShizaiDao().createTable(db);
+        new InvoiceTempDao().createTable(db);
     }
 
     @Override
@@ -75,5 +77,6 @@ public class RfidDataBaseOpenHelper extends SQLiteOpenHelper {
         new KonpoInnerDao().upgradeTable(db);
         /* オーバーパック梱包資材更新 */
         new OverpackKonpoShizaiDao().upgradeTable(db);
+        new InvoiceTempDao().upgradeTable(db);
     }
 }

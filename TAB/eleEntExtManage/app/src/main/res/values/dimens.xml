@@ -59,8 +59,8 @@
 
 
     <!-- 貨物ステータス確認 -->
-    <dimen name="cargo_status_header_sprit_vr">20dp</dimen>
-    <dimen name="cargo_status_header_sprit_hr">60dp</dimen>
+    <dimen name="cargo_status_header_split_vr">20dp</dimen>
+    <dimen name="cargo_status_header_split_hr">40dp</dimen>
 
     <!-- ケースマーク貼付け -->
     <dimen name="casemark_paste_detail_casemark_hr">10dp</dimen>

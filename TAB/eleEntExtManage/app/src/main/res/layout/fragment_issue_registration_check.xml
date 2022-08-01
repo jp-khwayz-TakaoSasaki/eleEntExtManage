@@ -29,7 +29,8 @@
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintTop_toBottomOf="@id/guideline_01"
         app:layout_constraintBottom_toTopOf="@id/guideline_02"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/si_no_text"
@@ -41,7 +42,8 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21" />
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/casemarkContTitle"
@@ -51,18 +53,18 @@
         android:textColor="#000000"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintStart_toEndOf="@+id/si_no_text"
-        app:layout_constraintEnd_toStartOf="@+id/scanedCaseMarkCount"
+        app:layout_constraintEnd_toStartOf="@+id/scannedCaseMarkCount"
         app:layout_constraintTop_toTopOf="@+id/textView21"
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0.9"/>
 
     <TextView
-        android:id="@+id/scanedCaseMarkCount"
+        android:id="@+id/scannedCaseMarkCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="10"
+        android:text="@string/zero"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintStart_toEndOf="@+id/casemarkContTitle"
@@ -78,7 +80,7 @@
         android:text="/"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_header_text"
-        app:layout_constraintStart_toEndOf="@+id/scanedCaseMarkCount"
+        app:layout_constraintStart_toEndOf="@+id/scannedCaseMarkCount"
         app:layout_constraintEnd_toStartOf="@+id/caseMarkCount"
         app:layout_constraintTop_toTopOf="@+id/textView21"
         app:layout_constraintBottom_toBottomOf="@+id/textView21" />
@@ -88,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="100"
+        android:text="@string/zero"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintStart_toEndOf="@+id/casemarkContSepareter"
@@ -120,7 +122,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/si_invoice_list"
+                android:id="@+id/invoice_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@+id/include_header"

@@ -3,9 +3,9 @@
     android:id="@+id/check_shipping_instructions_row"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="wrap_content"
+    android:minHeight="50dp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_check_shipping_instructions_vr_01"
@@ -28,7 +28,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:background="@drawable/text_black_border"
-        android:gravity="right"
+        android:gravity="end|center"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_extra_large"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,11 +58,13 @@
     <TextView
         android:id="@+id/check_shipping_instructions_row_shipping_instructions"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:background="@drawable/text_black_border"
-        android:gravity="left"
+        android:gravity="start|center"
+        android:singleLine="false"
         android:textColor="#000000"
         android:textSize="@dimen/text_size_extra_large"
         app:layout_constraintTop_toTopOf="parent"

@@ -21,11 +21,8 @@ import com.densowave.scannersdk.Listener.RFIDDataDelegate;
 import com.densowave.scannersdk.RFID.RFIDException;
 import com.densowave.scannersdk.RFID.RFIDScanner;
 
-import java.util.ArrayList;
-
 import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.application.Application;
-import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
 import jp.co.khwayz.eleEntExtManage.util.Util;
 
 public abstract class BaseFragment extends Fragment implements BaseFragmentListener {
@@ -101,14 +98,6 @@ public abstract class BaseFragment extends Fragment implements BaseFragmentListe
     public void onStart() {
         super.onStart();
         Application.currentFragment = this;
-        /** TODO：
-         * HTTマージ時の残骸
-        // サブヘッダーにタイトルと機能IDを表示
-        mListener.setMenuTitle(getMenuTitleResourceId());
-        mListener.setCategoryTitle(getCategoryTitleResourceId());
-        mListener.setProgramId(getProgramIdResourceId());
-        mListener.setProgramName(getProgramNameResourceId());
-         */
     }
 
     @Override

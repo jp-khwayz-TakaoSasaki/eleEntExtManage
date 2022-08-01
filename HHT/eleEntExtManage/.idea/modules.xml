@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/eleEntExtManage.iml" filepath="$PROJECT_DIR$/.idea/eleEntExtManage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DENSOScannerSDK/eleEntExtManage.DENSOScannerSDK.iml" filepath="$PROJECT_DIR$/.idea/modules/DENSOScannerSDK/eleEntExtManage.DENSOScannerSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ZSDK_ANDROID_API/eleEntExtManage.ZSDK_ANDROID_API.iml" filepath="$PROJECT_DIR$/.idea/modules/ZSDK_ANDROID_API/eleEntExtManage.ZSDK_ANDROID_API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eleEntExtManage.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eleEntExtManage.app.iml" />
+    </modules>
+  </component>
+</project>

@@ -27,12 +27,12 @@ import jp.co.khwayz.eleEntExtManage.database.dao.KonpoOuterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiHeaderDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingListDisplayBinding;
-import jp.co.khwayz.eleEntExtManage.fragment.CheckPackInstructionsFragment;
 import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
-import jp.co.khwayz.eleEntExtManage.http.task.get.PackingCancelTask;
 import jp.co.khwayz.eleEntExtManage.http.task.get.PackingRelatedInfoGetTask;
 import jp.co.khwayz.eleEntExtManage.http.task.post.PostPackingDataRegistTask;
 import jp.co.khwayz.eleEntExtManage.http.task.post.PostPickingDataRegistTask;
+import jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment;
+import jp.co.khwayz.eleEntExtManage.packing.task.PackingCancelTask;
 
 /**
  * 梱包一覧表示画面
@@ -179,14 +179,15 @@ public class PackingListDisplayFragment extends BaseFragment
         super.mainSetting();
         //梱包Invoice検索画面からの遷移の場合
         if(mInitFlag) {
+            // 指示内容確認チェックオフ
             mListener.setSijikakuninCheckOff();
 
             // 梱包関連情報取得
             packingRelatedInfoGet();
             mInitFlag = false;
-
-            // 指示内容確認チェックオフ
-            mListener.setSijikakuninCheckOff();
+        } else {
+            // 画面リスト更新
+            searchListUpdate();
         }
     }
 
@@ -420,15 +421,13 @@ public class PackingListDisplayFragment extends BaseFragment
             new SyukkoShijiDetailDao().updateSinglePackingFlag(Application.dbHelper.getWritableDatabase());
 
             // リスト更新
-            searchListUpdate(new KonpoOuterDao().getOuterInfoListGroupByCsNo(Application.dbHelper.getWritableDatabase(), mInvoiceNo));
+            searchListUpdate();
         }
 
         @Override
         public void onError(int httpResponseStatusCode, int messageId) {
             // ProgressDialogを閉じる
             mUtilListener.dismissProgressDialog();
-            // エラーメッセージ取得
-            String msg = mUtilListener.getResourceErrorMessage(messageId);
             // エラーメッセージを表示
             mUtilListener.showAlertDialog(messageId);
         }
@@ -465,15 +464,13 @@ public class PackingListDisplayFragment extends BaseFragment
             mPackingOuterList.remove(mPosition);
 
             // リスト更新
-            searchListUpdate(new KonpoOuterDao().getOuterInfoListGroupByCsNo(Application.dbHelper.getWritableDatabase(), mInvoiceNo));
+            searchListUpdate();
         }
 
         @Override
         public void onError(int httpResponseStatusCode, int messageId) {
             // ProgressDialogを閉じる
             mUtilListener.dismissProgressDialog();
-            // エラーメッセージ取得
-            String msg = mUtilListener.getResourceErrorMessage(messageId);
             // エラーメッセージを表示
             mUtilListener.showAlertDialog(messageId);
         }
@@ -481,15 +478,17 @@ public class PackingListDisplayFragment extends BaseFragment
 
     /**
      * 明細行更新
-     * @param list  ピッキング済も含んだ出庫指示明細リスト全量
+     * 　端末の梱包アウターテーブルから当該INVOICE番号のレコードを表記CS番号でグルーピング取得して更新
      */
-    public void searchListUpdate(ArrayList<OuterInfo> list){
+    public void searchListUpdate(){
+        // 明細データ取得
+        ArrayList<OuterInfo> list = new KonpoOuterDao().getOuterInfoListGroupByCsNo(Application.dbHelper.getWritableDatabase(), mInvoiceNo);
         // 明細更新
         this.mPackingOuterList.clear();
         for (OuterInfo item : list) {
             PackingOuter new_item = new PackingOuter(
                     item.getHyokiCsNumber(),
-                    item.getHyokiCsNumber(),
+                    item.getSaisyuKonpoNisugata(),
                     String.format("%,.1f", item.getOuterLength()),
                     String.format("%,.1f", item.getOuterWidth()),
                     String.format("%,.1f", item.getOuterHeight()),

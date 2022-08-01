@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import jp.co.khwayz.eleEntExtManage.R;
+import jp.co.khwayz.eleEntExtManage.common.Constants;
 
 public class CaseMarkPrintRecyclerViewAdapter extends RecyclerView.Adapter<CaseMarkPrintViewHolder> {
 
@@ -18,7 +19,11 @@ public class CaseMarkPrintRecyclerViewAdapter extends RecyclerView.Adapter<CaseM
     private int selectedPosition = -1;
 
     public void setSelectedPosition(int adapterPosition) {
-        selectedPosition = adapterPosition;
+        selectedPosition = (selectedPosition == adapterPosition) ? -1 : adapterPosition;
+    }
+
+    public int getSelectedPosition(){
+        return selectedPosition;
     }
 
     public interface OnItemClickListener {
@@ -49,7 +54,7 @@ public class CaseMarkPrintRecyclerViewAdapter extends RecyclerView.Adapter<CaseM
         holder.getDestination().setText(invoiceInfo.getDestination());
         holder.getShipDate().setText(invoiceInfo.getShipDate());
         holder.getShippingMode().setText(invoiceInfo.getShippingMode());
-        holder.getPrintStatus().setText(invoiceInfo.getPrintStatus());
+        holder.getPrintStatus().setText(invoiceInfo.getPrintStatus().equals("0") ? Constants.CASEMARK_NOT_PRINTED : Constants.CASEMARK_PRINTED);
 
         if(position == selectedPosition) {
             holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));

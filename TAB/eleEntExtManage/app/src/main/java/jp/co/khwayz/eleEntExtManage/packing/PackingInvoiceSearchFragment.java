@@ -28,6 +28,7 @@ import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.InvoiceSearchInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.PickedInvoiceSearchInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.KonpoOuterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiHeaderDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingInvoiceSearchBinding;
@@ -47,8 +48,6 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
     private FragmentPackingInvoiceSearchBinding mBinding;
 
     // Adapter
-    private CategorySpinnerAdapter mDestinationSpinnerAdapter;
-    private CategorySpinnerAdapter mTransportSpinnerAdapter;
     private PickedInvoiceSearchRecyclerViewAdapter invoiceAdapter;
 
     // List
@@ -100,11 +99,11 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
         mBinding.textviewShipDate.setText("");
 
         // 仕向地スピナー
-        List<CategoryInfo> destnationDataSet = mUtilListener.getTransportListDistinct();
-        CategoryInfo destinationTopValue = new CategoryInfo("","");
-        destnationDataSet.add(0, destinationTopValue);
-        mDestinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destnationDataSet);
-        mBinding.destinationSpinner.setAdapter(mDestinationSpinnerAdapter);
+        CategoryMasterDao categoryMasterDao = new CategoryMasterDao();
+        List<CategoryInfo> destinationDataSet = categoryMasterDao.getDestinationSpinnerArray(Application.dbHelper.getReadableDatabase());
+        // 画面オブジェクト
+        CategorySpinnerAdapter destinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destinationDataSet);
+        mBinding.destinationSpinner.setAdapter(destinationSpinnerAdapter);
 
         // 保冷スピナー
         ArrayList<String> coolList = new ArrayList<>();
@@ -132,8 +131,8 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
         List<CategoryInfo> transportDataSet = mUtilListener.getCategoryList(Constants.KBN_EYUSOMEANS);
         CategoryInfo transportTopValue = new CategoryInfo("","");
         transportDataSet.add(0, transportTopValue);
-        mTransportSpinnerAdapter = new CategorySpinnerAdapter(getContext(), transportDataSet);
-        mBinding.spinnerTransport.setAdapter(mTransportSpinnerAdapter);
+        CategorySpinnerAdapter transportSpinnerAdapter = new CategorySpinnerAdapter(getContext(), transportDataSet);
+        mBinding.spinnerTransport.setAdapter(transportSpinnerAdapter);
 
         // リストオブジェクト
         this.invoiceList = mBinding.invoiceList;

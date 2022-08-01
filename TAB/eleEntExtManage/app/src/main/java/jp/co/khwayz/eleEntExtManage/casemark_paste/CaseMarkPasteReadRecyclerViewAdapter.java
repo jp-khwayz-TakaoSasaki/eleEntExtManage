@@ -1,5 +1,6 @@
 package jp.co.khwayz.eleEntExtManage.casemark_paste;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,11 @@ public class CaseMarkPasteReadRecyclerViewAdapter extends RecyclerView.Adapter<C
 
     private List<CaseMarkPasteReadInfo> invoiceInfoList;
     private int selectedPosition = -1;
+    protected OnItemLongClickListener longClickListener = null;
+
+    public interface OnItemLongClickListener {
+        boolean onItemLongClick(CaseMarkPasteReadViewHolder holder);
+    }
 
     public void setSelectedPosition(int adapterPosition) {
         selectedPosition = adapterPosition;
@@ -29,18 +35,32 @@ public class CaseMarkPasteReadRecyclerViewAdapter extends RecyclerView.Adapter<C
     public CaseMarkPasteReadViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.casemark_paste_read_row, parent,false);
         CaseMarkPasteReadViewHolder holder = new CaseMarkPasteReadViewHolder(view);
-        return holder;
+        if (longClickListener != null) {
+            view.setOnLongClickListener(v -> longClickListener.onItemLongClick(holder));
+        }        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CaseMarkPasteReadViewHolder holder, final int position) {
         CaseMarkPasteReadInfo invoiceInfo = this.invoiceInfoList.get(position);
         holder.getInvoiceNo().setText(invoiceInfo.getInvoiceNo());
-        holder.getCaseMarkNo().setText(invoiceInfo.getCaseMarkNo());
+        holder.getCaseMarkNo().setText(String.valueOf(invoiceInfo.getCaseMarkNo()));
+
+        // 行選択色
+        if(position == selectedPosition) {
+            holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));
+        } else {
+            holder.getRow().setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+        }
     }
 
     @Override
     public int getItemCount() {
         return this.invoiceInfoList.size();
     }
+
+    public void setOnItemLongClickListener(CaseMarkPasteReadRecyclerViewAdapter.OnItemLongClickListener listener) {
+        longClickListener = listener;
+    }
+
 }

@@ -2,10 +2,10 @@ package jp.co.khwayz.eleEntExtManage.packing;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import jp.co.khwayz.eleEntExtManage.R;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PackingListViewHolder extends RecyclerView.ViewHolder {
-    private ConstraintLayout row;
+    private LinearLayout row;
     private TextView cno;
     private TextView finalPackingAppearance;
     private TextView length;

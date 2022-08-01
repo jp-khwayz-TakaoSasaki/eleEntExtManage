@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 import jp.co.khwayz.eleEntExtManage.common.models.InnerInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.OuterInfo;
 
 /**
  * インナー情報受信Response

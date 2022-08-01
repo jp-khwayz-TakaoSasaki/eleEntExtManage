@@ -33,7 +33,7 @@ import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiKeyInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingScanBinding;
-import jp.co.khwayz.eleEntExtManage.fragment.CheckPackInstructionsFragment;
+import jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment;
 import jp.co.khwayz.eleEntExtManage.util.Util;
 
 public class PackingScanFragment extends BaseFragment
@@ -282,6 +282,12 @@ public class PackingScanFragment extends BaseFragment
             return;
         }
 
+        //　修正モード、かつ、全選択状態ではない
+        if(!isAllScanning()) {
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2024));
+            return;
+        }
+
         // 簿外ありの場合
         if(Application.scanOffBooklList.size() > 0) {
             onOffBookButtonClick();
@@ -293,7 +299,7 @@ public class PackingScanFragment extends BaseFragment
 
         // 複数梱包画面へ遷移
         mListener.replaceFragmentWithStack(PackingFinalPackingFragment.newInstance(
-                mInvoiceNo, createLineNoArray()),  TAG);
+                mInvoiceNo, createLineNoArray(), !mCaseMarkNo.isEmpty()),  TAG);
     }
 
     // 指示内容確認ボタン
@@ -476,7 +482,7 @@ public class PackingScanFragment extends BaseFragment
     private boolean isOffBookData(TagInfo tagInfo) {
         boolean bRet = false;
         // 画面リストに存在しない
-        // 発注番号、枝番、ロケ番号が不一致
+        // 発注番号、枝番が不一致
         if(this.mPackingScanInfoList.stream().noneMatch(x ->
                 x.getPurchaseOrderNo().equals(tagInfo.getPlaceOrderNo())
                         && x.getBranchNo() == tagInfo.getBranchNo())) {
@@ -532,6 +538,9 @@ public class PackingScanFragment extends BaseFragment
         } else {
             mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByCaseMark(
                     Application.dbHelper.getWritableDatabase(),mInvoiceNo, mCaseMarkNo));
+            for(PackingScanInfo item : mPackingScanInfoList){
+                item.setOnSelectFlag(Constants.FLAG_TRUE);
+            }
         }
         mPackingScanAdapter.notifyDataSetChanged();
 
@@ -582,11 +591,29 @@ public class PackingScanFragment extends BaseFragment
         PackingScanInfo scanedData = this.mPackingScanInfoList.stream().filter(
                 list -> list.getOnSelectFlag().equals(Constants.FLAG_TRUE)).findFirst()
                 .orElse(null);
-        // ピッキング済データあり
+        // スキャン済データあり
         if(scanedData != null){
             return true;
         }
         return false;
+    }
+
+    /**
+     * 全スキャン済みチェック
+     */
+    private boolean isAllScanning() {
+        // 新規モード
+        if(mCaseMarkNo.isEmpty()) return true;
+
+        // 選択済データ検索
+        PackingScanInfo scanedData = this.mPackingScanInfoList.stream().filter(
+                list -> list.getOnSelectFlag().equals(Constants.FLAG_FALSE)).findFirst()
+                .orElse(null);
+        // 未選択データあり
+        if(scanedData != null){
+            return false;
+        }
+        return true;
     }
 
     /**

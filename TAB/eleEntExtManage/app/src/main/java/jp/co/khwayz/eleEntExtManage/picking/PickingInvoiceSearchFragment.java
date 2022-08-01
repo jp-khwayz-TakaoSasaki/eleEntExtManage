@@ -28,6 +28,7 @@ import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.InvoiceSearchInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceSearchInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiHeaderDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPickingInvoiceSearchBinding;
@@ -45,8 +46,6 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
     private FragmentPickingInvoiceSearchBinding mBinding;
 
     // Adapter
-    private CategorySpinnerAdapter mDestinationSpinnerAdapter;
-    private CategorySpinnerAdapter mTransportSpinnerAdapter;
     private InvoiceSearchRecyclerViewAdapter invoiceAdapter;
 
     // List
@@ -97,11 +96,10 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
         mBinding.textviewShipDate.setText("");
 
         // 仕向地スピナー
-        List<CategoryInfo> destnationDataSet = mUtilListener.getTransportListDistinct();
-        CategoryInfo destinationTopValue = new CategoryInfo("","");
-        destnationDataSet.add(0, destinationTopValue);
-        mDestinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destnationDataSet);
-        mBinding.destinationSpinner.setAdapter(mDestinationSpinnerAdapter);
+        CategoryMasterDao categoryMasterDao = new CategoryMasterDao();
+        List<CategoryInfo> destinationDataSet = categoryMasterDao.getDestinationSpinnerArray(Application.dbHelper.getReadableDatabase());
+        CategorySpinnerAdapter destinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destinationDataSet);
+        mBinding.destinationSpinner.setAdapter(destinationSpinnerAdapter);
 
         // 保冷スピナー
         ArrayList<String> coolList = new ArrayList<>();
@@ -129,8 +127,8 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
         List<CategoryInfo> transportDataSet = mUtilListener.getCategoryList(Constants.KBN_EYUSOMEANS);
         CategoryInfo transportTopValue = new CategoryInfo("","");
         transportDataSet.add(0, transportTopValue);
-        mTransportSpinnerAdapter = new CategorySpinnerAdapter(getContext(), transportDataSet);
-        mBinding.spinnerTransport.setAdapter(mTransportSpinnerAdapter);
+        CategorySpinnerAdapter transportSpinnerAdapter = new CategorySpinnerAdapter(getContext(), transportDataSet);
+        mBinding.spinnerTransport.setAdapter(transportSpinnerAdapter);
 
         // リストオブジェクト
         this.invoiceList = mBinding.invoiceList;

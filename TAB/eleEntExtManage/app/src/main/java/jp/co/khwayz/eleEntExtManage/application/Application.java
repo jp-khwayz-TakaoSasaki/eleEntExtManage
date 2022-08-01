@@ -9,7 +9,6 @@ import com.densowave.scannersdk.Common.CommScanner;
 import com.densowave.scannersdk.Dto.CommScannerParams;
 import com.densowave.scannersdk.Dto.RFIDScannerSettings;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.khwayz.eleEntExtManage.BuildConfig;
@@ -17,9 +16,6 @@ import jp.co.khwayz.eleEntExtManage.MainActivity;
 import jp.co.khwayz.eleEntExtManage.common.BaseFragmentListener;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.InvoiceSearchInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.ReceiptPlanInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceDetailInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceSearchInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.UserInfo;
 import jp.co.khwayz.eleEntExtManage.database.RfidDataBaseOpenHelper;
@@ -105,8 +101,8 @@ public class Application extends android.app.Application {
         terminalID = pref.getString(Constants.PREFS_TERMINAL_ID, "");
         affiliationBase = pref.getString(Constants.PREFS_AFFILIATION_BASE, "");
         // TODO テスト用
-        //apiUrl = pref.getString(Constants.PREFS_API_URL, Constants.DEFAULT_API_URL);
-        apiUrl = Constants.PREFS_DEFAULT_API_URL;
+        apiUrl = pref.getString(Constants.PREFS_API_URL, Constants.PREFS_DEFAULT_API_URL);
+//        apiUrl = Constants.PREFS_DEFAULT_API_URL;
 
         /* Scanner設定取得 */
         int sessionFlag = pref.getInt(Constants.PREFS_SESSION_FLAG, Constants.PREFS_DEFAULT_SESSION_FLAG);

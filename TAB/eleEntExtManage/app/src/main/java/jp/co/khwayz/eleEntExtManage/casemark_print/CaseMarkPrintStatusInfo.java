@@ -15,7 +15,7 @@ public class CaseMarkPrintStatusInfo {
     private String shipDate;
     // 輸送モード
     private String shippingMode;
-    // 印刷
+    // 印刷済みフラグ
     private String printStatus;
 
     public CaseMarkPrintStatusInfo(String invoiceNo, String destination, String shipDate, String shippingMode, String printStatus) {

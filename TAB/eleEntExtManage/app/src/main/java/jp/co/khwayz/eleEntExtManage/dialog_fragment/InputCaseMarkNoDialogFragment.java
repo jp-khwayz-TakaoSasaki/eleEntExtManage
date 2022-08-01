@@ -37,7 +37,6 @@ public class InputCaseMarkNoDialogFragment extends DialogFragment {
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         dialog.setContentView(R.layout.dialog_fragment_input_case_mark_no);
 
-        // 設定ボタン TODO:実際は入力されたC/Noを保持する。
         this.confirmButton = dialog.findViewById(R.id.positive_button);
         this.confirmButton.setOnClickListener(v -> dismiss());
 

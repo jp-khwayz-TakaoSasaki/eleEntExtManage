@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 
 import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.application.Application;
-import jp.co.khwayz.eleEntExtManage.common.Constants;
 
 public class SortDialogFragment extends DialogFragment {
     private Context context;

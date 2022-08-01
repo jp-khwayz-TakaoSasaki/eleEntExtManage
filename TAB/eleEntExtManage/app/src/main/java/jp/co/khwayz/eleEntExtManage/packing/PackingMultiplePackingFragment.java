@@ -29,6 +29,7 @@ import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiKeyInfo;
 import jp.co.khwayz.eleEntExtManage.database.dao.OverpackKonpoShizaiDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingMultiplePackingBinding;
+import jp.co.khwayz.eleEntExtManage.packing.task.MultiplePackingRegistTask;
 
 public class PackingMultiplePackingFragment extends BaseFragment implements OverPackListInfoRecyclerViewAdapter.OnItemClickListener{
     // DataBinding
@@ -85,6 +86,7 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mListener.setSubHeaderExplanationText("");
         mBinding = null;
     }
 
@@ -242,65 +244,64 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
 
         // リスナー生成
         DialogInterface.OnClickListener listener = (dialog, which) -> {
-            // 複数梱包確定処理
-            completeMultiplePacking();
+            // ***************************
+            // オーバーパック番号最大値取得
+            // ***************************
+            int newOverPackNo = new SyukkoShijiDetailDao().getMaxOverPackNo(Application.dbHelper.getWritableDatabase());
 
-            // スキャン画面初期化
-            Application.initFlag = true;
+            // ***************************
+            // 梱包資材テーブル登録用データ生成
+            // ***************************
+            ArrayList<OverPackKonpoShizaiInfo> konpoShizaiList = new ArrayList<>();
+            if(mBinding.spOverPackPackingMaterial1.getSelectedItemPosition() != 0){
+                CategoryInfo info = (CategoryInfo) mBinding.spOverPackPackingMaterial1.getSelectedItem();
+                OverPackKonpoShizaiInfo item1 = new OverPackKonpoShizaiInfo(mInvoiceNo, newOverPackNo,1
+                        ,info.getElementName()
+                );
+                konpoShizaiList.add(item1);
+            }
+            if(mBinding.spOverPackPackingMaterial2.getSelectedItemPosition() != 0){
+                CategoryInfo info = (CategoryInfo) mBinding.spOverPackPackingMaterial2.getSelectedItem();
+                OverPackKonpoShizaiInfo item2 = new OverPackKonpoShizaiInfo(mInvoiceNo, newOverPackNo,2
+                        ,info.getElementName()
+                );
+                konpoShizaiList.add(item2);
+            }
 
-            // 呼び出し元の画面に戻る
-            mListener.popBackStack();
-
-            // メッセージ表示
-            mUtilListener.showSnackBarOnUiThread(mUtilListener.getDataBaseMessage(R.string.info_message_I0007));
+            // 複数梱包登録処理
+            new MultiplePackingRegistTask(multiplePackingRegistCallBack, mInvoiceNo, newOverPackNo
+                    , mOverPackInfoList, konpoShizaiList).execute();
         };
         mUtilListener.showConfirmDialog(R.string.info_message_I0014, listener
                 , mOverPackInfoList.size());
     }
 
-    /**
-     * 複数梱包確定
-     */
-    private void completeMultiplePacking(){
-
-        // ***************************
-        // オーバーパック番号最大値取得
-        // ***************************
-        int maxOverPackNo = new SyukkoShijiDetailDao().getMaxOverPackNo(Application.dbHelper.getWritableDatabase());
-
-        // ***************************
-        // オーバーパック番号設定
-        // ***************************
-        ArrayList<OverPackListInfo> updateList = new ArrayList<>(mOverPackInfoList);
-        new SyukkoShijiDetailDao().registOverPackNo(Application.dbHelper.getWritableDatabase()
-                ,maxOverPackNo
-                ,mInvoiceNo
-                ,updateList
-        );
-
-        // ***************************
-        // 梱包資材テーブル登録
-        // ***************************
-        ArrayList<OverPackKonpoShizaiInfo> konpoShizaiList = new ArrayList<>();
-        if(mBinding.spOverPackPackingMaterial1.getSelectedItemPosition() != 0){
-            CategoryInfo info = (CategoryInfo) mBinding.spOverPackPackingMaterial1.getSelectedItem();
-            OverPackKonpoShizaiInfo item1 = new OverPackKonpoShizaiInfo(mInvoiceNo, maxOverPackNo,1
-                    ,info.getElementName()
-            );
-            konpoShizaiList.add(item1);
-        }
-        if(mBinding.spOverPackPackingMaterial2.getSelectedItemPosition() != 0){
-            CategoryInfo info = (CategoryInfo) mBinding.spOverPackPackingMaterial2.getSelectedItem();
-            OverPackKonpoShizaiInfo item2 = new OverPackKonpoShizaiInfo(mInvoiceNo, maxOverPackNo,2
-                    ,info.getElementName()
-            );
-            konpoShizaiList.add(item2);
-        }
-        if(konpoShizaiList.size() > 0){
-            new OverpackKonpoShizaiDao().insert(Application.dbHelper.getWritableDatabase(), konpoShizaiList);
+    MultiplePackingRegistTask.Callback multiplePackingRegistCallBack = new MultiplePackingRegistTask.Callback() {
+        @Override
+        public void onPreExecute() {
+            mUtilListener.showProgressDialog(mUtilListener.getDataBaseMessage(R.string.info_message_I0027));
         }
 
-    }
+        @Override
+        public void onTaskFinished(boolean result) {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // スキャン画面初期化
+            Application.initFlag = true;
+            // 呼び出し元の画面に戻る
+            mListener.popBackStack();
+            // メッセージ表示
+            mUtilListener.showSnackBarOnUiThread(mUtilListener.getDataBaseMessage(R.string.info_message_I0007));
+        }
+
+        @Override
+        public void onError() {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // エラーメッセージを表示
+            mUtilListener.showAlertDialog(getString(R.string.const_err_message_E9000));
+        }
+    };
 
     /**
      * オーバーパック取消

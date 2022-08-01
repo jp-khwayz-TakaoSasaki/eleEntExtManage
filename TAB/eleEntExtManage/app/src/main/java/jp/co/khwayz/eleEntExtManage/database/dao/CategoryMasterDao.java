@@ -122,4 +122,30 @@ public class CategoryMasterDao {
             return result;
         }
     }
+
+    /**
+     * 仕向地用Spinner配列取得
+     * @return 要素名のみの区分リスト
+     */
+    public ArrayList<CategoryInfo> getDestinationSpinnerArray(SQLiteDatabase db) {
+        // SQL
+        final String sql = "SELECT DISTINCT " + C_ELEMENT_NM + " FROM " + TABLE_NAME + " WHERE KBN = ? ORDER BY " + C_SORT_ORDER;
+        String[] args = new String[1];
+        args[0] = Constants.KBN_ESHIMUKECHI;
+        // 戻り値
+        ArrayList<CategoryInfo> result = new ArrayList<>();
+        // 空白行を追加しておく
+        CategoryInfo item = new CategoryInfo("", "");
+        result.add(item);
+
+        try (Cursor cursor = db.rawQuery(sql, args)) {
+            while (cursor.moveToNext()) {
+                item = new CategoryInfo("", "");
+                item.setElementName(cursor.getString(cursor.getColumnIndex(C_ELEMENT_NM)));
+                result.add(item);
+            }
+            return result;
+        }
+
+    }
 }

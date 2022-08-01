@@ -30,6 +30,16 @@ public interface BaseActivityListener {
     void showConfirmDialog(int msgId, DialogInterface.OnClickListener listener, Object... option);
 
     /**
+     * 確認Dialog表示（キャンセルリスナーあり）
+     * @param msgId : リソースID
+     * @param positiveListener : positiveButtonのClick Listener
+     * @param negativeListener : negativeButtonのClick Listener
+     * @param option : メッセージに埋め込む文字列
+     */
+    void showConfirmDialog(int msgId, DialogInterface.OnClickListener positiveListener
+            ,DialogInterface.OnClickListener negativeListener, Object... option);
+
+    /**
      * 情報Dialog表示
      * @param msgId : リソースID
      * @param listener : positiveButtonのClick Listener
@@ -50,6 +60,11 @@ public interface BaseActivityListener {
     void dismissAlertDialog();
 
     /**
+     *
+     * @param msgId
+     */
+    void showProgressDialog(int msgId);
+    /**
      * ProgressDialogのメッセージを表示する
      * @param message : 表示するメッセージ
      */
@@ -65,14 +80,6 @@ public interface BaseActivityListener {
      * ProgressDialogを閉じる
      */
     void dismissProgressDialog();
-
-    /**
-     * リソースのエラーメッセージを取得
-     * ※ ログイン画面・パスワード変更画面がメッセージマスタから取得できない為の対処
-     * @param msgId : リソースID
-     * @return 対応メッセージ
-     */
-    String getResourceErrorMessage(int msgId);
 
     /**
      * SQLiteからメッセージ取得

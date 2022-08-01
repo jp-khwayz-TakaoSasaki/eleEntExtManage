@@ -54,4 +54,5 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
     /* GSON */
     implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 }

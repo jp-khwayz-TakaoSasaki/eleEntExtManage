@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class IssueTagInfo implements Parcelable, Cloneable {

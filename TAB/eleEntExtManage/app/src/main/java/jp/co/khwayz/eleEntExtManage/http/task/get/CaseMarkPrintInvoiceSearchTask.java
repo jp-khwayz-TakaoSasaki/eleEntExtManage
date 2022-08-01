@@ -8,7 +8,6 @@ import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.application.Application;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.http.response.CaseMarkPrintInvoiceSearchResponse;
-import jp.co.khwayz.eleEntExtManage.http.response.SyukkoInvoiceSearchResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.HttpTaskBase;
 
 /**

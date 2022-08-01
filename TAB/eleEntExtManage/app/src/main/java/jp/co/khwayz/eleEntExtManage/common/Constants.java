@@ -4,19 +4,6 @@ import okhttp3.MediaType;
 
 public class Constants {
 
-
-
-
-
-
-
-
-
-
-
-    /**
-     * TODO：以下、HTTからポーティングで未整理
-     */
     // region [ Constants String ]
     /**
      * サーバー通信
@@ -38,8 +25,10 @@ public class Constants {
     public static final String API_ADDRESS_OVER_PACK_KONPOSHIZAI_GET = "/syukko/overpackkonposhizai/get/";
     public static final String API_ADDRESS_NIFUDA_INFO_GET = "/syukko/nifudajouhou/get/";
     public static final String API_ADDRESS_PACKING_INFO_REGIST = "/syukko/konpojoho/entry/";
-
-
+    public static final String API_ADDRESS_CASEMARK_PRINTED_REGIST = "/syukko/csmarkjyoho/put/";
+    public static final String API_ADDRESS_CASEMARK_DETAIL_GET = "/syukko/csdetail/get/";
+    public static final String API_ADDRESS_CASEMARK_NIFUDA_INFO_GET = "/syukko/csmarknifuda/get/";
+    public static final String API_ADDRESS_CASEMARK_PASTE_UPD = "/syukko/csmarkjyoho/cspasteupd";
 
     /** HTTPタイムアウト(秒) */
     public static final int TIMEOUT_SEC = 10;
@@ -71,40 +60,33 @@ public class Constants {
     public static final String PREFS_BUZZER_ENABLE = "PREFS_BUZZER_ENABLE";
 
     // テスト用初期URL定義
-    public static final String PREFS_DEFAULT_API_URL = "http://172.17.20.106:8080/";
+    public static final String PREFS_DEFAULT_API_URL = "http://192.168.11.21:8080/";
     public static final int PREFS_DEFAULT_SESSION_FLAG = 0;
     public static final int PREFS_DEFAULT_POWER_LEVEL = 30;
     public static final ScannerChanel PREFS_DEFAULT_PREFS_CHANNEL = ScannerChanel.Default;
 
-    /* QR/RFIDボタン */
-    public static final String BUTTON_CAPTION_QR = "QR";
-    public static final String BUTTON_CAPTION_RFID = "RFID";
     /* メッセージパラメータ */
-    public static final String MSG_OPTION_DETAIL = "明細";
-    public static final String MSG_OPTION_TAG = "荷札";
-    public static final String MSG_OPTION_PRINTER = "プリンター";
     public static final String MSG_OPTION_READER = "リーダー";
     public static final String MSG_OPTION_ORDER_NO = "発注番号";
     public static final String MSG_OPTION_BRANCH_NO = "枝番";
-    public static final String MSG_OPTION_QUANTITY = "数量";
-    public static final String MSG_OPTION_RECEIPT_QUANTITY = "入庫数量";
-    public static final String MSG_OPTION_LOCATION = "ロケーション";
-    public static final String MSG_OPTION_INPUT_ORDER_NO = "入力した発注番号";
-    public static final String MSG_OPTION_SELECT_ORDER_NO = "選択した発注番号";
 
     /* RFID/QR切替メッセージ */
     public static final String TOAST_CHANGE_RFID = "RFIDモードに切替えました";
     public static final String TOAST_CHANGE_QR = "QRモードに切替えました";
 
+    /* ケースマーク番号区切り文字 */
+    public static final String CASEMARK_SPLIT = "-";
+
+    /* 印刷状態 */
+    public static final String CASEMARK_NOT_PRINTED = "未";
+    public static final String CASEMARK_PRINTED = "済";
+
     /* Database */
     public static final String LOCAL_DATABASE = "IssueRFID.db";
     /* 区分マスタ関連 */
-    public static final String KBN_ENISUGATA = "ENISUGATA";
-    public static final String KBN_ESOKO = "ESOKO";
     public static final String KBN_EIDO = "EIDO";
     public static final String KBN_EEPCSHIKIBETUSHI = "EEPCSHIKIBETUSHI";
     public static final String KBN_ESHIMUKECHI = "ESHIMUKECHI";
-    public static final String KBN_EUSOONDO = "EUSOONDO";
     public static final String KBN_EYUSOMEANS = "EYUSOMEANS";
     public static final String KBN_EKONPOSHIZAI = "EKONPOSHIZAI";
     public static final String KBN_EKONPOMEISAI = "EKONPOMEISAI";
@@ -112,11 +94,39 @@ public class Constants {
     public static final String KBN_EKIKENNAISO = "EKIKENNAISO";
     public static final String KBN_EKIKENGAISO = "EKIKENGAISO";
     public static final String KBN_ESAISHUKONPO = "ESAISHUKONPO";
+    public static final String KBN_EMANAGEPASSWD = "EMANAGEPASSWD";
 
     // 企業コードの既定値
     public static final String DEFAULT_COM_CD = "985406002";
-    // kill password
-    public static final String KILL_PASSWORD = "88887777";
+    // ケースマーク用管理者パスワード
+    public static final String DEFAULT_CM_MANEGEPASSWORD = "12345";
+
+    // QRコードサイズ
+    public static final int QR_IMAGE_SIZE = 75;
+
+    // Canvas指定用
+    // 幅:595point、センター：297.5point
+    // 高さ：842point、センター：421
+    public static final int CANVAS_TEXT_SIZE = 15;
+    // Invoice番号
+    public static final float CANVAS_INVOICE_START = 575.0f;
+    public static final float CANVAS_INVOICE_TOP = 30.0f;
+    // ケースマーク行テキスト
+    public static final float CANVAS_LEFT_START = 30.0f;
+    public static final float CANVAS_RIGHT_START = 327.0f;
+    public static final float CANVAS_UP_TOP = 70.0f;
+    public static final float CANVAS_UNDER_TOP = 491.0f;
+    public static final float CANVAS_TEXT_PADDING = 25.0f;
+    // QRコード　75point角　右上から40point、右端から20point離し
+    public static final float CANVAS_QR_LEFT_START = 207.5f;
+    public static final float CANVAS_QR_RIGHT_START = 500.0f;
+    public static final float CANVAS_QR_UP_TOP = 40.0f;
+    public static final float CANVAS_QR_UNDER_TOP = 461.0f;
+
+    // ケースマーク行文字列検査用
+    public static final String CHK_CASEMARK_STR = "C/NO";
+    public static final String SP_STR = "  ";
+
     // endregion
 
     // region [ Enum ]

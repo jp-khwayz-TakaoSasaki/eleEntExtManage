@@ -1,6 +1,5 @@
 package jp.co.khwayz.eleEntExtManage.casemark_paste;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import jp.co.khwayz.eleEntExtManage.R;
+import jp.co.khwayz.eleEntExtManage.common.Constants;
 
 public class CaseMarkPasteScanRecyclerViewAdapter extends RecyclerView.Adapter<CaseMarkPasteScanViewHolder> {
 
@@ -46,21 +46,22 @@ public class CaseMarkPasteScanRecyclerViewAdapter extends RecyclerView.Adapter<C
     public void onBindViewHolder(@NonNull CaseMarkPasteScanViewHolder holder, final int position) {
         CaseMarkPasteScanInfo tagScanInfo = this.tagScanInfoList.get(position);
         holder.getNo().setText(String.valueOf(tagScanInfo.getNo()));
-        holder.getCaseMarkNo().setText(tagScanInfo.getCaseMarkNo());
+        holder.getCaseMarkNo().setText(String.valueOf(tagScanInfo.getCaseMarkNo()));
         holder.getPurchaseOrderNo().setText(tagScanInfo.getPurchaseOrderNo());
-        holder.getBranchNo().setText(tagScanInfo.getBranchNo());
+        holder.getBranchNo().setText(String.format("%04d",tagScanInfo.getBranchNo()));
         holder.getOrderNo().setText(tagScanInfo.getOrderNo());
         holder.getItemCode().setText(tagScanInfo.getItemCode());
         holder.getItemName().setText(tagScanInfo.getItemName());
-        holder.getStock().setText(tagScanInfo.getStock());
-        holder.getShipmentQuantity().setText(String.valueOf(tagScanInfo.getShipmentQuantity()));
-        holder.getShipmentUnit().setText(String.valueOf(tagScanInfo.getShipmentUnit()));
+        holder.getStock().setText(String.format("%,.3f",tagScanInfo.getStock()));
+        holder.getShipmentQuantity().setText(String.format("%,.3f",tagScanInfo.getShipmentQuantity()));
+        holder.getShipmentUnit().setText(tagScanInfo.getShipmentUnit());
         holder.getPackingForm().setText(tagScanInfo.getPackingForm());
 
-        if(position == selectedPosition) {
-            holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));
+        // 背景色変更
+        if(tagScanInfo.getOnSelectFlag().equals(Constants.FLAG_TRUE)) {
+            holder.getRow().setBackgroundResource(R.color.colorCyan400A);
         } else {
-            holder.getRow().setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+            holder.getRow().setBackgroundResource(R.color.colorWhite);
         }
     }
 

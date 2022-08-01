@@ -183,7 +183,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.38" />
 
-        <Button
+        <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
             android:id="@+id/bt_invoice_search"
             android:layout_width="200dp"
             android:layout_height="wrap_content"

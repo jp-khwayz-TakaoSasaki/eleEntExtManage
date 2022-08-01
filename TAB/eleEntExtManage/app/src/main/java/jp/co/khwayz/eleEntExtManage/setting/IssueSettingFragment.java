@@ -4,18 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.densowave.scannersdk.Const.CommConst;
 
 import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
-import jp.co.khwayz.eleEntExtManage.databinding.FragmentIssueMenuBinding;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentIssueSettingBinding;
-import jp.co.khwayz.eleEntExtManage.menu.IssueMenuFragment;
 
 public class IssueSettingFragment extends BaseFragment {
 

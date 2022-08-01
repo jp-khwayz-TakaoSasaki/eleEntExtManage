@@ -65,14 +65,15 @@
             app:layout_constraintStart_toStartOf="@+id/barrier_input_left_label"
             app:layout_constraintTop_toTopOf="@+id/tv_issue_registration_invoice_no">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_issue_registration_invoice_no"
+                android:id="@+id/invoiceNo_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:maxLength="10"
+                android:inputType="textVisiblePassword"
+                android:maxLength="15"
                 android:paddingStart="@dimen/default_padding"
                 android:textSize="@dimen/text_size_extra_large"
-                android:theme="@style/EditTextStyle" />
+                android:theme="@style/EditTextStyle"
+                tools:ignore="RtlSymmetry" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- 仕向地 -->
@@ -89,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_issue_registration_invoice_no" />
 
         <Spinner
-            android:id="@+id/sp_issue_registration_destination"
+            android:id="@+id/destination_spinner"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="180dp"
             android:layout_height="45dp"
@@ -107,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="出荷日"
+            android:text="@string/ship_date"
             android:textColor="#000000"
             android:textSize="@dimen/text_size_header_text"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -115,12 +116,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_issue_registration_destination" />
 
         <TextView
-            android:id="@+id/tv_issue_registration_ship_date"
+            android:id="@+id/ship_date_text"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="220dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/text_black_border"
             android:paddingStart="5dp"
             android:gravity="center_vertical"
@@ -128,18 +128,20 @@
             android:textSize="@dimen/text_size_extra_large"
             app:layout_constraintBottom_toBottomOf="@id/tv_issue_registration_ship_date_label"
             app:layout_constraintStart_toStartOf="@+id/barrier_input_left_label"
-            app:layout_constraintTop_toTopOf="@+id/tv_issue_registration_ship_date_label" />
+            app:layout_constraintTop_toTopOf="@+id/tv_issue_registration_ship_date_label"
+            tools:ignore="RtlSymmetry" />
 
         <ImageButton
-            android:id="@+id/bt_issue_registration_ship_date"
+            android:id="@+id/ship_date_button"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@drawable/text_black_border"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_issue_registration_ship_date"
-            app:layout_constraintStart_toEndOf="@+id/tv_issue_registration_ship_date"
-            app:layout_constraintTop_toTopOf="@+id/tv_issue_registration_ship_date"
+            app:layout_constraintBottom_toBottomOf="@+id/ship_date_text"
+            app:layout_constraintStart_toEndOf="@+id/ship_date_text"
+            app:layout_constraintTop_toTopOf="@+id/ship_date_text"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+            app:srcCompat="@android:drawable/ic_menu_my_calendar"
+            android:contentDescription="@string/logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -150,7 +152,8 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline81"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline64"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline38"
@@ -160,7 +163,7 @@
             app:layout_constraintGuide_percent="0.38" />
 
         <Button
-            android:id="@+id/bt_invoice_search"
+            android:id="@+id/invoice_search_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
@@ -184,7 +187,7 @@
         app:layout_constraintGuide_percent="0.4" />
 
     <Button
-        android:id="@+id/bt_sort"
+        android:id="@+id/sort_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -194,17 +197,19 @@
         android:textSize="@dimen/button_text_size_large"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/includeListHeader"
-        app:layout_constraintStart_toStartOf="@id/includeListHeader" />
+        app:layout_constraintStart_toStartOf="@id/includeListHeader"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/detail_count_label"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="検索結果："
+        android:text="@string/search_results_colon"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintBottom_toTopOf="@id/includeListHeader"
-        app:layout_constraintEnd_toStartOf="@id/detail_count"/>
+        app:layout_constraintEnd_toStartOf="@id/detail_count"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/detail_count"
@@ -212,21 +217,23 @@
         android:layout_height="0dp"
         android:paddingLeft="@dimen/default_padding"
         android:paddingRight="@dimen/default_padding"
-        android:text="0"
+        android:text="@string/zero"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintTop_toTopOf="@id/detail_count_label"
-        app:layout_constraintEnd_toStartOf="@id/detail_count_unit"/>
+        app:layout_constraintEnd_toStartOf="@id/detail_count_unit"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/detail_count_unit"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="件"
+        android:text="@string/common_list_header_count"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/text_size_header_text"
         app:layout_constraintTop_toTopOf="@id/detail_count_label"
-        app:layout_constraintEnd_toEndOf="@id/includeListHeader"/>
+        app:layout_constraintEnd_toEndOf="@id/includeListHeader"
+        android:visibility="invisible"/>
 
     <include
         android:id="@+id/includeListHeader"
@@ -238,7 +245,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier24" />
+        app:layout_constraintTop_toBottomOf="@id/barrier24"
+        android:visibility="invisible"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/invoice_list"
@@ -249,7 +257,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/includeListHeader"
-        app:layout_constraintTop_toBottomOf="@+id/includeListHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/includeListHeader"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

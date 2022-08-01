@@ -661,9 +661,10 @@
                 android:textSize="@dimen/text_size_extra_large"
                 android:paddingStart="@dimen/default_padding"
                 android:inputType="number"
+                android:imeOptions="actionDone"
                 android:maxLines="1"
                 android:maxLength="4"
-                android:nextFocusDown="@id/final_packing_input_spinner_unit"
+                android:nextFocusDown="@id/final_packing_input_label_count"
                 android:theme="@style/EditTextStyle"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -684,12 +685,14 @@
                 android:textSize="@dimen/text_size_extra_large"
                 android:paddingStart="@dimen/default_padding"
                 android:inputType="number"
+                android:editable="false"
+                android:focusable="false"
                 android:maxLines="1"
                 android:theme="@style/EditTextStyle"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/final_packing_input_spinner_unit_Area"
+            android:id="@+id/final_packing_input_label_count_Area"
             android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
@@ -699,7 +702,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vr_02"
             app:layout_constraintTop_toTopOf="@+id/textView100" >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/final_packing_input_spinner_unit"
+                android:id="@+id/final_packing_input_label_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_extra_large"

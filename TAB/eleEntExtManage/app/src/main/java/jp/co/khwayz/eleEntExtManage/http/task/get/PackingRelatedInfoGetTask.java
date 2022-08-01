@@ -46,7 +46,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("invoiceNo", mInvoiceNo);
             // HttpPost実行
-            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), false);
+            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), true);
             // エラー
             if(executeResponse.isError()) {
                 // エラーcallback起動
@@ -54,7 +54,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
                 Application.log.e(TAG, "getOuterInfo : StatusCode : " + executeResponse.getHttpStatusCode() + " MsgId : " + executeResponse.getErrorMsgId());
                 return false;
             }
-            // メッセージマスタに登録
+            // 梱包アウターに登録
             Gson gson = new Gson();
             msgResult = gson.fromJson(executeResponse.getResponseJson(), OuterInfoGetResponse.class);
             new KonpoOuterDao().bulkInsert(Application.dbHelper.getWritableDatabase(), msgResult.getData().getList());
@@ -83,7 +83,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("invoiceNo", mInvoiceNo);
             // HttpPost実行
-            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), false);
+            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), true);
             // エラー
             if(executeResponse.isError()) {
                 // エラーcallback起動
@@ -91,7 +91,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
                 Application.log.e(TAG, "getInnerInfo : StatusCode : " + executeResponse.getHttpStatusCode() + " MsgId : " + executeResponse.getErrorMsgId());
                 return false;
             }
-            // メッセージマスタに登録
+            // 梱包インナーに登録
             Gson gson = new Gson();
             msgResult = gson.fromJson(executeResponse.getResponseJson(), InnerInfoGetResponse.class);
             new KonpoInnerDao().bulkInsert(Application.dbHelper.getWritableDatabase(), msgResult.getData().getList());
@@ -120,7 +120,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("invoiceNo", mInvoiceNo);
             // HttpPost実行
-            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), false);
+            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), true);
             // エラー
             if(executeResponse.isError()) {
                 // エラーcallback起動
@@ -128,7 +128,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
                 Application.log.e(TAG, "getOverPackPackingMaterialInfo : StatusCode : " + executeResponse.getHttpStatusCode() + " MsgId : " + executeResponse.getErrorMsgId());
                 return false;
             }
-            // メッセージマスタに登録
+            // オーバーパック梱包資材に登録
             Gson gson = new Gson();
             msgResult = gson.fromJson(executeResponse.getResponseJson(), OverPackPackingMaterialInfoGetResponse.class);
             new OverpackKonpoShizaiDao().bulkInsert(Application.dbHelper.getWritableDatabase(), msgResult.getData().getList());
@@ -157,7 +157,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("invoiceNo", mInvoiceNo);
             // HttpPost実行
-            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), false);
+            ExecuteResponse executeResponse = httpPostExecute(url, jsonObject.toString(), true);
             // エラー
             if(executeResponse.isError()) {
                 // エラーcallback起動
@@ -165,7 +165,7 @@ public class PackingRelatedInfoGetTask extends HttpTaskBase<Boolean> {
                 Application.log.e(TAG, "getTagInfo : StatusCode : " + executeResponse.getHttpStatusCode() + " MsgId : " + executeResponse.getErrorMsgId());
                 return false;
             }
-            // メッセージマスタに登録
+            // 出庫指示明細に登録
             Gson gson = new Gson();
             msgResult = gson.fromJson(executeResponse.getResponseJson(), TagInfoGetResponse.class);
             new SyukkoShijiDetailDao().bulkInsertTagInfoGet(Application.dbHelper.getWritableDatabase(), msgResult.getData().getList());

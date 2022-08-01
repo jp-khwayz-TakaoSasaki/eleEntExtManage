@@ -1,6 +1,5 @@
 package jp.co.khwayz.eleEntExtManage.picking;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import jp.co.khwayz.eleEntExtManage.InvoiceInfo;
 import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceSearchInfo;
 

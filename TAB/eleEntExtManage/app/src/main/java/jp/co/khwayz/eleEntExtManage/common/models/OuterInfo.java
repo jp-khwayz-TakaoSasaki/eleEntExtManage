@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * アウター情報受信用　Class
  */
@@ -36,6 +34,7 @@ public class OuterInfo implements Parcelable {
         grossWeight = in.readDouble();
         saisyuKonpoNisugata = in.readString();
         biko = in.readString();
+        palettUchiwake = in.readString();
         cartonSu = in.readInt();
         nifudaSu = in.readInt();
     }
@@ -86,6 +85,7 @@ public class OuterInfo implements Parcelable {
         dest.writeDouble(grossWeight);
         dest.writeString(saisyuKonpoNisugata);
         dest.writeString(biko);
+        dest.writeString(palettUchiwake);
         dest.writeInt(cartonSu);
         dest.writeInt(nifudaSu);
     }
@@ -288,6 +288,15 @@ public class OuterInfo implements Parcelable {
     }
     public void setBiko(String biko) {
         this.biko = biko;
+    }
+    // パレット内訳
+    @SerializedName("palettUchiwake")
+    private String palettUchiwake;
+    public String getPalettUchiwake() {
+        return palettUchiwake;
+    }
+    public void setPalettUchiwake(String palettUchiwake) {
+        this.palettUchiwake = palettUchiwake;
     }
     // 箱数
     @SerializedName("cartonSu")

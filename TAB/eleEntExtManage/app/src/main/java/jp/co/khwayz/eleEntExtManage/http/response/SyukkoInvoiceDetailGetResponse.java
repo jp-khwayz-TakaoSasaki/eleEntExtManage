@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceDetailInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceSearchInfo;
 
 /**
  * 出庫予定Invoice情報受信Response

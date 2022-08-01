@@ -392,6 +392,20 @@ public class PackingDataRegistRequest {
         }
 
         /**
+         * パレット内訳
+         */
+        @SerializedName("palettUchiwake")
+        private String palettUchiwake;
+
+        public String getPalettUchiwake() {
+            return palettUchiwake;
+        }
+
+        public void setPalettUchiwake(String palettUchiwake) {
+            this.palettUchiwake = palettUchiwake;
+        }
+
+        /**
          * 箱数
          */
         @SerializedName("cartonSu")

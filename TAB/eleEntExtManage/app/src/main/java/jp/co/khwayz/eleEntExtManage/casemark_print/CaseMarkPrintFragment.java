@@ -3,6 +3,7 @@ package jp.co.khwayz.eleEntExtManage.casemark_print;
 import android.content.Context;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.os.Environment;
 import android.print.PrintAttributes;
 import android.print.PrintManager;
 import android.view.LayoutInflater;
@@ -25,12 +26,17 @@ import jp.co.khwayz.eleEntExtManage.Calender;
 import jp.co.khwayz.eleEntExtManage.R;
 import jp.co.khwayz.eleEntExtManage.adapter.CategorySpinnerAdapter;
 import jp.co.khwayz.eleEntExtManage.application.Application;
+import jp.co.khwayz.eleEntExtManage.casemark_print.task.CaseMarkPrintDataCreateTask;
 import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
+import jp.co.khwayz.eleEntExtManage.database.dao.KonpoOuterDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentCaseMarkPrintBinding;
 import jp.co.khwayz.eleEntExtManage.http.response.CaseMarkPrintInvoiceSearchResponse;
+import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.get.CaseMarkPrintInvoiceSearchTask;
+import jp.co.khwayz.eleEntExtManage.http.task.post.PostCaseMarkPrintedRegistTask;
 import jp.co.khwayz.eleEntExtManage.pdf_print.CustomDocumentPrintAdapter;
 
 public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrintRecyclerViewAdapter.OnItemClickListener {
@@ -39,12 +45,17 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
     private FragmentCaseMarkPrintBinding mBinding;
 
     // Adapter
-    private CategorySpinnerAdapter mDestinationSpinnerAdapter;
     private CaseMarkPrintRecyclerViewAdapter invoiceAdapter;
 
     // List
     private RecyclerView invoiceList;
     private List<CaseMarkPrintStatusInfo> invoiceInfoList;
+
+    // 印刷用PDFフルパス
+    private final String outputPDFPath = Environment.getExternalStorageDirectory().getPath()
+            + "/"
+            + Environment.DIRECTORY_DOWNLOADS
+            + "/caseMark.pdf";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,11 +94,11 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         mBinding.tvCasemarkPrintShipDate.setText("");
 
         // 仕向地スピナー
-        List<CategoryInfo> destnationDataSet = mUtilListener.getTransportListDistinct();
-        CategoryInfo destinationTopValue = new CategoryInfo("","");
-        destnationDataSet.add(0, destinationTopValue);
-        mDestinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destnationDataSet);
-        mBinding.spCasemarkPrintDestination.setAdapter(mDestinationSpinnerAdapter);
+        CategoryMasterDao categoryMasterDao = new CategoryMasterDao();
+        List<CategoryInfo> destinationDataSet = categoryMasterDao.getDestinationSpinnerArray(Application.dbHelper.getReadableDatabase());
+        // 画面オブジェクト
+        CategorySpinnerAdapter destinationSpinnerAdapter = new CategorySpinnerAdapter(getContext(), destinationDataSet);
+        mBinding.spCasemarkPrintDestination.setAdapter(destinationSpinnerAdapter);
 
         // 印刷状態スピナー
         ArrayList<String> printStatusList = new ArrayList<>();
@@ -129,11 +140,11 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         mListener.setBackButton(backClickListener);
 
         // 一括印刷ボタン
-        View.OnClickListener printAllClickListener = v -> printButton();
+        View.OnClickListener printAllClickListener = v -> clickAllPrintButton();
         ButtonInfo printAllButtonInfo = new ButtonInfo(getString(R.string.print_all), printAllClickListener);
 
         // 印刷ボタン
-        View.OnClickListener printClickListener = v -> printButton();
+        View.OnClickListener printClickListener = v -> clickPrintButton();
         ButtonInfo printButtonInfo = new ButtonInfo(getString(R.string.print), printClickListener);
 
         // フッターボタン登録
@@ -254,8 +265,7 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
 
             try {
                 // 取得データDB登録
-                // TODO：梱包アウターのDao出来てから！！
-//                new ShukkoShijiHeaderDao().bulkInsertCaseMarkInfo(Application.dbHelper.getWritableDatabase(), response.getData().getList());
+                new KonpoOuterDao().bulkInsertForCsPrint(Application.dbHelper.getWritableDatabase(), response.getData().getList());
             } catch (SQLiteException e) {
                 mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E9000));
                 Application.log.e(TAG, e);
@@ -263,7 +273,7 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
             }
 
             // リスト更新
-//            searchListUpdate(response.getData().getList());
+            searchListUpdate(new KonpoOuterDao().getOuterInfoListGroupByInvoiceNo(Application.dbHelper.getWritableDatabase()));
         }
 
         @Override
@@ -275,10 +285,140 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         }
     };
 
-    // 印刷（仮）
-    private void printButton() {
+    /**
+     * 明細更新
+     */
+    public void searchListUpdate(ArrayList<CaseMarkPrintStatusInfo> searchList) {
+        // 明細更新
+        this.invoiceInfoList.clear();
+        for (CaseMarkPrintStatusInfo item : searchList) {
+            CaseMarkPrintStatusInfo new_item = new CaseMarkPrintStatusInfo(
+                    item.getInvoiceNo()
+                    ,item.getDestination()
+                    ,item.getShipDate()
+                    ,item.getShippingMode()
+                    ,item.getPrintStatus());
+            this.invoiceInfoList.add(new_item);
+        }
+        invoiceAdapter.notifyDataSetChanged();
 
-        final String filePathText = "/storage/emulated/0/Download/testCaseMark.pdf";
+        // 結果数更新
+        mBinding.detailCount.setText(String.valueOf(invoiceAdapter.getItemCount()));
+    }
+
+    /**
+     * 一括印刷ボタンタップ処理
+     */
+    private void clickAllPrintButton() {
+        // リストデータなし
+        if(invoiceAdapter.getItemCount() <= 0) {
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2002));
+            return;
+        }
+
+        // ケースマーク印刷
+        new CaseMarkPrintDataCreateTask(caseMarkPrintTaskCallBack, "", outputPDFPath).execute();
+    }
+
+    /**
+     * 印刷ボタンタップ時処理
+     */
+    private void clickPrintButton() {
+        int selectRow = invoiceAdapter.getSelectedPosition();
+        // リストデータなし
+        if(invoiceAdapter.getItemCount() <= 0) {
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2002));
+            return;
+        }
+
+        // 選択行なし
+        if(selectRow == -1) {
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2003));
+            return;
+        }
+
+        // ケースマーク印刷
+        new CaseMarkPrintDataCreateTask(caseMarkPrintTaskCallBack
+                , this.invoiceInfoList.get(selectRow).getInvoiceNo(), outputPDFPath).execute();
+    }
+
+    CaseMarkPrintDataCreateTask.Callback<CaseMarkPrintInfo> caseMarkPrintTaskCallBack = new CaseMarkPrintDataCreateTask.Callback<CaseMarkPrintInfo>() {
+        @Override
+        public void onPreExecute() {
+            mUtilListener.showProgressDialog(mUtilListener.getDataBaseMessage(R.string.info_message_I0028));
+        }
+
+        @Override
+        public void onTaskFinished(ArrayList<CaseMarkPrintInfo> result, String invoiceNo) {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+
+            // ケースマーク印刷
+            caseMarkPrint();
+
+            // 印刷済み送信
+            updatePrintedFlg(invoiceNo);
+        }
+
+        @Override
+        public void onError() {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // エラーメッセージを表示
+            mUtilListener.showAlertDialog(getString(R.string.const_err_message_E9000));
+        }
+    };
+
+    /**
+     * 印刷済みフラグ更新
+     */
+    private void updatePrintedFlg(String invoiceNo){
+        String url = Application.apiUrl + Constants.HTTP_SERVICE_NAME + Constants.API_ADDRESS_CASEMARK_PRINTED_REGIST;
+        new PostCaseMarkPrintedRegistTask(caseMarkPrintedRegisrtCallback, url, invoiceNo, "1").execute();
+    }
+
+    PostCaseMarkPrintedRegistTask.Callback<SimpleResponse> caseMarkPrintedRegisrtCallback = new PostCaseMarkPrintedRegistTask.Callback<SimpleResponse>() {
+        @Override
+        public void onPreExecute(boolean showProgress) {
+            // ProgressDialogを表示する
+            if (showProgress) {
+                mUtilListener.showProgressDialog(mUtilListener.getDataBaseMessage(R.string.info_message_I0031));
+            }
+        }
+
+        @Override
+        public void onTaskFinished(SimpleResponse response) {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+
+            // エラーレスポンスの場合
+            if (!Constants.API_RESPONSE_STATUS_CODE_OK.equals(response.getStatus())) {
+                mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E9001));
+                Application.log.e(TAG, "status=" + response.getStatus() + " ,errorCode=" + response.getErrorCode());
+                return;
+            }
+
+            // リスト選択解除
+            invoiceAdapter.setSelectedPosition(-1);
+
+            // リスト更新
+            searchListUpdate(new KonpoOuterDao().getOuterInfoListGroupByInvoiceNo(Application.dbHelper.getWritableDatabase()));
+
+            // メッセージ表示
+            mUtilListener.showSnackBarOnUiThread(mUtilListener.getDataBaseMessage(R.string.info_message_I0007));
+        }
+
+        @Override
+        public void onError(int httpResponseStatusCode, int messageId) {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // エラーメッセージを表示
+            mUtilListener.showAlertDialog(getString(R.string.const_err_message_E9000));
+        }
+    };
+
+    // ケースマーク印刷
+    private void caseMarkPrint() {
 
         // Get a PrintManager instance
         PrintManager printManager = (PrintManager) getActivity().getSystemService(Context.PRINT_SERVICE);
@@ -286,12 +426,12 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         // Set job name, which will be displayed in the print queue
         String jobName = getActivity().getString(R.string.app_name) + " Document";
 
-        CustomDocumentPrintAdapter pda = new CustomDocumentPrintAdapter(filePathText);
+        CustomDocumentPrintAdapter pda = new CustomDocumentPrintAdapter(outputPDFPath);
 
         // 印刷設定
         PrintAttributes.Builder builder = new PrintAttributes.Builder();
         builder.setMediaSize(PrintAttributes.MediaSize.ISO_A4);
-        builder.setDuplexMode(PrintAttributes.DUPLEX_MODE_LONG_EDGE);
+        builder.setDuplexMode(PrintAttributes.DUPLEX_MODE_NONE);
         printManager.print(jobName, pda, builder.build()); //
     }
 }

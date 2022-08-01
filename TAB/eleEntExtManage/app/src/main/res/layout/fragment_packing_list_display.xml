@@ -87,7 +87,7 @@
             app:layout_constraintStart_toEndOf="@id/packing_list_label_destination"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
             android:id="@+id/packing_list_button_new"
             android:layout_width="100dp"
             android:layout_height="45dp"

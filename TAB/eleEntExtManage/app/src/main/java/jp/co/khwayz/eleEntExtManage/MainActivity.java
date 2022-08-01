@@ -1,14 +1,7 @@
 package jp.co.khwayz.eleEntExtManage;
 
 import static android.content.ContentValues.TAG;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import static jp.co.khwayz.eleEntExtManage.Common.isReceiptApp;
 
 import android.Manifest;
 import android.app.Activity;
@@ -21,7 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import static jp.co.khwayz.eleEntExtManage.Common.isReceiptApp;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.densowave.scannersdk.Common.CommException;
 import com.densowave.scannersdk.Common.CommKeyStatusChangedEvent;
@@ -32,12 +31,12 @@ import com.densowave.scannersdk.Listener.ScannerKeyStatusListener;
 import com.densowave.scannersdk.Listener.ScannerStatusListener;
 
 import jp.co.khwayz.eleEntExtManage.application.Application;
+import jp.co.khwayz.eleEntExtManage.authentication.IssueLoginFragment;
+import jp.co.khwayz.eleEntExtManage.common.BaseActivity;
 import jp.co.khwayz.eleEntExtManage.common.BaseFragmentListener;
 import jp.co.khwayz.eleEntExtManage.common.MainActivityListener;
-import jp.co.khwayz.eleEntExtManage.common.BaseActivity;
 import jp.co.khwayz.eleEntExtManage.database.RfidDataBaseOpenHelper;
 import jp.co.khwayz.eleEntExtManage.databinding.ActivityMainBinding;
-import jp.co.khwayz.eleEntExtManage.authentication.IssueLoginFragment;
 import jp.co.khwayz.eleEntExtManage.setting.PairingReaderActivity;
 
 public class MainActivity extends BaseActivity implements MainActivityListener, ScannerStatusListener, ScannerKeyStatusListener {

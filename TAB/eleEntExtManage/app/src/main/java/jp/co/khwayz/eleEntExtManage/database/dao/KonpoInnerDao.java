@@ -58,7 +58,7 @@ public class KonpoInnerDao {
             + C_DAN_TANI + " TEXT,"
             + C_DAN_NAISO_YOKI + " TEXT,"
             + C_DAN_HONSU + " INTEGER,"
-            + C_DAN_GAISO_YOKI + " REAL,"
+            + C_DAN_GAISO_YOKI + " TEXT,"
             + C_DAN_GAISO_KOSU + " INTEGER,"
             + C_BIKO + " TEXT,"
             + C_REGIST_DATE + " TEXT,"

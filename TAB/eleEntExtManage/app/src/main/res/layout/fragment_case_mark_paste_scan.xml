@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.80" />
+            app:layout_constraintGuide_percent="0.70" />
 
         <!-- Invoice番号 -->
         <TextView
@@ -57,7 +57,6 @@
             app:layout_constraintStart_toEndOf="@id/casemark_paste_scan_label_invoice_no"
             app:layout_constraintTop_toTopOf="@id/casemark_paste_scan_label_invoice_no" />
 
-
         <!-- リスト件数 -->
         <TextView
             android:id="@+id/casemark_paste_scan_view_read_count"
@@ -68,6 +67,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/text_size_header_text"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_01"
             app:layout_constraintEnd_toStartOf="@id/casemark_paste_scan_label_read_count"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,9 +78,22 @@
             android:text="@string/common_list_header_count"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/text_size_header_text"
+            app:layout_constraintStart_toEndOf="@id/casemark_paste_scan_view_read_count"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <jp.co.khwayz.eleEntExtManage.common.widget.MashingGuardButton
+            android:id="@+id/casemark_paste_scan_button_off_book"
+            android:layout_width="230dp"
+            android:layout_height="55dp"
+            android:background="@drawable/button_round_green"
+            android:text="@string/common_view_off_book"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/button_text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

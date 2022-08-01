@@ -27,6 +27,8 @@ import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiKeyInfo;
 import jp.co.khwayz.eleEntExtManage.database.dao.KonpoInnerDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingSinglePackingBinding;
+import jp.co.khwayz.eleEntExtManage.packing.task.SinglePackingRegistTask;
+import jp.co.khwayz.eleEntExtManage.util.Util;
 
 public class PackingSinglePackingFragment extends BaseFragment {
     // DataBinding
@@ -98,6 +100,7 @@ public class PackingSinglePackingFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mListener.setSubHeaderExplanationText("");
         mBinding = null;
     }
 
@@ -211,19 +214,19 @@ public class PackingSinglePackingFragment extends BaseFragment {
                 , mInvoiceNo, mRenban, mLineNo);
         if(innerRecord != null){
             // 作業内容①
-            int index = getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo1());
+            int index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo1());
             mBinding.packingSinglePackagingSpinner1.setSelection(index);
             mBinding.packingSinglePackagingPackingCapacity1.setText(String.format("%.1f",innerRecord.getInnerSagyo1Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo1Siyo()));
             // 作業内容②
-            index = getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo2());
+            index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo2());
             mBinding.packingSinglePackagingSpinner2.setSelection(index);
             mBinding.packingSinglePackagingPackingCapacity2.setText(String.format("%.1f",innerRecord.getInnerSagyo2Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo2Siyo()));
             // 作業内容③
-            index = getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo3());
+            index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo3());
             mBinding.packingSinglePackagingSpinner3.setSelection(index);
             mBinding.packingSinglePackagingPackingCapacity3.setText(String.format("%.1f",innerRecord.getInnerSagyo3Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo3Siyo()));
             // 作業内容④
-            index = getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo4());
+            index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo4());
             mBinding.packingSinglePackagingSpinner4.setSelection(index);
             mBinding.packingSinglePackagingPackingCapacity4.setText(String.format("%.1f",innerRecord.getInnerSagyo4Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo4Siyo()));
             // ラベル枚数
@@ -233,15 +236,15 @@ public class PackingSinglePackingFragment extends BaseFragment {
             // 内容量
             mBinding.packingSinglePackagingPackingInternalCapacity.setText(String.format("%.1f",innerRecord.getDanNaiyoRyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getDanNaiyoRyo()));
             // 単位
-            index = getSpinnerSelectPosition(mUnitDataSet, innerRecord.getDanTani());
+            index = Util.getSpinnerSelectPosition(mUnitDataSet, innerRecord.getDanTani());
             mBinding.packingSinglePackagingSpinnerUnit.setSelection(index);
             // 内装容器
-            index = getSpinnerSelectPosition(mInnerContainerDataSet, innerRecord.getDanNaisoYoki());
+            index = Util.getSpinnerSelectPosition(mInnerContainerDataSet, innerRecord.getDanNaisoYoki());
             mBinding.packingSinglePackagingSpinnerInteriorContainer.setSelection(index);
             // 本数
             mBinding.packingSinglePackagingPackingNumber.setText(String.valueOf(innerRecord.getDanHonsu()).equals("0") ? "" : String.valueOf(innerRecord.getDanHonsu()));
             // 外装容器
-            index = getSpinnerSelectPosition(mOuterContainerDataSet, innerRecord.getDanGaisoYoki());
+            index = Util.getSpinnerSelectPosition(mOuterContainerDataSet, innerRecord.getDanGaisoYoki());
             mBinding.packingSinglePackagingSpinnerOuterContainer.setSelection(index);
             // 備考
             mBinding.packingSinglePackagingRemarks.setText(innerRecord.getBiko());
@@ -275,115 +278,102 @@ public class PackingSinglePackingFragment extends BaseFragment {
     private void confirmationButton() {
         // リスナー生成
         DialogInterface.OnClickListener listener = (dialog, which) -> {
-            // 複数梱包確定処理
-            completeSinglePacking();
+            // ******************************************************
+            // インナーテーブル保存情報を画面から取得
+            // ******************************************************
+            InnerInfo innerInfoItem = new InnerInfo(mInvoiceNo);
+            innerInfoItem.setRenban(mRenban);
+            innerInfoItem.setLineNo(mLineNo);
+            // 作業内容①
+            CategoryInfo infoSpSagyo1 = (CategoryInfo) mBinding.packingSinglePackagingSpinner1.getSelectedItem();
+            innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElement());
+            innerInfoItem.setInnerSagyo1Siyo(mBinding.packingSinglePackagingPackingCapacity1.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
+            // 作業内容②
+            CategoryInfo infoSpSagyo2 = (CategoryInfo) mBinding.packingSinglePackagingSpinner2.getSelectedItem();
+            innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElement());
+            innerInfoItem.setInnerSagyo2Siyo(mBinding.packingSinglePackagingPackingCapacity2.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
+            // 作業内容③
+            CategoryInfo infoSpSagyo3 = (CategoryInfo) mBinding.packingSinglePackagingSpinner3.getSelectedItem();
+            innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElement());
+            innerInfoItem.setInnerSagyo3Siyo(mBinding.packingSinglePackagingPackingCapacity3.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
+            // 作業内容④
+            CategoryInfo infoSpSagyo4 = (CategoryInfo) mBinding.packingSinglePackagingSpinner4.getSelectedItem();
+            innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElement());
+            innerInfoItem.setInnerSagyo4Siyo(mBinding.packingSinglePackagingPackingCapacity4.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
+            // ラベル枚数
+            innerInfoItem.setLabelSu(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString().isEmpty() ?
+                    0 : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
+            // NW
+            innerInfoItem.setNetWeight(mBinding.packingSinglePackagingPackingNetWeight.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
+            // 内容量
+            innerInfoItem.setDanNaiyoRyo(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString().isEmpty() ?
+                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
+            // 単位
+            CategoryInfo infoDanTani = (CategoryInfo) mBinding.packingSinglePackagingSpinnerUnit.getSelectedItem();
+            innerInfoItem.setDanTani(infoDanTani.getElement());
+            // 内装容器
+            CategoryInfo infoDanNaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerInteriorContainer.getSelectedItem();
+            innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElement());
+            // 本数
+            innerInfoItem.setDanHonsu(mBinding.packingSinglePackagingPackingNumber.getText().toString().isEmpty() ?
+                    0 : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
+            // 外装容器
+            CategoryInfo infoDanGaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerOuterContainer.getSelectedItem();
+            innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElement());
+            // 備考
+            innerInfoItem.setBiko(mBinding.packingSinglePackagingRemarks.getText().toString());
 
-            // スキャン画面初期化
-            Application.initFlag = true;
+            // ******************************************************
+            // 更新キー情報構築
+            // ******************************************************
+            ArrayList<SyukkoShijiKeyInfo> updateKeyInfo = new ArrayList<>();
+            // 同一明細ありチェックの場合、キー情報取得
+            if(mBinding.packingSinglePackagingCheckSameItem.isChecked()){
+                updateKeyInfo = new SyukkoShijiDetailDao().getSameDetailInfo (Application.dbHelper.getWritableDatabase()
+                        ,mInvoiceNo, mPlaceOrderNo, mIssueQuantity);
+            } else {
+                // 1件登録
+                SyukkoShijiKeyInfo item = new SyukkoShijiKeyInfo(mRenban, mLineNo);
+                updateKeyInfo.add(item);
+            }
 
-            // 呼び出し元の画面に戻る
-            mListener.popBackStack();
 
-            // メッセージ表示
-            mUtilListener.showSnackBarOnUiThread(mUtilListener.getDataBaseMessage(R.string.info_message_I0007));
+            // 単独梱包登録処理
+            new SinglePackingRegistTask(singlePackingRegistCallBack
+                    , mInvoiceNo, updateKeyInfo, innerInfoItem).execute();
         };
         mUtilListener.showConfirmDialog(R.string.info_message_I0023, listener);
     }
 
-    /**
-     * 単独梱包確定
-     */
-    private void completeSinglePacking(){
-
-        // ******************************************************
-        // インナーテーブル保存情報を画面から取得
-        // ******************************************************
-        InnerInfo innerInfoItem = new InnerInfo(mInvoiceNo);
-        innerInfoItem.setRenban(mRenban);
-        innerInfoItem.setLineNo(mLineNo);
-        // 作業内容①
-        CategoryInfo infoSpSagyo1 = (CategoryInfo) mBinding.packingSinglePackagingSpinner1.getSelectedItem();
-        innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElementName());
-        innerInfoItem.setInnerSagyo1Siyo(mBinding.packingSinglePackagingPackingCapacity1.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
-        // 作業内容②
-        CategoryInfo infoSpSagyo2 = (CategoryInfo) mBinding.packingSinglePackagingSpinner2.getSelectedItem();
-        innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElementName());
-        innerInfoItem.setInnerSagyo2Siyo(mBinding.packingSinglePackagingPackingCapacity2.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
-        // 作業内容③
-        CategoryInfo infoSpSagyo3 = (CategoryInfo) mBinding.packingSinglePackagingSpinner3.getSelectedItem();
-        innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElementName());
-        innerInfoItem.setInnerSagyo3Siyo(mBinding.packingSinglePackagingPackingCapacity3.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
-        // 作業内容④
-        CategoryInfo infoSpSagyo4 = (CategoryInfo) mBinding.packingSinglePackagingSpinner4.getSelectedItem();
-        innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElementName());
-        innerInfoItem.setInnerSagyo4Siyo(mBinding.packingSinglePackagingPackingCapacity4.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
-        // ラベル枚数
-        innerInfoItem.setLabelSu(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString().isEmpty() ?
-                0 : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
-        // NW
-        innerInfoItem.setNetWeight(mBinding.packingSinglePackagingPackingNetWeight.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
-        // 内容量
-        innerInfoItem.setDanNaiyoRyo(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString().isEmpty() ?
-                0 : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
-        // 単位
-        CategoryInfo infoDanTani = (CategoryInfo) mBinding.packingSinglePackagingSpinnerUnit.getSelectedItem();
-        innerInfoItem.setDanTani(infoDanTani.getElementName());
-        // 内装容器
-        CategoryInfo infoDanNaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerInteriorContainer.getSelectedItem();
-        innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElementName());
-        // 本数
-        innerInfoItem.setDanHonsu(mBinding.packingSinglePackagingPackingNumber.getText().toString().isEmpty() ?
-                0 : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
-        // 外装容器
-        CategoryInfo infoDanGaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerOuterContainer.getSelectedItem();
-        innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElementName());
-        // 備考
-        innerInfoItem.setBiko(mBinding.packingSinglePackagingRemarks.getText().toString());
-
-        // ******************************************************
-        // 更新キー情報構築
-        // ******************************************************
-        ArrayList<SyukkoShijiKeyInfo> updateKeyInfo = new ArrayList<>();
-        // 同一明細ありチェックの場合、キー情報取得
-        if(mBinding.packingSinglePackagingCheckSameItem.isChecked()){
-            updateKeyInfo = new SyukkoShijiDetailDao().getSameDetailInfo (Application.dbHelper.getWritableDatabase()
-                ,mInvoiceNo, mPlaceOrderNo, mIssueQuantity);
-        } else {
-            // 1件登録
-            SyukkoShijiKeyInfo item = new SyukkoShijiKeyInfo(mRenban, mLineNo);
-            updateKeyInfo.add(item);
+    SinglePackingRegistTask.Callback singlePackingRegistCallBack = new SinglePackingRegistTask.Callback() {
+        @Override
+        public void onPreExecute() {
+            mUtilListener.showProgressDialog(mUtilListener.getDataBaseMessage(R.string.info_message_I0027));
         }
 
-        // ******************************************************
-        // インナー情報replace
-        // ******************************************************
-        new KonpoInnerDao().replace(Application.dbHelper.getWritableDatabase(), mInvoiceNo, updateKeyInfo, innerInfoItem);
-
-        // ******************************************************
-        // 出庫指示明細テーブル単独梱包フラグ更新
-        // ******************************************************
-        new SyukkoShijiDetailDao().updateSinglePackingFlag(Application.dbHelper.getWritableDatabase(), mInvoiceNo, updateKeyInfo);
-    }
-
-    /**
-     * スピナーインデックス取得
-     * @param selectionValue
-     * @param dataset
-     * @return
-     */
-    private int getSpinnerSelectPosition(List<CategoryInfo> dataset, String selectionValue) {
-        int retvalue = 0;
-        for(CategoryInfo item : dataset){
-            if(item.getElementName().equals(selectionValue)){
-                return retvalue;
-            }
-            retvalue++;
+        @Override
+        public void onTaskFinished(boolean result) {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // スキャン画面初期化
+            Application.initFlag = true;
+            // 呼び出し元の画面に戻る
+            mListener.popBackStack();
+            // メッセージ表示
+            mUtilListener.showSnackBarOnUiThread(mUtilListener.getDataBaseMessage(R.string.info_message_I0007));
         }
-        return 0;
-    }
+
+        @Override
+        public void onError() {
+            // ProgressDialogを閉じる
+            mUtilListener.dismissProgressDialog();
+            // エラーメッセージを表示
+            mUtilListener.showAlertDialog(getString(R.string.const_err_message_E9000));
+        }
+    };
 }

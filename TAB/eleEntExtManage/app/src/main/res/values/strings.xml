@@ -81,6 +81,10 @@
     <string name="screen_id_packing_final">K06</string>
     <string name="screen_id_packing_multiple">K07</string>
     <string name="screen_id_casemark_print">C01</string>
+    <string name="screen_id_casemark_paste_read">C02</string>
+    <string name="screen_id_casemark_paste_detail">C03</string>
+    <string name="screen_id_casemark_paste_scan">C04</string>
+    <string name="screen_id_casemark_paste_offbook">C05</string>
     <string name="screen_id_registration_search">S01</string>
     <string name="screen_id_registration_check">S02</string>
     <string name="screen_id_cargo_status_check">X01</string>
@@ -90,8 +94,6 @@
     <string name="screen_id_check_shipping_inst_k">K09</string>
     <string name="screen_id_printing_related_p">P06</string>
     <string name="screen_id_printing_related_k">K10</string>
-
-
 
     <!-- パスワード再設定 -->
     <string name="set_password">パスワード変更</string>
@@ -185,10 +187,6 @@
     <string name="h_label">H(cm)</string>
     <string name="multiple_date">複数日付</string>
 
-    <!-- 梱包指示確認 -->
-    <!-- TODO:暫定のため最終的には削除すること -->
-    <string name="instruction_text">○輸送に関する特記事項\n\tA197とかKeep&#x20;Coolとかシラチャーとか\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n○梱包指示\n\tラベル・写真梱包\n\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n\txxxxxxxxxxxxxxxxx\n○保冷剤指示\nブルー／ドライと追加量指示＋備考：２日に１回満タンとか\n○セット品とかの備考\nNo1(1012345678)はドライアイス10KG/CTNのような書き方\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxx\n</string>
-
     <!-- 梱包：オーバーパック -->
     <string name="packing_material_1">梱包資材1</string>
     <string name="packing_material_2">梱包資材2</string>
@@ -203,9 +201,10 @@
     <string name="casemark_read">/ケースマーク読取</string>
     <string name="casemark_detail">/ケースマーク詳細</string>
     <string name="casemark_scan">/貨物スキャン</string>
+    <string name="casemark_offbook">/簿外確認</string>
     <string name="casemark_paset_read_message">貼付するケースマークをスキャンして下さい。</string>
     <string name="casemark_no">ケースマーク\n番号</string>
-
+    <string name="casemark_manage_pw">パスワード</string>
 
     <!-- 出庫登録 -->
     <string name="issue">出庫</string>
@@ -254,7 +253,7 @@
     <string name="beep_sound">BEEP音</string>
     <string name="encode">エンコードフィルター</string>
     <string name="order_no">受注番号</string>
-    <string name="purchase_order_no_and_branch_no">発注番号+枝番</string>
+    <string name="purchase_order_no_and_branch_no">発注番号-枝番</string>
     <string name="item">品目</string>
     <string name="item_code">品目コード</string>
     <string name="item_name">品目名</string>
@@ -383,9 +382,6 @@
     <string name="const_err_message_E0011">端末IDを半角英数字で入力してください。</string>
     <string name="const_err_message_E0012">API接続先をURL形式で入力してください。</string>
     <string name="const_err_message_E0013">所属拠点を半角英数字で入力してください。</string>
-
-
-
     <string name="auth_err_message_E1004">は半角英数字で入力してください。</string>
     <string name="auth_err_message_E2018">API接続先をURL形式で入力してください。</string>
     <string name="const_err_message_E9000">アプリケーションエラーが発生しました。\n管理者へ連絡してください。</string>
@@ -397,10 +393,9 @@
     <string name="const_err_message_E9003">接続しようとしているWebAPIが見つかりません。</string>
     <string name="const_err_message_E9004">サーバー通信でエラーが発生しました。\n管理者へ連絡してください。</string>
 
-
-
-
     <!-- SQLiteのメッセージマスタのキー -->
+    <string name="err_message_E0010">E0010</string>
+    <string name="err_message_E0014">E0014</string>
     <string name="err_message_E1000">E1000</string>
     <string name="err_message_E1001">E1001</string>
     <string name="err_message_E1002">E1002</string>
@@ -409,7 +404,6 @@
     <string name="err_message_E1005">E1005</string>
     <string name="err_message_E1006">E1006</string>
     <string name="err_message_E1007">E1007</string>
-
     <string name="err_message_E2000">E2000</string>
     <string name="err_message_E2001">E2001</string>
     <string name="err_message_E2002">E2002</string>
@@ -431,10 +425,10 @@
     <string name="err_message_E2018">E2018</string>
     <string name="err_message_E2019">E2019</string>
     <string name="err_message_E2020">E2020</string>
-    <string name="err_message_E2021">E2012</string>
+    <string name="err_message_E2021">E2021</string>
     <string name="err_message_E2022">E2022</string>
     <string name="err_message_E2023">E2023</string>
-
+    <string name="err_message_E2024">E2024</string>
     <string name="err_message_E9000">E9000</string>
     <string name="err_message_E9001">E9001</string>
     <string name="err_message_E9002">E9002</string>
@@ -451,17 +445,11 @@
     <string name="err_message_E9013">E9013</string>
     <string name="err_message_E9014">E9014</string>
 
-
-
-    <string name="info_message_I1000">I1000</string>
-    <string name="info_message_I1001">I1001</string>
-    <string name="info_message_I1002">I1002</string>
-    <string name="info_message_I1003">I1003</string>
-    <string name="info_message_I1004">I1004</string>
-    <string name="info_message_I1005">I1005</string>
-    <string name="info_message_I1006">I1006</string>
+    <string name="info_message_I0002">I0002</string>
     <string name="info_message_I0007">I0007</string>
     <string name="info_message_I0008">I0008</string>
+    <string name="info_message_I0012">I0012</string>
+    <string name="info_message_I0013">I0013</string>
     <string name="info_message_I0014">I0014</string>
     <string name="info_message_I0015">I0015</string>
     <string name="info_message_I0016">I0016</string>
@@ -475,14 +463,20 @@
     <string name="info_message_I0024">I0024</string>
     <string name="info_message_I0025">I0025</string>
     <string name="info_message_I0026">I0026</string>
+    <string name="info_message_I0027">I0027</string>
+    <string name="info_message_I0028">I0028</string>
     <string name="info_message_I0030">I0030</string>
     <string name="info_message_I0031">I0031</string>
-
-
+    <string name="info_message_I1000">I1000</string>
+    <string name="info_message_I1001">I1001</string>
+    <string name="info_message_I1002">I1002</string>
+    <string name="info_message_I1003">I1003</string>
+    <string name="info_message_I1004">I1004</string>
+    <string name="info_message_I1005">I1005</string>
+    <string name="info_message_I1006">I1006</string>
     <string name="info_message_I2000">I2000</string>
     <string name="info_message_I2001">I2001</string>
     <string name="info_message_I2002">I2002</string>
-
     <string name="info_message_I2017">I2007</string>
     <string name="info_message_I3001">I3001</string>
     <string name="info_message_I3002">I3002</string>
@@ -492,4 +486,8 @@
     <string name="info_message_I3006">I3006</string>
     <string name="info_message_I3007">I3007</string>
 
+    <string name="plant_name">プラント名</string>
+    <string name="search_results_colon">検索結果：</string>
+    <string name="info_message_I0005">I0005</string>
+    <string name="err_message_E2026">E2026</string>
 </resources>

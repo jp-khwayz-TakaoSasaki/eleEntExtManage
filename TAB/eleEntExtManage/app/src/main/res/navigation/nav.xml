@@ -2,10 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav"
     app:startDestination="@id/startFragment">
-    <fragment
-        android:id="@+id/readerSelectFragment"
-        android:name="jp.co.khwayz.eleEntExtManage.fragment.ReaderSelectFragment"
-        android:label="ReaderSelectFragment" />
     <!-- ピッキング/Invoice検索画面 -->
     <fragment
         android:id="@+id/pickingInvoiceSearchFragment"
@@ -211,10 +207,6 @@
         android:name="jp.co.khwayz.eleEntExtManage.menu.IssueMenuFragment"
         android:label="IssueMenuFragment" >
         <action
-            android:id="@+id/action_issueMenuFragment_to_readerSelectFragment"
-            app:destination="@id/readerSelectFragment"
-            app:popUpTo="@id/issueMenuFragment" />
-        <action
             android:id="@+id/action_issueMenuFragment_to_issueLoginFragment"
             app:destination="@id/issueLoginFragment" />
         <action
@@ -257,20 +249,12 @@
     </fragment>
     <fragment
         android:id="@+id/issueRegistrationCheckFragment"
-        android:name="jp.co.khwayz.eleEntExtManage.issueregist.IssueRegistrationCheckFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.issueregist.IssueRegCheckFragment"
         android:label="IssueRegistrationCheckFragment">
         <action
             android:id="@+id/action_issueRegistrationCheckFragment_to_issueRegistrationInvoiceSearchFragment"
             app:destination="@id/issueRegistrationInvoiceSearchFragment"
             app:popUpTo="@id/issueRegistrationCheckFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/issueTagScanFragment"
-        android:name="jp.co.khwayz.eleEntExtManage.fragment.IssueTagScanFragment"
-        android:label="IssueTagScanFragment" >
-        <action
-            android:id="@+id/action_issueTagScanFragment_to_issueInvoiceFragment"
-            app:destination="@id/issueRegistrationInvoiceSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/issueRFIDSettingFragment"
@@ -292,7 +276,7 @@
     <!-- 梱包指示確認画面 -->
     <fragment
         android:id="@+id/checkInstructionsFragment"
-        android:name="jp.co.khwayz.eleEntExtManage.fragment.CheckPackInstructionsFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment"
         android:label="CheckInstructionsFragment">
         <action
             android:id="@+id/action_checkInstructionsFragment_to_invoiceTagScanFragment"
@@ -329,7 +313,7 @@
     <!-- 出荷指示確認 -->
     <fragment
         android:id="@+id/checkShippingInstructions"
-        android:name="jp.co.khwayz.eleEntExtManage.fragment.CheckShippingInstructionsFragment"
+        android:name="jp.co.khwayz.eleEntExtManage.instr_cfm.CheckShippingInstructionsFragment"
         android:label="CheckShippingInstructions">
         <action
             android:id="@+id/action_checkShippingInstructions_to_checkInstructionsFragment"

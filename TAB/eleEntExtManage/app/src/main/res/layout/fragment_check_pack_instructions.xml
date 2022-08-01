@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,57 +28,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.01" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline84"
-        app:layout_constraintEnd_toEndOf="@id/guideline25"
-        app:layout_constraintStart_toStartOf="@id/guideline24"
-        app:layout_constraintTop_toTopOf="@id/guideline85">
-
-        <!-- Invoice番号 -->
-        <TextView
-            android:id="@+id/cargo_scan_label_invoice_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_label_invoice_no"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_size_header_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/check_view_invoice_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:text="19UT-0092"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_size_header_text"
-            app:layout_constraintStart_toEndOf="@id/cargo_scan_label_invoice_no"
-            app:layout_constraintTop_toTopOf="@id/cargo_scan_label_invoice_no" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <TextView
-        android:id="@+id/text_instructions"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border"
-        android:gravity="left"
-        android:text="@string/instruction_text"
-        android:textColor="@color/colorBlack"
-        android:textSize="24sp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/guideline23"
-        app:layout_constraintEnd_toEndOf="@id/guideline25"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guideline24"
-        app:layout_constraintTop_toTopOf="@id/guideline84"
-        app:layout_constraintVertical_bias="1.0" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline84"
         android:layout_width="wrap_content"
@@ -92,5 +41,44 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.97" />
+
+    <!-- Invoice番号 -->
+    <TextView
+        android:id="@+id/invoice_no_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/common_label_invoice_no"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline84"
+        app:layout_constraintStart_toStartOf="@+id/guideline24"
+        app:layout_constraintTop_toTopOf="@+id/guideline85" />
+
+    <TextView
+        android:id="@+id/invoice_no_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_header_text"
+        app:layout_constraintStart_toEndOf="@id/invoice_no_title"
+        app:layout_constraintTop_toTopOf="@id/invoice_no_title" />
+
+    <TextView
+        android:id="@+id/instructions_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        android:gravity="start"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        app:layout_constraintBottom_toBottomOf="@id/guideline23"
+        app:layout_constraintEnd_toEndOf="@id/guideline25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline24"
+        app:layout_constraintTop_toTopOf="@id/guideline84"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

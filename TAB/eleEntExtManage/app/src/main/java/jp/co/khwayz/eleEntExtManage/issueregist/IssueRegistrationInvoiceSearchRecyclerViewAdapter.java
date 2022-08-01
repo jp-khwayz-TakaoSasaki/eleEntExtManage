@@ -10,59 +10,85 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import jp.co.khwayz.eleEntExtManage.InvoiceInfo;
 import jp.co.khwayz.eleEntExtManage.R;
 
 public class IssueRegistrationInvoiceSearchRecyclerViewAdapter extends RecyclerView.Adapter<IssueRegistrationInvoiceSearchViewHolder> {
 
-    private List<InvoiceInfo> invoiceInfoList;
-    private int selectedPosition = -1;
+    private List<IssueRegInvoiceSearchInfo> mDataList;
+    private int mSelectPosition = RecyclerView.NO_POSITION;
 
-    public void setSelectedPosition(int adapterPosition) {
-        selectedPosition = adapterPosition;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(IssueRegistrationInvoiceSearchViewHolder holder);
-    }
-
-    private OnItemClickListener clickListener;
-
-    public IssueRegistrationInvoiceSearchRecyclerViewAdapter(List<InvoiceInfo> invoiceInfoList) {
-        this.invoiceInfoList = invoiceInfoList;
+    public IssueRegistrationInvoiceSearchRecyclerViewAdapter(List<IssueRegInvoiceSearchInfo> issueRegInvoiceSearchInfoList) {
+        this.mDataList = issueRegInvoiceSearchInfoList;
     }
 
     @NonNull
     @Override
     public IssueRegistrationInvoiceSearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.issue_registration_invoice_search_row, parent,false);
-        IssueRegistrationInvoiceSearchViewHolder holder = new IssueRegistrationInvoiceSearchViewHolder(view);
-        if (clickListener != null) {
-            view.setOnClickListener(v -> clickListener.onItemClick(holder));
-        }
-        return holder;
+        return new IssueRegistrationInvoiceSearchViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull IssueRegistrationInvoiceSearchViewHolder holder, final int position) {
-        InvoiceInfo invoiceInfo = this.invoiceInfoList.get(position);
+        IssueRegInvoiceSearchInfo invoiceInfo = this.mDataList.get(position);
         holder.getInvoiceNo().setText(invoiceInfo.getInvoiceNo());
         holder.getDestination().setText(invoiceInfo.getDestination());
         holder.getShipDate().setText(invoiceInfo.getShipDate());
 
-        if(position == selectedPosition) {
+        if(position == mSelectPosition) {
             holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));
         } else {
             holder.getRow().setBackgroundColor(Color.parseColor("#FFFFFFFF"));
         }
+
+        // Clickイベントで選択された明細のpositionを保持する
+        View.OnClickListener rowClickListener = view -> {
+            // 前回Clickされた明細の変更通知
+            if (mSelectPosition != RecyclerView.NO_POSITION) {
+                notifyItemChanged(mSelectPosition);
+            }
+
+            // 今回Clickされた明細の変更通知
+            mSelectPosition = position;
+            notifyItemChanged(mSelectPosition);
+        };
+        holder.getRow().setOnClickListener(rowClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return this.invoiceInfoList.size();
+        return mDataList.size();
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        clickListener = listener;
+    /**
+     * 選択された明細のpositionを取得
+     * @return 選択された明細のposition
+     */
+    public int getSelectedItemPosition() {
+        return mSelectPosition;
+    }
+
+    /**
+     * 選択する明細を設定
+     * @param position 選択する明細の位置
+     */
+    public void setSelectItemPosition(int position) {
+        // 明細数よりも位置が超えている場合は何もしない
+        if (mDataList.size() <= position) { return; }
+        // 明細を選択して通知
+        this.mSelectPosition = position;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 選択された明細を取得
+     * @return 選択された明細
+     */
+    public IssueRegInvoiceSearchInfo getSelectedItem() {
+        // 未選択はnullを返す
+        if (this.mSelectPosition != RecyclerView.NO_POSITION) {
+            return mDataList.get(this.mSelectPosition);
+        }
+        return null;
     }
 }

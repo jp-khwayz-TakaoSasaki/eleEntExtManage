@@ -97,6 +97,7 @@ public class PostPackingDataRegistTask extends HttpTaskBase<SimpleResponse> {
                 req.setGrossWeight(detail.getGrossWeight());
                 req.setSaisyuKonpoNisugata(detail.getSaisyuKonpoNisugata());
                 req.setBiko(detail.getBiko());
+                req.setPalettUchiwake(detail.getPalettUchiwake());
                 req.setCartonSu(detail.getCartonSu());
                 req.setNifudaSu(detail.getNifudaSu());
                 // リストに追加

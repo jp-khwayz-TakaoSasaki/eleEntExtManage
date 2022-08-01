@@ -147,10 +147,8 @@ public class ChangePasswordActivity extends BaseActivity {
         public void onError(int httpResponseStatusCode, int messageId) {
             // ProgressDialogを閉じる
             dismissProgressDialog();
-            // エラーメッセージ取得
-            String msg = getResourceErrorMessage(messageId);
             // エラーメッセージを表示
-            showAlertDialog(msg);
+            showAlertDialog(messageId);
         }
     };
     // endregion

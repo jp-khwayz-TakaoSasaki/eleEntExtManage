@@ -12,6 +12,7 @@ import java.util.Calendar;
 import jp.co.khwayz.eleEntExtManage.PackingScanInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.IssueTagInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.PackingCancelInfo;
+import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiCsKeyInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiKeyInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceDetailInfo;
 import jp.co.khwayz.eleEntExtManage.packing.OverPackListInfo;
@@ -312,7 +313,7 @@ public class SyukkoShijiDetailDao {
      * @return
      */
     public ArrayList<IssueTagInfo> getSyukkoShijiListByKey (SQLiteDatabase db, String invoiceNo, ArrayList<SyukkoShijiKeyInfo> selectList){
-        final String sql = "SELECT * FROM " + TABLE_NAME + " WHERE INVOICE_NO = ? AND RENBAN = ? AND LINE_NO = ? ORDER BY CS_NUMBER";
+        final String sql = "SELECT * FROM " + TABLE_NAME + " WHERE INVOICE_NO = ? AND RENBAN = ? AND LINE_NO = ? ORDER BY OVERPACK_NO";
         String[] args = new String[3];
         args[0] = invoiceNo;
         ArrayList<IssueTagInfo> result = new ArrayList<>();
@@ -452,6 +453,25 @@ public class SyukkoShijiDetailDao {
             ContentValues contentValues = new ContentValues();
             contentValues.put(C_KONPOZUMI_FLG, flgValue);
             String[] whereSql = {invoiceNo, renban, lineNo};
+            db.update(TABLE_NAME, contentValues, "INVOICE_NO = ? AND RENBAN = ? AND lINE_NO = ?", whereSql);
+        } finally {
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * ケースマーク番号更新
+     * @param db
+     * @param keyInfo
+     */
+    public void updateCsNo(SQLiteDatabase db, SyukkoShijiCsKeyInfo keyInfo) {
+        try {
+            db.beginTransaction();
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(C_CS_NUMBER, keyInfo.getCsNo());
+            String[] whereSql = {keyInfo.getInvoiceNo(), String.valueOf(keyInfo.getRenban()), String.valueOf(keyInfo.getLineNo())};
             db.update(TABLE_NAME, contentValues, "INVOICE_NO = ? AND RENBAN = ? AND lINE_NO = ?", whereSql);
         } finally {
             db.setTransactionSuccessful();

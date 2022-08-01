@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import timber.log.Timber;
+
 public class CustomDocumentPrintAdapter
         extends PrintDocumentAdapter {
 
@@ -88,4 +90,10 @@ public class CustomDocumentPrintAdapter
         }
         writeResultCallback.onWriteFinished(new PageRange[]{PageRange.ALL_PAGES});
     }
-};
+
+    @Override
+    public void onFinish (){
+        Timber.e("Print on Finish!!");
+        return;
+    }
+}

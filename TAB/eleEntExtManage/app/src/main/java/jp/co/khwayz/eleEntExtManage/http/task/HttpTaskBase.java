@@ -142,7 +142,7 @@ public abstract class HttpTaskBase<T> {
         }
         // 認証トークン必要な場合
         if (addAuthToken) {
-            builder.addHeader("Authorization", Application.userInfo.getAuthToken());
+            builder.addHeader("X-elematec-auth", Application.userInfo.getAuthToken());
         }
         request = builder.build();
 

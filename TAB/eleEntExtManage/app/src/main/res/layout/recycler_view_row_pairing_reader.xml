@@ -14,10 +14,10 @@
     <TextView
         android:id="@+id/rv_readerName_text"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical|center"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/text_size_middle"
+        android:textSize="@dimen/text_size_meisai_disp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

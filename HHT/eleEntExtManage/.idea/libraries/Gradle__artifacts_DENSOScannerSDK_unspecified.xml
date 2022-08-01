@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:DENSOScannerSDK:unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DENSOScannerSDK/build/.transforms/cd84496e555e44dab61fb952762f5be7/jetified-DENSOScannerSDK/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/DENSOScannerSDK/build/.transforms/cd84496e555e44dab61fb952762f5be7/jetified-DENSOScannerSDK/res" />
+      <root url="file://$PROJECT_DIR$/DENSOScannerSDK/build/.transforms/cd84496e555e44dab61fb952762f5be7/jetified-DENSOScannerSDK/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

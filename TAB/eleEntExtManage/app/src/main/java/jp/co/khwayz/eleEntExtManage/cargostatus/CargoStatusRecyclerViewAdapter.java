@@ -12,40 +12,34 @@ import java.util.List;
 import jp.co.khwayz.eleEntExtManage.R;
 
 public class CargoStatusRecyclerViewAdapter extends RecyclerView.Adapter<CargoStatusViewHolder> {
-    private List<CargoStatusInfo> invoiceInfoList;
-    private int selectedPosition = -1;
+    private List<CargoStatusInfo> mCargoStatusInfoList;
 
-    public void setSelectedPosition(int adapterPosition) {
-        selectedPosition = adapterPosition;
-    }
-
-    public CargoStatusRecyclerViewAdapter(List<CargoStatusInfo> invoiceInfoList) {
-        this.invoiceInfoList = invoiceInfoList;
+    public CargoStatusRecyclerViewAdapter(List<CargoStatusInfo> cargoStatusInfoList) {
+        this.mCargoStatusInfoList = cargoStatusInfoList;
     }
 
     @NonNull
     @Override
     public CargoStatusViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cargo_status_row, parent,false);
-        CargoStatusViewHolder holder = new CargoStatusViewHolder(view);
-        return holder;
+        return new CargoStatusViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CargoStatusViewHolder holder, final int position) {
-        CargoStatusInfo invoiceInfo = this.invoiceInfoList.get(position);
-        holder.getReceipt().setText(invoiceInfo.getReceipt());
-        holder.getStorage().setText(invoiceInfo.getStorage());
-        holder.getPicking().setText(invoiceInfo.getPicking());
-        holder.getInvoiceNo().setText(invoiceInfo.getInvoiceNo());
-        holder.getPacking().setText(invoiceInfo.getPacking());
-        holder.getCaseMark().setText(invoiceInfo.getCaseMark());
-        holder.getC_SlashNo().setText(invoiceInfo.getC_SlashNo());
-        holder.getIssue().setText(invoiceInfo.getIssue());
+        CargoStatusInfo info = this.mCargoStatusInfoList.get(position);
+        holder.getReceipt().setText(info.getReceiptDateSlash());
+        holder.getStorage().setText(info.getStorage());
+        holder.getPicking().setText(info.getPicking());
+        holder.getInvoiceNo().setText(info.getInvoiceNo());
+        holder.getPacking().setText(info.getPacking());
+        holder.getCaseMark().setText(info.getCaseMark());
+        holder.getC_SlashNo().setText(info.getCsNo());
+        holder.getIssue().setText(info.getIssue());
     }
 
     @Override
     public int getItemCount() {
-        return this.invoiceInfoList.size();
+        return this.mCargoStatusInfoList.size();
     }
 }

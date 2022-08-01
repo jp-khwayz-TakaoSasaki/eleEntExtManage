@@ -24,7 +24,6 @@ import java.util.List;
 
 import jp.co.khwayz.eleEntExtManage.ButtonInfo;
 import jp.co.khwayz.eleEntExtManage.R;
-import jp.co.khwayz.eleEntExtManage.adapter.OffBookListRecyclerViewAdapter;
 import jp.co.khwayz.eleEntExtManage.application.Application;
 import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
 import jp.co.khwayz.eleEntExtManage.common.Constants;

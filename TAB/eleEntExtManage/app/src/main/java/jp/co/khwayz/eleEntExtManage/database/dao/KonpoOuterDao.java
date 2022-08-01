@@ -9,10 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import jp.co.khwayz.eleEntExtManage.casemark_print.CaseMarkPrintInfo;
+import jp.co.khwayz.eleEntExtManage.casemark_print.CaseMarkPrintStatusInfo;
+import jp.co.khwayz.eleEntExtManage.common.models.CaseMarkPrintInvoiceSearchInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.OuterInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.PackingCancelInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.PickedInvoiceSearchInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceDetailInfo;
 
 /**
  * 梱包アウターテーブルDao
@@ -31,7 +32,7 @@ public class KonpoOuterDao {
     public static final String C_CASEMARK7 = "CASEMARK7";
     public static final String C_CASEMARK8 = "CASEMARK8";
     public static final String C_CASEMARK9 = "CASEMARK9";
-    public static final String C_CASEMARK10 = "CASEMARK10 ";
+    public static final String C_CASEMARK10 = "CASEMARK10";
     public static final String C_CASEMARK11 = "CASEMARK11";
     public static final String C_CASEMARK12 = "CASEMARK12";
     public static final String C_OUTER_SAGYO_1 = "OUTER_SAGYO_1";
@@ -63,6 +64,8 @@ public class KonpoOuterDao {
     public static final String C_N_LOCATION = "N_LOCATION";
     public static final String C_BOGAI_FLG = "BOGAI_FLG";
     public static final String C_PICZUMI_FLG = "PICZUMI_FLG";
+    public static final String C_SHIMUKECHI = "SHIMUKECHI";
+    public static final String C_SYUKKA_DATE = "SYUKKA_DATE";
     public static final String C_YUSO_MODE = "YUSO_MODE";
     public static final String C_REGIST_DATE = "REGIST_DATE";
     public static final String C_UPDATE_DATE = "UPDATE_DATE";
@@ -112,6 +115,8 @@ public class KonpoOuterDao {
             + C_N_LOCATION + " TEXT,"
             + C_BOGAI_FLG + " TEXT,"
             + C_PICZUMI_FLG + " TEXT,"
+            + C_SHIMUKECHI + " TEXT,"
+            + C_SYUKKA_DATE + " TEXT,"
             + C_YUSO_MODE + " TEXT,"
             + C_REGIST_DATE + " TEXT,"
             + C_UPDATE_DATE + " TEXT,"
@@ -174,8 +179,60 @@ public class KonpoOuterDao {
                 values.put(C_GROSS_WEIGHT, item.getGrossWeight());
                 values.put(C_SAISYU_KONPO_NISUGATA, item.getSaisyuKonpoNisugata());
                 values.put(C_BIKO, item.getBiko());
+                values.put(C_PALETT_UCHIWAKE, item.getPalettUchiwake());
                 values.put(C_CARTON_SU, item.getCartonSu());
                 values.put(C_NIFUDA_SU, item.getNifudaSu());
+                values.put(C_REGIST_DATE, currentDateStr);
+                values.put(C_UPDATE_DATE, currentDateStr);
+                db.insert(TABLE_NAME, null, values);
+            }
+            // トランザクションコミット
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * 梱包アウターテーブルInsert（ケースマーク印刷用）
+     * @param db
+     * @param list
+     */
+    public void bulkInsertForCsPrint(SQLiteDatabase db, ArrayList<CaseMarkPrintInvoiceSearchInfo> list) {
+        try {
+            // 現在日取得
+            Calendar cl = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String currentDateStr = sdf.format(cl.getTime());
+
+            // トランザクション開始
+            db.beginTransaction();
+            // 全件削除
+            db.execSQL("delete from " + TABLE_NAME);
+            /*
+             * データ登録
+             */
+            for (CaseMarkPrintInvoiceSearchInfo item : list) {
+                ContentValues values = new ContentValues();
+                values.put(C_INVOICE_NO, item.getInvoiceNo());
+                values.put(C_SYUKKA_DATE, item.getSyukkaDate());
+                values.put(C_SHIMUKECHI, item.getShimukeChi());
+                values.put(C_CS_NUMBER, item.getCsNumber());
+                values.put(C_HYOKI_CS_NUMBER, item.getHyoukiCsNumber());
+                values.put(C_CS_PRINT_FLG, item.getCsPrintFlg());
+                values.put(C_YUSO_MODE, item.getYusoMode());
+                values.put(C_CASEMARK1, item.getCasemark1());
+                values.put(C_CASEMARK2, item.getCasemark2());
+                values.put(C_CASEMARK3, item.getCasemark3());
+                values.put(C_CASEMARK4, item.getCasemark4());
+                values.put(C_CASEMARK5, item.getCasemark5());
+                values.put(C_CASEMARK6, item.getCasemark6());
+                values.put(C_CASEMARK7, item.getCasemark7());
+                values.put(C_CASEMARK8, item.getCasemark8());
+                values.put(C_CASEMARK9, item.getCasemark9());
+                values.put(C_CASEMARK10, item.getCasemark10());
+                values.put(C_CASEMARK11, item.getCasemark11());
+                values.put(C_CASEMARK12, item.getCasemark12());
                 values.put(C_REGIST_DATE, currentDateStr);
                 values.put(C_UPDATE_DATE, currentDateStr);
                 db.insert(TABLE_NAME, null, values);
@@ -222,12 +279,114 @@ public class KonpoOuterDao {
                     item.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
                     item.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
                     item.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
+                    item.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
                     item.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
                     item.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
                     result.add(item);
                 }
                 return result;
             }
+    }
+
+    /**
+     * レコード１件登録
+     * @param db
+     * @param item
+     */
+    public void insertRecord(SQLiteDatabase db, OuterInfo item) {
+        try {
+            // 現在日取得
+            Calendar cl = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String currentDateStr = sdf.format(cl.getTime());
+
+            // トランザクション開始
+            db.beginTransaction();
+            /*
+             * データ登録
+             */
+            ContentValues values = new ContentValues();
+            values.put(C_INVOICE_NO, item.getInvoiceNo());
+            values.put(C_CS_NUMBER, item.getCsNumber());
+            values.put(C_HYOKI_CS_NUMBER, item.getHyokiCsNumber());
+            values.put(C_OUTER_SAGYO_1, item.getOuterSagyo1());
+            values.put(C_OUTER_SAGYO_1_SIYO, item.getOuterSagyo1Siyo());
+            values.put(C_OUTER_SAGYO_2, item.getOuterSagyo2());
+            values.put(C_OUTER_SAGYO_2_SIYO, item.getOuterSagyo2Siyo());
+            values.put(C_OUTER_SAGYO_3, item.getOuterSagyo3());
+            values.put(C_OUTER_SAGYO_3_SIYO, item.getOuterSagyo3Siyo());
+            values.put(C_OUTER_SAGYO_4, item.getOuterSagyo4());
+            values.put(C_OUTER_SAGYO_4_SIYO, item.getOuterSagyo4Siyo());
+            values.put(C_BLUEICE_SIYO, item.getBlueIceSiyo());
+            values.put(C_DRYICE_SIYO, item.getDryIceSiyo());
+            values.put(C_LABEL_SU, item.getLabelSu());
+            values.put(C_KONPO_SU, item.getKonpoSu());
+            values.put(C_OUTER_LENGTH, item.getOuterLength());
+            values.put(C_OUTER_WIDTH, item.getOuterWidth());
+            values.put(C_OUTER_HEIGHT, item.getOuterHeight());
+            values.put(C_NET_WEIGHT, item.getNetWeight());
+            values.put(C_GROSS_WEIGHT, item.getGrossWeight());
+            values.put(C_SAISYU_KONPO_NISUGATA, item.getSaisyuKonpoNisugata());
+            values.put(C_BIKO, item.getBiko());
+            values.put(C_PALETT_UCHIWAKE, item.getPalettUchiwake());
+            values.put(C_CARTON_SU, item.getCartonSu());
+            values.put(C_NIFUDA_SU, item.getNifudaSu());
+            values.put(C_REGIST_DATE, currentDateStr);
+            values.put(C_UPDATE_DATE, currentDateStr);
+            db.insert(TABLE_NAME, null, values);
+            // トランザクションコミット
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * 梱包アウターレコード取得
+     * @param db
+     * @param invoiceNo
+     * @param csNo
+     * @return
+     */
+    public OuterInfo getOuterInfoRecord(SQLiteDatabase db, String invoiceNo, int csNo) {
+        final String sql = "SELECT * FROM " + TABLE_NAME + " WHERE INVOICE_NO = ? AND CS_NUMBER = ?";
+        String[] args = new String[2];
+        args[0] = invoiceNo;
+        args[1] = String.valueOf(csNo);
+
+        OuterInfo result = null;
+        try (Cursor cursor = db.rawQuery(sql, args)) {
+            while (cursor.moveToNext()) {
+                result = new OuterInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
+                result.setInvoiceNo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
+                result.setCsNumber(cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
+                result.setHyokiCsNumber(cursor.getString(cursor.getColumnIndex(C_HYOKI_CS_NUMBER)));
+                result.setOuterSagyo1(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_1)));
+                result.setOuterSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
+                result.setOuterSagyo2(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_2)));
+                result.setOuterSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
+                result.setOuterSagyo3(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_3)));
+                result.setOuterSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
+                result.setOuterSagyo4(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_4)));
+                result.setOuterSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
+                result.setBlueIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
+                result.setDryIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
+                result.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                result.setKonpoSu(cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
+                result.setOuterLength(cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
+                result.setOuterWidth(cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
+                result.setOuterHeight(cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
+                result.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                result.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
+                result.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
+                result.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
+                result.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
+                result.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
+                result.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
+                break;
+            }
+            return result;
+        }
     }
 
     /**
@@ -264,8 +423,103 @@ public class KonpoOuterDao {
                 item.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
                 item.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
                 item.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
+                item.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
                 item.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
                 item.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
+                result.add(item);
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Invoice番号でまとめた梱包情報を取得する。
+     *      ※ケースマーク印刷画面用
+     * @param db
+     * @return
+     */
+    public ArrayList<CaseMarkPrintStatusInfo> getOuterInfoListGroupByInvoiceNo(SQLiteDatabase db) {
+        final String sql = "SELECT * FROM " + TABLE_NAME + " GROUP BY " + C_INVOICE_NO;
+
+        ArrayList<CaseMarkPrintStatusInfo> result = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery(sql, null)) {
+            while (cursor.moveToNext()) {
+                CaseMarkPrintStatusInfo item = new CaseMarkPrintStatusInfo(
+                        cursor.getString(cursor.getColumnIndex(C_INVOICE_NO))
+                        ,cursor.getString(cursor.getColumnIndex(C_SHIMUKECHI))
+                        ,cursor.getString(cursor.getColumnIndex(C_SYUKKA_DATE))
+                        ,cursor.getString(cursor.getColumnIndex(C_YUSO_MODE))
+                        ,cursor.getString(cursor.getColumnIndex(C_CS_PRINT_FLG)));
+                result.add(item);
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Invoice番号指定ケースマーク印刷情報取得
+     *      ※ケースマーク印刷画面用
+     * @param db
+     * @param invoiceNo
+     * @return
+     */
+    public ArrayList<CaseMarkPrintInfo> getPrintInfoList(SQLiteDatabase db, String invoiceNo){
+        final String sql = "SELECT * FROM " + TABLE_NAME + " WHERE INVOICE_NO = ? ORDER BY INVOICE_NO,CS_NUMBER";
+        String[] args = new String[1];
+        args[0] = invoiceNo;
+
+        ArrayList<CaseMarkPrintInfo> result = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery(sql, args)) {
+            while (cursor.moveToNext()) {
+                CaseMarkPrintInfo item = new CaseMarkPrintInfo(
+                        cursor.getString(cursor.getColumnIndex(C_INVOICE_NO))
+                        ,cursor.getString(cursor.getColumnIndex(C_CS_NUMBER))
+                        ,null
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK1))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK2))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK3))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK4))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK5))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK6))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK7))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK8))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK9))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK10))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK11))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK12)));
+                result.add(item);
+            }
+            return result;
+        }
+    }
+
+    /**
+     * ケースマーク印刷全情報取得
+     *      ※ケースマーク印刷画面用
+     * @param db
+     * @return
+     */
+    public ArrayList<CaseMarkPrintInfo> getAllPrintInfoList(SQLiteDatabase db){
+        final String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY INVOICE_NO,CS_NUMBER";
+        ArrayList<CaseMarkPrintInfo> result = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery(sql, null)) {
+            while (cursor.moveToNext()) {
+                CaseMarkPrintInfo item = new CaseMarkPrintInfo(
+                        cursor.getString(cursor.getColumnIndex(C_INVOICE_NO))
+                        ,cursor.getString(cursor.getColumnIndex(C_CS_NUMBER))
+                        , null
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK1))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK2))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK3))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK4))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK5))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK6))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK7))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK8))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK9))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK10))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK11))
+                        ,cursor.getString(cursor.getColumnIndex(C_CASEMARK12)));
                 result.add(item);
             }
             return result;
@@ -294,6 +548,27 @@ public class KonpoOuterDao {
                         cursor.getInt(cursor.getColumnIndex("OVERPACK_NO"))
                 );
                 result.add(item);
+            }
+            return result;
+        }
+    }
+
+    /**
+     * ケースマーク番号最大値取得
+     * @param db
+     * @param invoiceNo
+     * @return
+     */
+    public int getMaxCsNo(SQLiteDatabase db, String invoiceNo) {
+        final String sql = "SELECT MAX(CS_NUMBER) AS CS_NUMBER FROM " + TABLE_NAME + " WHERE INVOICE_NO = ?";
+        String[] args = new String[1];
+        args[0] = invoiceNo;
+
+        int result = 0;
+        try (Cursor cursor = db.rawQuery(sql, args)) {
+            while (cursor.moveToNext()) {
+                result = cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER));
+                break;
             }
             return result;
         }
@@ -343,5 +618,41 @@ public class KonpoOuterDao {
         String[] args = new String[1];
         args[0] = invoiceNo;
         return(DatabaseUtils.queryNumEntries(db, TABLE_NAME,"INVOICE_NO = ? ",args));
+    }
+
+    /**
+     * 印刷済フラグ更新
+     * @param db
+     * @param invoiceNo
+     * @param flgValue
+     */
+    public void updatePrintedFlg(SQLiteDatabase db, String invoiceNo, String flgValue) {
+        try {
+            db.beginTransaction();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(C_CS_PRINT_FLG, flgValue);
+            String[] whereSql = {invoiceNo};
+            db.update(TABLE_NAME, contentValues, "INVOICE_NO = ?", whereSql);
+        } finally {
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * 印刷済フラグ全更新
+     * @param db
+     * @param flgValue
+     */
+    public void updatePrintedFlgAll(SQLiteDatabase db, String flgValue) {
+        try {
+            db.beginTransaction();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(C_CS_PRINT_FLG, flgValue);
+            db.update(TABLE_NAME, contentValues, null, null);
+        } finally {
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        }
     }
 }

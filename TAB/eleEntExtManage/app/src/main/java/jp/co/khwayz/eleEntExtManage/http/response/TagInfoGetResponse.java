@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 import jp.co.khwayz.eleEntExtManage.common.models.IssueTagInfo;
-import jp.co.khwayz.eleEntExtManage.common.models.OverPackKonpoShizaiInfo;
 
 /**
  * 荷札情報受信Response

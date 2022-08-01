@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +28,7 @@ import jp.co.khwayz.eleEntExtManage.database.dao.MessageMasterDao;
 public class BaseActivity extends AppCompatActivity implements BaseActivityListener {
 //    public final String TAG = this.getClass().getSimpleName();
 
+    private static final String RESOURCE_PREFIX = "const_";
     protected Dialog mProgressDialog;
     protected Dialog mAlertDialog;
 
@@ -53,10 +53,21 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
 
     /**
      * ProgressDialogを表示する
+     * @param msgId : リソースID
+     */
+    @Override
+    public void showProgressDialog(int msgId) {
+        // メッセージ取得
+        String msg = getDialogMessage(msgId);
+        showProgressDialog(msg);
+    }
+
+    /**
+     * ProgressDialogを表示する
      * @param message : 表示するメッセージ
      */
     @Override
-    public void showProgressDialog(@NonNull String message) {
+    public void showProgressDialog(String message) {
         // 一旦、ProgressDialogを閉じる
         dismissProgressDialog();
 
@@ -96,6 +107,26 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
 
     /**
      * AlertDialog表示
+     * @param msgId : リソースID
+     * @param option : メッセージに埋め込む文字列
+     */
+    @Override
+    public void showAlertDialog(int msgId, Object... option) {
+
+        // メッセージ取得
+        String msg = getDialogMessage(msgId);
+
+        // Optionがある場合
+        if (option != null && 0 < option.length) {
+            msg = String.format(msg, option);
+        }
+
+        // Dialog表示
+        showAlertDialog(msg);
+    }
+
+    /**
+     * AlertDialog表示
      * @param message : 表示するメッセージ
      */
     @Override
@@ -127,23 +158,6 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
     }
 
     /**
-     * AlertDialog表示
-     * @param msgId : リソースID
-     * @param option : メッセージに埋め込む文字列
-     */
-    @Override
-    public void showAlertDialog(int msgId, Object... option) {
-        // メッセージ取得
-        String msg = getDataBaseMessage(msgId);
-        // Optionがある場合
-        if (option != null && 0 < option.length) {
-            msg = String.format(msg, option);
-        }
-        // Dialog表示
-        showAlertDialog(msg);
-    }
-
-    /**
      * 確認Dialog表示
      * @param msgId : リソースID
      * @param listener : positiveButtonのClick Listener
@@ -151,6 +165,54 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
      */
     @Override
     public void showConfirmDialog(int msgId, DialogInterface.OnClickListener listener, Object... option) {
+        // メッセージ取得
+        String msg = getDialogMessage(msgId);
+        // Optionがある場合
+        if (option != null && 0 < option.length) {
+            msg = String.format(msg, option);
+        }
+
+        // Dialog用レイアウトの読み込み
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View layout = inflater.inflate(R.layout.dialog_simple, findViewById(R.id.layout_root));
+
+        // メッセージをセット
+        TextView textView = layout.findViewById(R.id.message);
+        textView.setText(msg);
+
+        // 「OK」ボタンの設定
+        Button positiveButton = layout.findViewById(R.id.positive_button);
+        positiveButton.setText(R.string.ok);
+        positiveButton.setOnClickListener(v -> {
+            listener.onClick(mAlertDialog, DialogInterface.BUTTON_POSITIVE);
+            mAlertDialog.dismiss();
+        });
+
+        // 「キャンセル」ボタンの設定
+        Button negativeButton = layout.findViewById(R.id.negative_button);
+        negativeButton.setVisibility(View.VISIBLE);
+        negativeButton.setText(R.string.cancel);
+        negativeButton.setOnClickListener(v -> mAlertDialog.dismiss());
+
+        // Dialogを表示
+        mAlertDialog = new AlertDialog.Builder(this)
+                .setView(layout)
+                .create();
+        mAlertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mAlertDialog.setCancelable(false);
+        mAlertDialog.show();
+    }
+
+    /**
+     * 確認Dialog表示（キャンセルリスナーあり）
+     * @param msgId : リソースID
+     * @param positiveListener : positiveButtonのClick Listener
+     * @param negativeListener : negativeButtonのClick Listener
+     * @param option : メッセージに埋め込む文字列
+     */
+    @Override
+    public void showConfirmDialog(int msgId, DialogInterface.OnClickListener positiveListener
+            ,DialogInterface.OnClickListener negativeListener, Object... option) {
         // メッセージ取得
         String msg = getDataBaseMessage(msgId);
         // Optionがある場合
@@ -170,7 +232,7 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
         Button positiveButton = layout.findViewById(R.id.positive_button);
         positiveButton.setText(R.string.yes);
         positiveButton.setOnClickListener(v -> {
-            listener.onClick(mAlertDialog, DialogInterface.BUTTON_POSITIVE);
+            positiveListener.onClick(mAlertDialog, DialogInterface.BUTTON_POSITIVE);
             mAlertDialog.dismiss();
         });
 
@@ -178,7 +240,10 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
         Button negativeButton = layout.findViewById(R.id.negative_button);
         negativeButton.setVisibility(View.VISIBLE);
         negativeButton.setText(R.string.no);
-        negativeButton.setOnClickListener(v -> mAlertDialog.dismiss());
+        negativeButton.setOnClickListener(v -> {
+            negativeListener.onClick(mAlertDialog, DialogInterface.BUTTON_POSITIVE);
+            mAlertDialog.dismiss();
+        });
 
         // Dialogを表示
         mAlertDialog = new AlertDialog.Builder(this)
@@ -198,7 +263,8 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
     @Override
     public void showInformationDialog(int msgId, DialogInterface.OnClickListener listener, Object... option) {
         // メッセージ取得
-        String msg = getDataBaseMessage(msgId);
+        String msg = getDialogMessage(msgId);
+
         // Optionがある場合
         if (option != null && 0 < option.length) {
             msg = String.format(msg, option);
@@ -231,7 +297,7 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
             mAlertDialog.dismiss();
         });
 
-        // 「いいえ」ボタンの設定
+        // 「キャンセル」ボタンの設定
         Button negativeButton = layout.findViewById(R.id.negative_button);
         negativeButton.setVisibility(View.GONE);
 
@@ -257,13 +323,14 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
 
     /**
      * SnackBarを表示
-     * @param messageId : 表示するメッセージリソースID
+     * @param msgId : 表示するメッセージリソースID
      * @param option : メッセージに埋め込むOption
      */
     @Override
-    public void showSnackBarOnUiThread(final int messageId, Object... option) {
-        // メッセージを取得
-        String msg = getDataBaseMessage(messageId);
+    public void showSnackBarOnUiThread(int msgId, Object... option) {
+        // メッセージ取得
+        String msg = getDialogMessage(msgId);
+
         // Optionがある場合
         if (option != null && 0 < option.length) {
             msg = String.format(msg, option);
@@ -286,9 +353,27 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
         // メッセージの文字サイズ変更
         TextView snackTextView =
                 snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
-        snackTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_large));
+        snackTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_18sp));
         // SnackBar表示
         this.runOnUiThread(snackbar::show);
+    }
+
+    /**
+     * ダイアログに表示するメッセージを取得する
+     * @param msgId : リソースID
+     * @return strings.xmlまたはSQLiteから取得したメッセージ
+     */
+    public String getDialogMessage(int msgId) {
+        // リソース名を取得
+        String resourceName = getResources().getResourceEntryName(msgId);
+        // 先頭５文字を取得
+        String prefix = resourceName.substring(0, 6);
+        // 先頭5文字が"const_"のリソースはstrings.xmlにメッセージが定義されている
+        if (prefix.equals(RESOURCE_PREFIX)) {
+            return getString(msgId);
+        } else {
+            return getDataBaseMessage(msgId);
+        }
     }
 
     /**
@@ -326,35 +411,5 @@ public class BaseActivity extends AppCompatActivity implements BaseActivityListe
         // SQLiteから区分リスト（仕向地：重複削除したもの）を取得
         CategoryMasterDao dao = new CategoryMasterDao();
         return dao.getTransportListDistinct(Application.dbHelper.getReadableDatabase());
-    }
-
-    /**
-     * リソースのエラーメッセージを取得
-     * ※ ログイン画面・パスワード変更画面がメッセージマスタから取得できない為の対処
-     * @param msgId : リソースID
-     * @return 対応メッセージ
-     */
-    @Override
-    public String getResourceErrorMessage(int msgId) {
-        // エラーメッセージの設定
-        String msg;
-        switch (msgId) {
-            case R.string.err_message_E9001:
-                msg = getString(R.string.const_err_message_E9001);
-                break;
-            case R.string.err_message_E9002:
-                msg = getString(R.string.const_err_message_E9002);
-                break;
-            case R.string.err_message_E9003:
-                msg = getString(R.string.const_err_message_E9003);
-                break;
-            case R.string.err_message_E9004:
-                msg = getString(R.string.const_err_message_E9004);
-                break;
-            default:
-                msg = getString(R.string.const_err_message_E9000);
-                break;
-        }
-        return msg;
     }
 }

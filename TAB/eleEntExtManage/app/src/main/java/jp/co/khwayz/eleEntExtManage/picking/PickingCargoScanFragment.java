@@ -36,12 +36,12 @@ import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPickingCargoScanBinding;
 import jp.co.khwayz.eleEntExtManage.dialog_fragment.MessageDialogFragment;
-import jp.co.khwayz.eleEntExtManage.fragment.CheckPackInstructionsFragment;
 import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
 import jp.co.khwayz.eleEntExtManage.http.response.SyukkoInvoiceDetailGetResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.get.SyukkoInvoiceDetailGetTask;
 import jp.co.khwayz.eleEntExtManage.http.task.get.SyukkoInvoiceSearchTask;
 import jp.co.khwayz.eleEntExtManage.http.task.post.PostPickingDataRegistTask;
+import jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment;
 import jp.co.khwayz.eleEntExtManage.util.Util;
 
 public class PickingCargoScanFragment extends BaseFragment

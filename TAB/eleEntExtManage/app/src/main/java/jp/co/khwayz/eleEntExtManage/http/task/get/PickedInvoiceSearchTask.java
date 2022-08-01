@@ -21,7 +21,8 @@ public class PickedInvoiceSearchTask extends HttpTaskBase<PickedInvoiceSearchRes
     // endregion
 
     // region [ constructor ]
-    public PickedInvoiceSearchTask(@NonNull Callback<PickedInvoiceSearchResponse> callback, String url, String paramJson) {
+    public PickedInvoiceSearchTask(@NonNull Callback<PickedInvoiceSearchResponse> callback
+            , String url, String paramJson) {
         super(callback);
         mURL = url;
         mJsonParam = paramJson;
@@ -38,6 +39,7 @@ public class PickedInvoiceSearchTask extends HttpTaskBase<PickedInvoiceSearchRes
             if (executeResponse.isError()) {
                 // エラーCallBack起動
                 raiseOnError(executeResponse.getHttpStatusCode(), executeResponse.getErrorMsgId());
+                Application.log.e(TAG, "PickedInvoiceSearchTask : StatusCode : " + executeResponse.getHttpStatusCode() + " MsgId : " + executeResponse.getErrorMsgId());
                 return null;
             } else {
                 Gson gson = new Gson();

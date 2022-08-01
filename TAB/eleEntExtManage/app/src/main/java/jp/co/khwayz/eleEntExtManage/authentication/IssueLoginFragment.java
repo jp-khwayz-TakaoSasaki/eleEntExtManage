@@ -229,10 +229,8 @@ public class IssueLoginFragment extends BaseFragment {
         public void onError(int httpResponseStatusCode, int messageId) {
             // ProgressDialogを閉じる
             mUtilListener.dismissProgressDialog();
-            // エラーメッセージ取得
-            String msg = mUtilListener.getResourceErrorMessage(messageId);
             // メッセージを表示
-            mUtilListener.showAlertDialog(msg);
+            mUtilListener.showAlertDialog(messageId);
         }
     };
 
@@ -264,10 +262,8 @@ public class IssueLoginFragment extends BaseFragment {
         public void onError(int httpResponseStatusCode, int messageId) {
             // ProgressDialogを閉じる
             mUtilListener.dismissProgressDialog();
-            // エラーメッセージ取得
-            String msg = mUtilListener.getResourceErrorMessage(messageId);
             // メッセージを表示
-            mUtilListener.showAlertDialog(msg);
+            mUtilListener.showAlertDialog(messageId);
         }
     };
     // endregion

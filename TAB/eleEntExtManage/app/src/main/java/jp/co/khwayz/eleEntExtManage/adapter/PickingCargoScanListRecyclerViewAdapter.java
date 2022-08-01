@@ -69,35 +69,6 @@ public class PickingCargoScanListRecyclerViewAdapter extends RecyclerView.Adapte
         } else {
             holder.getRow().setBackgroundResource(R.color.colorWhite);
         }
-
-        // 単一選択用 選択時背景色変更
-//        if(position == selectedPosition) {
-//            holder.getRow().setBackgroundResource(R.color.colorCyan400A);
-//        } else {
-//            holder.getRow().setBackgroundResource(R.color.colorWhite);
-//        }
-
-        // 複数選択用処理 選択時背景色変更 TODO: 複数選択の場合下記コメントアウト削除
-//        if(isSelectedItem(position)) {
-//            holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));
-//        } else {
-//            holder.getRow().setBackgroundColor(Color.parseColor("#FFFFFFFF"));
-//        }
-
-//        holder.getRow().setBackgroundColor(this.selectPositionList.indexOf(position) >= 0 ? Color.YELLOW : Color.WHITE);
-//        View.OnClickListener rowClickListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!isAbleSelect) return;
-//                if (selectPositionList.indexOf(position) >= 0) {
-//                    selectPositionList.remove(selectPositionList.indexOf(position));
-//                } else {
-//                    selectPositionList.add(position);
-//                }
-//                notifyDataSetChanged();
-//            }
-//        };
-//        holder.getRow().setOnClickListener(rowClickListener);
     }
 
     @Override

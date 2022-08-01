@@ -9,10 +9,8 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Optional;
 
 import jp.co.khwayz.eleEntExtManage.R;
-import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
 
 /**
  * 文字列リストSpinner用 Adapter

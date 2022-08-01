@@ -6,9 +6,12 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
 
 import jp.co.khwayz.eleEntExtManage.application.Application;
+import jp.co.khwayz.eleEntExtManage.casemark_paste.CaseMarkPasteReadInfo;
+import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
 
 public class Util {
@@ -215,5 +218,57 @@ public class Util {
 
         // 荷札情報生成
         return new TagInfo(orderNo, branchNo);
+    }
+
+    /**
+     * QRコードからケースマーク貼付け読取情報を作成する
+     * @param qrCode : QRコード
+     * @return ケースマーク貼付け読取情報クラス
+     */
+    @Nullable
+    public static CaseMarkPasteReadInfo convertQrCodeToCaseMarkPasteReadInfo(@NotNull String qrCode) {
+        String splitValue;
+        // 企業コード(9桁)
+        String corporate = qrCode.substring(0, 9);
+        // 企業コードが違う場合は読み飛ばし
+        if (!Application.corporateCode.equals(corporate)) { return null; }
+
+        // Invoice番号(15桁)：後方空白TRIM
+        String orderNo = qrCode.substring(9, 24).trim();
+
+        // ケースマーク番号（4桁）：先頭0サプレス
+        splitValue = qrCode.substring(24, 28);
+
+        // 数値チェック
+        int caseMarkNo;
+        if (Util.isNumber(splitValue)) {
+            caseMarkNo = Integer.parseInt(splitValue);
+        } else {
+            // 数値以外は読み飛ばし
+            return null;
+        }
+        // 枝番 = 0はありえないので読み飛ばし
+        if (caseMarkNo == 0) { return null; }
+
+        // 荷札情報生成
+        return new CaseMarkPasteReadInfo(orderNo, caseMarkNo);
+    }
+
+
+    /**
+     * スピナーインデックス取得（区分マスタ―用）
+     * @param selectionValue
+     * @param dataset
+     * @return
+     */
+    public static int getSpinnerSelectPosition(List<CategoryInfo> dataset, String selectionValue) {
+        int retvalue = 0;
+        for(CategoryInfo item : dataset){
+            if(item.getElement().equals(selectionValue)){
+                return retvalue;
+            }
+            retvalue++;
+        }
+        return 0;
     }
 }
