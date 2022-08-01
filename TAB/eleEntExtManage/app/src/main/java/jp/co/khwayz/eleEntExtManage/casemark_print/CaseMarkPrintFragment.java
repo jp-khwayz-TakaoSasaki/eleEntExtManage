@@ -349,7 +349,7 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         }
 
         @Override
-        public void onTaskFinished(ArrayList<CaseMarkPrintInfo> result, String invoiceNo) {
+        public void onTaskFinished(String invoiceNo) {
             // ProgressDialogを閉じる
             mUtilListener.dismissProgressDialog();
 

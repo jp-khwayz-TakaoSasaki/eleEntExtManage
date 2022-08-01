@@ -45,7 +45,7 @@ public class CaseMarkPrintDataCreateTask {
 
     public interface Callback<T> {
         void onPreExecute();
-        void onTaskFinished(ArrayList<CaseMarkPrintInfo> result, String invoiceNo);
+        void onTaskFinished(String invoiceNo);
         void onError();
     }
 
@@ -92,7 +92,7 @@ public class CaseMarkPrintDataCreateTask {
         if (response == -1) {
             mCallback.onError();
         } else {
-            mCallback.onTaskFinished(mPrintList, mInvoiceNo);
+            mCallback.onTaskFinished(mInvoiceNo);
         }
     }
     // endregion
@@ -209,7 +209,7 @@ public class CaseMarkPrintDataCreateTask {
         try {
             // ページ生成
             // Invoce番号ごと、かつ、4ケースマーク番号ごとにページ生成する。
-            ArrayList pdfPageDataList = new ArrayList();
+            ArrayList<CaseMarkPrintInfo> pdfPageDataList = new ArrayList<CaseMarkPrintInfo>();
             String chkInvoiceNo = mPrintList.get(0).getInvoiceNo();
             int caseMarkCount = 0;
             for (CaseMarkPrintInfo info : mPrintList){
