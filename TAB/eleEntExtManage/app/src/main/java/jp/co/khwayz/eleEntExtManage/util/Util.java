@@ -162,8 +162,9 @@ public class Util {
         String orderNo = Util.hexToDecimal(splitValue);
         // 枝番
         splitValue = epc.substring(17, 22);
+        String branchNoText = Util.hexToDecimal(splitValue);
         int branchNo;
-        if (Util.isNumber(splitValue)) {
+        if (Util.isNumber(branchNoText)) {
             branchNo = Integer.parseInt(splitValue);
         } else {
             // 数値以外は読み飛ばし

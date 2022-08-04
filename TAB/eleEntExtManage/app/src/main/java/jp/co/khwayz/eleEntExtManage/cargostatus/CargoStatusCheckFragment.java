@@ -177,11 +177,11 @@ public class CargoStatusCheckFragment extends BaseFragment implements RFIDDataDe
     @Override
     public void onRFIDDataReceived(CommScanner commScanner, RFIDDataReceivedEvent rfidDataReceivedEvent) {
         // データ通信中は何もしない
-        if (mSendingFlag) {
-            return;
-        }
+        if (mSendingFlag) { return; }
         mHandler.post(() -> {
             try {
+                // データ通信中は何もしない
+                if (mSendingFlag) { return; }
                 List<RFIDData> rfidDataList = rfidDataReceivedEvent.getRFIDData();
                 for (RFIDData rfidData : rfidDataList) {
                     // 読取データ取得
@@ -235,9 +235,10 @@ public class CargoStatusCheckFragment extends BaseFragment implements RFIDDataDe
         // ProgressDialogを閉じる
         mUtilListener.dismissProgressDialog();
         // エラーメッセージを表示
-        mUtilListener.showAlertDialog(messageId);
-        // 通信中フラグOff
-        mSendingFlag = false;
+        mUtilListener.showInformationDialog(messageId, (dialog, which) -> {
+            // 通信中フラグOff
+            mSendingFlag = false;
+        });
     }
     // endregion
 
