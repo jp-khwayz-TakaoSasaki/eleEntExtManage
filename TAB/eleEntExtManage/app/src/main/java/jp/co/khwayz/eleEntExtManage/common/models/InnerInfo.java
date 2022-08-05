@@ -94,20 +94,20 @@ public class InnerInfo implements Parcelable {
     }
     // 連番
     @SerializedName("renban")
-    private int renban;
-    public int getRenban() {
+    private Integer renban;
+    public Integer getRenban() {
         return renban;
     }
-    public void setRenban(int renban) {
+    public void setRenban(Integer renban) {
         this.renban = renban;
     }
     // 行番号
     @SerializedName("lineNo")
-    private int lineNo;
-    public int getLineNo() {
+    private Integer lineNo;
+    public Integer getLineNo() {
         return lineNo;
     }
-    public void setLineNo(int lineNo) {
+    public void setLineNo(Integer lineNo) {
         this.lineNo = lineNo;
     }
     // インナー作業内容１
@@ -121,11 +121,11 @@ public class InnerInfo implements Parcelable {
     }
     // インナー作業内容１使用料
     @SerializedName("innerSagyo1Siyo")
-    private double innerSagyo1Siyo;
-    public double getInnerSagyo1Siyo() {
+    private Double innerSagyo1Siyo;
+    public Double getInnerSagyo1Siyo() {
         return innerSagyo1Siyo;
     }
-    public void setInnerSagyo1Siyo(double innerSagyo1Siyo) {
+    public void setInnerSagyo1Siyo(Double innerSagyo1Siyo) {
         this.innerSagyo1Siyo = innerSagyo1Siyo;
     }
     // インナー作業内容２
@@ -139,11 +139,11 @@ public class InnerInfo implements Parcelable {
     }
     // インナー作業内容２使用料
     @SerializedName("innerSagyo2Siyo")
-    private double innerSagyo2Siyo;
-    public double getInnerSagyo2Siyo() {
+    private Double innerSagyo2Siyo;
+    public Double getInnerSagyo2Siyo() {
         return innerSagyo2Siyo;
     }
-    public void setInnerSagyo2Siyo(double innerSagyo2Siyo) {
+    public void setInnerSagyo2Siyo(Double innerSagyo2Siyo) {
         this.innerSagyo2Siyo = innerSagyo2Siyo;
     }
     // インナー作業内容3
@@ -157,11 +157,11 @@ public class InnerInfo implements Parcelable {
     }
     // インナー作業内容3使用料
     @SerializedName("innerSagyo3Siyo")
-    private double innerSagyo3Siyo;
-    public double getInnerSagyo3Siyo() {
+    private Double innerSagyo3Siyo;
+    public Double getInnerSagyo3Siyo() {
         return innerSagyo3Siyo;
     }
-    public void setInnerSagyo3Siyo(double innerSagyo3Siyo) {
+    public void setInnerSagyo3Siyo(Double innerSagyo3Siyo) {
         this.innerSagyo3Siyo = innerSagyo3Siyo;
     }
     // インナー作業内容3
@@ -175,38 +175,38 @@ public class InnerInfo implements Parcelable {
     }
     // インナー作業内容4使用料
     @SerializedName("innerSagyo4Siyo")
-    private double innerSagyo4Siyo;
-    public double getInnerSagyo4Siyo() {
+    private Double innerSagyo4Siyo;
+    public Double getInnerSagyo4Siyo() {
         return innerSagyo4Siyo;
     }
-    public void setInnerSagyo4Siyo(double innerSagyo4Siyo) {
+    public void setInnerSagyo4Siyo(Double innerSagyo4Siyo) {
         this.innerSagyo4Siyo = innerSagyo4Siyo;
     }
     // ラベル枚数
     @SerializedName("labelSu")
-    private int labelSu;
-    public int getLabelSu() {
+    private Integer labelSu;
+    public Integer getLabelSu() {
         return labelSu;
     }
-    public void setLabelSu(int labelSu) {
+    public void setLabelSu(Integer labelSu) {
         this.labelSu = labelSu;
     }
     // NW
     @SerializedName("netWeight")
-    private double netWeight;
-    public double getNetWeight() {
+    private Double netWeight;
+    public Double getNetWeight() {
         return netWeight;
     }
-    public void setNetWeight(double netWeight) {
+    public void setNetWeight(Double netWeight) {
         this.netWeight = netWeight;
     }
     // 危険品内容量
     @SerializedName("danNaiyoRyo")
-    private double danNaiyoRyo;
-    public double getDanNaiyoRyo() {
+    private Double danNaiyoRyo;
+    public Double getDanNaiyoRyo() {
         return danNaiyoRyo;
     }
-    public void setDanNaiyoRyo(double danNaiyoRyo) {
+    public void setDanNaiyoRyo(Double danNaiyoRyo) {
         this.danNaiyoRyo = danNaiyoRyo;
     }
     // 危険品単位
@@ -229,11 +229,11 @@ public class InnerInfo implements Parcelable {
     }
     // 危険品本数
     @SerializedName("danHonsu")
-    private int danHonsu;
-    public int getDanHonsu() {
+    private Integer danHonsu;
+    public Integer getDanHonsu() {
         return danHonsu;
     }
-    public void setDanHonsu(int danHonsu) {
+    public void setDanHonsu(Integer danHonsu) {
         this.danHonsu = danHonsu;
     }
     // 危険品外装容器
@@ -247,11 +247,11 @@ public class InnerInfo implements Parcelable {
     }
     // 危険品外装容器個数
     @SerializedName("danGaisoKosu")
-    private int danGaisoKosu;
-    public int getDanGaisoKosu() {
+    private Integer danGaisoKosu;
+    public Integer getDanGaisoKosu() {
         return danGaisoKosu;
     }
-    public void setDanGaisoKosu(int danGaisoKosu) {
+    public void setDanGaisoKosu(Integer danGaisoKosu) {
         this.danGaisoKosu = danGaisoKosu;
     }
     // 備考

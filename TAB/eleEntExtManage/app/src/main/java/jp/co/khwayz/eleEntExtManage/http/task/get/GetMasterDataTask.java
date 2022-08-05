@@ -62,7 +62,7 @@ public class GetMasterDataTask extends HttpTaskBase<Boolean> {
             e.printStackTrace();
             Application.log.e(TAG, "GetMsgMaster : " + e.getMessage());
             // -1(その他エラー)
-            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.err_message_E9000);
+            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.const_err_message_E9000);
             return false;
         }
     }
@@ -96,7 +96,7 @@ public class GetMasterDataTask extends HttpTaskBase<Boolean> {
             e.printStackTrace();
             Application.log.e(TAG, "GetKbnMaster : " + e.getMessage());
             // -1(その他エラー)
-            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.err_message_E9000);
+            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.const_err_message_E9000);
             return false;
         }
     }
@@ -112,7 +112,7 @@ public class GetMasterDataTask extends HttpTaskBase<Boolean> {
             e.printStackTrace();
             Application.log.e(TAG, e);
             // -1(その他エラー)
-            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.err_message_E9000);
+            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.const_err_message_E9000);
             return false;
         }
     }

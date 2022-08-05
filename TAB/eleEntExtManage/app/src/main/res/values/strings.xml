@@ -119,7 +119,6 @@
     <string name="cargo_scan_msg_location_no_read">ロケーション番号を読み取ってください</string>
     <string name="cargo_scan_msg_location_no_title">ロケ番号：</string>
     <string name="cargo_scan_msg_cargo_read">荷札を読み取って下さい</string>
-    <string name="cargo_scan_msg_cargo_read2">ロケ番号：N1-100　　　　　荷札を読み取って下さい</string>
 
     <!-- ピッキング：貨物スキャン：簿外確認 -->
     <string name="off_book_confirm_view_off_book">簿外</string>
@@ -392,6 +391,7 @@
     <string name="const_err_message_E9002">サーバへの接続がタイムアウトになりました。</string>
     <string name="const_err_message_E9003">接続しようとしているWebAPIが見つかりません。</string>
     <string name="const_err_message_E9004">サーバー通信でエラーが発生しました。\n管理者へ連絡してください。</string>
+    <string name="const_err_message_E9018">不正なパラメータを送信しています。</string>
 
     <!-- SQLiteのメッセージマスタのキー -->
     <string name="err_message_E0010">E0010</string>
@@ -484,7 +484,6 @@
     <string name="info_message_I3004">I3004</string>
     <string name="info_message_I3005">I3005</string>
     <string name="info_message_I3006">I3006</string>
-    <string name="info_message_I3007">I3007</string>
 
     <string name="plant_name">プラント名</string>
     <string name="search_results_colon">検索結果：</string>

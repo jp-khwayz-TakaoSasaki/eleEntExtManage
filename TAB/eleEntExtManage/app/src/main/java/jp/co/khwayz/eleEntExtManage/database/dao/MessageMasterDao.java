@@ -43,8 +43,10 @@ public class MessageMasterDao {
             for (MsgMasterResponse.ResponseBody item : list) {
                 ContentValues values = new ContentValues();
                 String msgNo = item.getMessageKbn() + item.getNum();
+                String msg = item.getMessage() == null ?
+                        "" : item.getMessage().replace("\\n", "\n");
                 values.put(C_MSG_NO, msgNo);
-                values.put(C_MSG, item.getMessage());
+                values.put(C_MSG, msg);
                 db.insert(TABLE_NAME, null, values);
             }
             // トランザクションコミット

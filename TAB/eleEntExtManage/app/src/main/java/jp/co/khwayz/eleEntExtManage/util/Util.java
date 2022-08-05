@@ -3,6 +3,8 @@ package jp.co.khwayz.eleEntExtManage.util;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -165,7 +167,7 @@ public class Util {
         String branchNoText = Util.hexToDecimal(splitValue);
         int branchNo;
         if (Util.isNumber(branchNoText)) {
-            branchNo = Integer.parseInt(splitValue);
+            branchNo = Integer.parseInt(branchNoText);
         } else {
             // 数値以外は読み飛ばし
             return null;
@@ -271,5 +273,53 @@ public class Util {
             retvalue++;
         }
         return 0;
+    }
+
+    /**
+     * 入力データのnullを判断し、jsonオブジェクトにプロパティーをaddする。
+     * @param jsonObject
+     * @param propertyName
+     * @param properyValue
+     */
+    public static void putPropertyStr(JsonObject jsonObject, String propertyName, @Nullable String properyValue){
+        if(properyValue == null || properyValue.isEmpty()){
+            jsonObject.add(propertyName, null);
+        } else {
+            jsonObject.addProperty(propertyName, properyValue);
+        }
+    }
+
+    /**
+     * 入力データのnullを判断し、JSON登録用データを生成する（String対応）
+     * @param properyValue
+     * @return
+     */
+    public static String getJsonStr(@Nullable String properyValue){
+        if(properyValue == null || properyValue.isEmpty()){
+            return null;
+        }
+        return properyValue;
+    }
+    /**
+     * 入力データのnullを判断し、JSON登録用データを生成する（Integer対応）
+     * @param properyValue
+     * @return
+     */
+    public static Integer getJsonInt(@Nullable Integer properyValue){
+        if(properyValue == null){
+            return null;
+        }
+        return properyValue;
+    }
+    /**
+     * 入力データのnullを判断し、JSON登録用データを生成する（Double対応）
+     * @param properyValue
+     * @return
+     */
+    public static Double getJsonDbl(@Nullable Double properyValue){
+        if(properyValue == null){
+            return null;
+        }
+        return properyValue;
     }
 }

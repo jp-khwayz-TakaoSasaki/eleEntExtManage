@@ -258,30 +258,46 @@ public class KonpoOuterDao {
                 while (cursor.moveToNext()) {
                     OuterInfo item = new OuterInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
                     item.setInvoiceNo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
-                    item.setCsNumber(cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
+                    item.setCsNumber(cursor.isNull(cursor.getColumnIndex(C_CS_NUMBER)) ?
+                            null : cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
                     item.setHyokiCsNumber(cursor.getString(cursor.getColumnIndex(C_HYOKI_CS_NUMBER)));
                     item.setOuterSagyo1(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_1)));
-                    item.setOuterSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
+                    item.setOuterSagyo1Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
                     item.setOuterSagyo2(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_2)));
-                    item.setOuterSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
+                    item.setOuterSagyo2Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
                     item.setOuterSagyo3(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_3)));
-                    item.setOuterSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
+                    item.setOuterSagyo3Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
                     item.setOuterSagyo4(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_4)));
-                    item.setOuterSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
-                    item.setBlueIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
-                    item.setDryIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
-                    item.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
-                    item.setKonpoSu(cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
-                    item.setOuterLength(cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
-                    item.setOuterWidth(cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
-                    item.setOuterHeight(cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
-                    item.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
-                    item.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
+                    item.setOuterSagyo4Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
+                    item.setBlueIceSiyo(cursor.isNull(cursor.getColumnIndex(C_BLUEICE_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
+                    item.setDryIceSiyo(cursor.isNull(cursor.getColumnIndex(C_DRYICE_SIYO)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
+                    item.setLabelSu(cursor.isNull(cursor.getColumnIndex(C_LABEL_SU)) ?
+                            null : cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                    item.setKonpoSu(cursor.isNull(cursor.getColumnIndex(C_KONPO_SU)) ?
+                            null : cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
+                    item.setOuterLength(cursor.isNull(cursor.getColumnIndex(C_OUTER_LENGTH)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
+                    item.setOuterWidth(cursor.isNull(cursor.getColumnIndex(C_OUTER_WIDTH)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
+                    item.setOuterHeight(cursor.isNull(cursor.getColumnIndex(C_OUTER_HEIGHT)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
+                    item.setNetWeight(cursor.isNull(cursor.getColumnIndex(C_NET_WEIGHT)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                    item.setGrossWeight(cursor.isNull(cursor.getColumnIndex(C_GROSS_WEIGHT)) ?
+                            null : cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
                     item.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
                     item.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
                     item.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
-                    item.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
-                    item.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
+                    item.setCartonSu(cursor.isNull(cursor.getColumnIndex(C_CARTON_SU)) ?
+                            null : cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
+                    item.setNifudaSu(cursor.isNull(cursor.getColumnIndex(C_NIFUDA_SU)) ?
+                            null : cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
                     result.add(item);
                 }
                 return result;
@@ -359,30 +375,46 @@ public class KonpoOuterDao {
             while (cursor.moveToNext()) {
                 result = new OuterInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
                 result.setInvoiceNo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
-                result.setCsNumber(cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
+                result.setCsNumber(cursor.isNull(cursor.getColumnIndex(C_CS_NUMBER)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
                 result.setHyokiCsNumber(cursor.getString(cursor.getColumnIndex(C_HYOKI_CS_NUMBER)));
                 result.setOuterSagyo1(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_1)));
-                result.setOuterSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
+                result.setOuterSagyo1Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)) ?
+                        null: cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
                 result.setOuterSagyo2(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_2)));
-                result.setOuterSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
+                result.setOuterSagyo2Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
                 result.setOuterSagyo3(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_3)));
-                result.setOuterSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
+                result.setOuterSagyo3Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
                 result.setOuterSagyo4(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_4)));
-                result.setOuterSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
-                result.setBlueIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
-                result.setDryIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
-                result.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
-                result.setKonpoSu(cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
-                result.setOuterLength(cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
-                result.setOuterWidth(cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
-                result.setOuterHeight(cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
-                result.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
-                result.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
+                result.setOuterSagyo4Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
+                result.setBlueIceSiyo(cursor.isNull(cursor.getColumnIndex(C_BLUEICE_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
+                result.setDryIceSiyo(cursor.isNull(cursor.getColumnIndex(C_DRYICE_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
+                result.setLabelSu(cursor.isNull(cursor.getColumnIndex(C_LABEL_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                result.setKonpoSu(cursor.isNull(cursor.getColumnIndex(C_KONPO_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
+                result.setOuterLength(cursor.isNull(cursor.getColumnIndex(C_OUTER_LENGTH)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
+                result.setOuterWidth(cursor.isNull(cursor.getColumnIndex(C_OUTER_WIDTH)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
+                result.setOuterHeight(cursor.isNull(cursor.getColumnIndex(C_OUTER_HEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
+                result.setNetWeight(cursor.isNull(cursor.getColumnIndex(C_NET_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                result.setGrossWeight(cursor.isNull(cursor.getColumnIndex(C_GROSS_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
                 result.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
                 result.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
                 result.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
-                result.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
-                result.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
+                result.setCartonSu(cursor.isNull(cursor.getColumnIndex(C_CARTON_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
+                result.setNifudaSu(cursor.isNull(cursor.getColumnIndex(C_NIFUDA_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
                 break;
             }
             return result;
@@ -402,30 +434,46 @@ public class KonpoOuterDao {
             while (cursor.moveToNext()) {
                 OuterInfo item = new OuterInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
                 item.setInvoiceNo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
-                item.setCsNumber(cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
+                item.setCsNumber(cursor.isNull(cursor.getColumnIndex(C_CS_NUMBER)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_CS_NUMBER)));
                 item.setHyokiCsNumber(cursor.getString(cursor.getColumnIndex(C_HYOKI_CS_NUMBER)));
                 item.setOuterSagyo1(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_1)));
-                item.setOuterSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
+                item.setOuterSagyo1Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_1_SIYO)));
                 item.setOuterSagyo2(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_2)));
-                item.setOuterSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
+                item.setOuterSagyo2Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_2_SIYO)));
                 item.setOuterSagyo3(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_3)));
-                item.setOuterSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
+                item.setOuterSagyo3Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_3_SIYO)));
                 item.setOuterSagyo4(cursor.getString(cursor.getColumnIndex(C_OUTER_SAGYO_4)));
-                item.setOuterSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
-                item.setBlueIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
-                item.setDryIceSiyo(cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
-                item.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
-                item.setKonpoSu(cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
-                item.setOuterLength(cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
-                item.setOuterWidth(cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
-                item.setOuterHeight(cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
-                item.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
-                item.setGrossWeight(cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
+                item.setOuterSagyo4Siyo(cursor.isNull(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_SAGYO_4_SIYO)));
+                item.setBlueIceSiyo(cursor.isNull(cursor.getColumnIndex(C_BLUEICE_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_BLUEICE_SIYO)));
+                item.setDryIceSiyo(cursor.isNull(cursor.getColumnIndex(C_DRYICE_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_DRYICE_SIYO)));
+                item.setLabelSu(cursor.isNull(cursor.getColumnIndex(C_LABEL_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                item.setKonpoSu(cursor.isNull(cursor.getColumnIndex(C_KONPO_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_KONPO_SU)));
+                item.setOuterLength(cursor.isNull(cursor.getColumnIndex(C_OUTER_LENGTH)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_LENGTH)));
+                item.setOuterWidth(cursor.isNull(cursor.getColumnIndex(C_OUTER_WIDTH)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_WIDTH)));
+                item.setOuterHeight(cursor.isNull(cursor.getColumnIndex(C_OUTER_HEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_OUTER_HEIGHT)));
+                item.setNetWeight(cursor.isNull(cursor.getColumnIndex(C_NET_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                item.setGrossWeight(cursor.isNull(cursor.getColumnIndex(C_GROSS_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_GROSS_WEIGHT)));
                 item.setSaisyuKonpoNisugata(cursor.getString(cursor.getColumnIndex(C_SAISYU_KONPO_NISUGATA)));
                 item.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
                 item.setPalettUchiwake(cursor.getString(cursor.getColumnIndex(C_PALETT_UCHIWAKE)));
-                item.setCartonSu(cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
-                item.setNifudaSu(cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
+                item.setCartonSu(cursor.isNull(cursor.getColumnIndex(C_CARTON_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_CARTON_SU)));
+                item.setNifudaSu(cursor.isNull(cursor.getColumnIndex(C_NIFUDA_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_NIFUDA_SU)));
                 result.add(item);
             }
             return result;

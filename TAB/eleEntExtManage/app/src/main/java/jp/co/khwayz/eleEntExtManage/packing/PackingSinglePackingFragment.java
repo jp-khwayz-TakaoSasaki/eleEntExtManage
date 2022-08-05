@@ -216,25 +216,32 @@ public class PackingSinglePackingFragment extends BaseFragment {
             // 作業内容①
             int index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo1());
             mBinding.packingSinglePackagingSpinner1.setSelection(index);
-            mBinding.packingSinglePackagingPackingCapacity1.setText(String.format("%.1f",innerRecord.getInnerSagyo1Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo1Siyo()));
+            mBinding.packingSinglePackagingPackingCapacity1.setText(innerRecord.getInnerSagyo1Siyo() == null ?
+                    null : String.format("%.1f",innerRecord.getInnerSagyo1Siyo()));
             // 作業内容②
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo2());
             mBinding.packingSinglePackagingSpinner2.setSelection(index);
-            mBinding.packingSinglePackagingPackingCapacity2.setText(String.format("%.1f",innerRecord.getInnerSagyo2Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo2Siyo()));
+            mBinding.packingSinglePackagingPackingCapacity2.setText(innerRecord.getInnerSagyo2Siyo() == null ?
+                    null : String.format("%.1f",innerRecord.getInnerSagyo2Siyo()));
             // 作業内容③
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo3());
             mBinding.packingSinglePackagingSpinner3.setSelection(index);
-            mBinding.packingSinglePackagingPackingCapacity3.setText(String.format("%.1f",innerRecord.getInnerSagyo3Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo3Siyo()));
+            mBinding.packingSinglePackagingPackingCapacity3.setText(innerRecord.getInnerSagyo3Siyo() == null ?
+                    null : String.format("%.1f",innerRecord.getInnerSagyo3Siyo()));
             // 作業内容④
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, innerRecord.getInnerSagyo4());
             mBinding.packingSinglePackagingSpinner4.setSelection(index);
-            mBinding.packingSinglePackagingPackingCapacity4.setText(String.format("%.1f",innerRecord.getInnerSagyo4Siyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getInnerSagyo4Siyo()));
+            mBinding.packingSinglePackagingPackingCapacity4.setText(innerRecord.getInnerSagyo4Siyo() == null ?
+                    null : String.format("%.1f",innerRecord.getInnerSagyo4Siyo()));
             // ラベル枚数
-            mBinding.packingSinglePackagingPackingLabelNumberOfSheets.setText(String.valueOf(innerRecord.getLabelSu()).equals("0") ? "" : String.valueOf(innerRecord.getLabelSu()));
+            mBinding.packingSinglePackagingPackingLabelNumberOfSheets.setText(innerRecord.getLabelSu() == null ?
+                    null : String.valueOf(innerRecord.getLabelSu()));
             // NW
-            mBinding.packingSinglePackagingPackingNetWeight.setText(String.format("%.3f",innerRecord.getNetWeight()).equals("0.000") ? "" : String.format("%.3f",innerRecord.getNetWeight()));
+            mBinding.packingSinglePackagingPackingNetWeight.setText(innerRecord.getNetWeight() == null ?
+                    null : String.format("%.3f",innerRecord.getNetWeight()));
             // 内容量
-            mBinding.packingSinglePackagingPackingInternalCapacity.setText(String.format("%.1f",innerRecord.getDanNaiyoRyo()).equals("0.0") ? "" : String.format("%.1f",innerRecord.getDanNaiyoRyo()));
+            mBinding.packingSinglePackagingPackingInternalCapacity.setText(innerRecord.getDanNaiyoRyo() == null ?
+                    null : String.format("%.1f",innerRecord.getDanNaiyoRyo()));
             // 単位
             index = Util.getSpinnerSelectPosition(mUnitDataSet, innerRecord.getDanTani());
             mBinding.packingSinglePackagingSpinnerUnit.setSelection(index);
@@ -242,7 +249,8 @@ public class PackingSinglePackingFragment extends BaseFragment {
             index = Util.getSpinnerSelectPosition(mInnerContainerDataSet, innerRecord.getDanNaisoYoki());
             mBinding.packingSinglePackagingSpinnerInteriorContainer.setSelection(index);
             // 本数
-            mBinding.packingSinglePackagingPackingNumber.setText(String.valueOf(innerRecord.getDanHonsu()).equals("0") ? "" : String.valueOf(innerRecord.getDanHonsu()));
+            mBinding.packingSinglePackagingPackingNumber.setText(innerRecord.getDanHonsu() == null ?
+                    null : String.valueOf(innerRecord.getDanHonsu()));
             // 外装容器
             index = Util.getSpinnerSelectPosition(mOuterContainerDataSet, innerRecord.getDanGaisoYoki());
             mBinding.packingSinglePackagingSpinnerOuterContainer.setSelection(index);
@@ -286,45 +294,45 @@ public class PackingSinglePackingFragment extends BaseFragment {
             innerInfoItem.setLineNo(mLineNo);
             // 作業内容①
             CategoryInfo infoSpSagyo1 = (CategoryInfo) mBinding.packingSinglePackagingSpinner1.getSelectedItem();
-            innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElement());
+            innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElement().isEmpty() ? null : infoSpSagyo1.getElement());
             innerInfoItem.setInnerSagyo1Siyo(mBinding.packingSinglePackagingPackingCapacity1.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
             // 作業内容②
             CategoryInfo infoSpSagyo2 = (CategoryInfo) mBinding.packingSinglePackagingSpinner2.getSelectedItem();
-            innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElement());
+            innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElement().isEmpty() ? null : infoSpSagyo2.getElement());
             innerInfoItem.setInnerSagyo2Siyo(mBinding.packingSinglePackagingPackingCapacity2.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
             // 作業内容③
             CategoryInfo infoSpSagyo3 = (CategoryInfo) mBinding.packingSinglePackagingSpinner3.getSelectedItem();
-            innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElement());
+            innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElement().isEmpty() ? null : infoSpSagyo3.getElement());
             innerInfoItem.setInnerSagyo3Siyo(mBinding.packingSinglePackagingPackingCapacity3.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
             // 作業内容④
             CategoryInfo infoSpSagyo4 = (CategoryInfo) mBinding.packingSinglePackagingSpinner4.getSelectedItem();
-            innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElement());
+            innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElement().isEmpty() ? null : infoSpSagyo4.getElement());
             innerInfoItem.setInnerSagyo4Siyo(mBinding.packingSinglePackagingPackingCapacity4.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
             // ラベル枚数
             innerInfoItem.setLabelSu(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString().isEmpty() ?
-                    0 : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
+                    null : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
             // NW
             innerInfoItem.setNetWeight(mBinding.packingSinglePackagingPackingNetWeight.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
             // 内容量
             innerInfoItem.setDanNaiyoRyo(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
+                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
             // 単位
             CategoryInfo infoDanTani = (CategoryInfo) mBinding.packingSinglePackagingSpinnerUnit.getSelectedItem();
-            innerInfoItem.setDanTani(infoDanTani.getElement());
+            innerInfoItem.setDanTani(infoDanTani.getElement().isEmpty() ? null : infoDanTani.getElement());
             // 内装容器
             CategoryInfo infoDanNaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerInteriorContainer.getSelectedItem();
-            innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElement());
+            innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElement().isEmpty() ? null : infoDanNaisoYoki.getElement());
             // 本数
             innerInfoItem.setDanHonsu(mBinding.packingSinglePackagingPackingNumber.getText().toString().isEmpty() ?
-                    0 : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
+                    null : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
             // 外装容器
             CategoryInfo infoDanGaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerOuterContainer.getSelectedItem();
-            innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElement());
+            innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElement().isEmpty() ? null : infoDanGaisoYoki.getElement());
             // 備考
             innerInfoItem.setBiko(mBinding.packingSinglePackagingRemarks.getText().toString());
 

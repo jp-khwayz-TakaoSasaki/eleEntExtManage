@@ -100,13 +100,13 @@ public class PackingDataRegistRequest {
          * ケースマーク番号
          */
         @SerializedName("csNumber")
-        private int csNumber;
+        private Integer csNumber;
 
-        public int getCsNumber() {
+        public Integer getCsNumber() {
             return csNumber;
         }
 
-        public void setCsNumber(int csNumber) {
+        public void setCsNumber(Integer csNumber) {
             this.csNumber = csNumber;
         }
 
@@ -142,13 +142,13 @@ public class PackingDataRegistRequest {
          * アウター作業内容１使用量
          */
         @SerializedName("outerSagyo1Siyo")
-        private double outerSagyo1Siyo;
+        private Double outerSagyo1Siyo;
 
-        public double getOuterSagyo1Siyo() {
+        public Double getOuterSagyo1Siyo() {
             return outerSagyo1Siyo;
         }
 
-        public void setOuterSagyo1Siyo(double outerSagyo1Siyo) {
+        public void setOuterSagyo1Siyo(Double outerSagyo1Siyo) {
             this.outerSagyo1Siyo = outerSagyo1Siyo;
         }
 
@@ -171,13 +171,13 @@ public class PackingDataRegistRequest {
          * アウター作業内容２使用量
          */
         @SerializedName("outerSagyo2Siyo")
-        private double outerSagyo2Siyo;
+        private Double outerSagyo2Siyo;
 
-        public double getOuterSagyo2Siyo() {
+        public Double getOuterSagyo2Siyo() {
             return outerSagyo2Siyo;
         }
 
-        public void setOuterSagyo2Siyo(double outerSagyo2Siyo) {
+        public void setOuterSagyo2Siyo(Double outerSagyo2Siyo) {
             this.outerSagyo2Siyo = outerSagyo2Siyo;
         }
 
@@ -199,13 +199,13 @@ public class PackingDataRegistRequest {
          * アウター作業内容３使用量
          */
         @SerializedName("outerSagyo3Siyo")
-        private double outerSagyo3Siyo;
+        private Double outerSagyo3Siyo;
 
-        public double getOuterSagyo3Siyo() {
+        public Double getOuterSagyo3Siyo() {
             return outerSagyo3Siyo;
         }
 
-        public void setOuterSagyo3Siyo(double outerSagyo3Siyo) {
+        public void setOuterSagyo3Siyo(Double outerSagyo3Siyo) {
             this.outerSagyo3Siyo = outerSagyo3Siyo;
         }
 
@@ -227,13 +227,13 @@ public class PackingDataRegistRequest {
          * アウター作業内容４使用量
          */
         @SerializedName("outerSagyo4Siyo")
-        private double outerSagyo4Siyo;
+        private Double outerSagyo4Siyo;
 
-        public double getOuterSagyo4Siyo() {
+        public Double getOuterSagyo4Siyo() {
             return outerSagyo4Siyo;
         }
 
-        public void setOuterSagyo4Siyo(double outerSagyo4Siyo) {
+        public void setOuterSagyo4Siyo(Double outerSagyo4Siyo) {
             this.outerSagyo4Siyo = outerSagyo4Siyo;
         }
 
@@ -241,13 +241,13 @@ public class PackingDataRegistRequest {
          * ブルーアイス使用量
          */
         @SerializedName("blueiceSiyo")
-        private double blueiceSiyo;
+        private Double blueiceSiyo;
 
-        public double getBlueiceSiyo() {
+        public Double getBlueiceSiyo() {
             return blueiceSiyo;
         }
 
-        public void setBlueiceSiyo(double blueiceSiyo) {
+        public void setBlueiceSiyo(Double blueiceSiyo) {
             this.blueiceSiyo = blueiceSiyo;
         }
 
@@ -255,13 +255,13 @@ public class PackingDataRegistRequest {
          * ドライアイス使用量
          */
         @SerializedName("dryiceSiyo")
-        private double dryiceSiyo;
+        private Double dryiceSiyo;
 
-        public double getDryiceSiyo() {
+        public Double getDryiceSiyo() {
             return dryiceSiyo;
         }
 
-        public void setDryiceSiyo(double dryiceSiyo) {
+        public void setDryiceSiyo(Double dryiceSiyo) {
             this.dryiceSiyo = dryiceSiyo;
         }
 
@@ -269,13 +269,13 @@ public class PackingDataRegistRequest {
          * ラベル枚数
          */
         @SerializedName("labelSu")
-        private int labelSu;
+        private Integer labelSu;
 
-        public int getLabelSu() {
+        public Integer getLabelSu() {
             return labelSu;
         }
 
-        public void setLabelSu(int labelSu) {
+        public void setLabelSu(Integer labelSu) {
             this.labelSu = labelSu;
         }
 
@@ -283,13 +283,13 @@ public class PackingDataRegistRequest {
          * 梱包数
          */
         @SerializedName("konpoSu")
-        private int konpoSu;
+        private Integer konpoSu;
 
-        public int getKonpoSu() {
+        public Integer getKonpoSu() {
             return konpoSu;
         }
 
-        public void setKonpoSu(int konpoSu) {
+        public void setKonpoSu(Integer konpoSu) {
             this.konpoSu = konpoSu;
         }
 
@@ -297,13 +297,13 @@ public class PackingDataRegistRequest {
          * アウター長さ(L)
          */
         @SerializedName("outerLength")
-        private double outerLength;
+        private Double outerLength;
 
-        public double getOuterLength() {
+        public Double getOuterLength() {
             return outerLength;
         }
 
-        public void setOuterLength(double outerLength) {
+        public void setOuterLength(Double outerLength) {
             this.outerLength = outerLength;
         }
 
@@ -311,13 +311,13 @@ public class PackingDataRegistRequest {
          * アウター幅(W)
          */
         @SerializedName("outerWidth")
-        private double outerWidth;
+        private Double outerWidth;
 
-        public double getOuterWidth() {
+        public Double getOuterWidth() {
             return outerWidth;
         }
 
-        public void setOuterWidth(double outerWidth) {
+        public void setOuterWidth(Double outerWidth) {
             this.outerWidth = outerWidth;
         }
 
@@ -325,13 +325,13 @@ public class PackingDataRegistRequest {
          * アウター高さ(H)
          */
         @SerializedName("outerHeight")
-        private double outerHeight;
+        private Double outerHeight;
 
-        public double getOuterHeight() {
+        public Double getOuterHeight() {
             return outerHeight;
         }
 
-        public void setOuterHeight(double outerHeight) {
+        public void setOuterHeight(Double outerHeight) {
             this.outerHeight = outerHeight;
         }
 
@@ -339,13 +339,13 @@ public class PackingDataRegistRequest {
          * NW(net weight)
          */
         @SerializedName("netWeight")
-        private double netWeight;
+        private Double netWeight;
 
-        public double getNetWeight() {
+        public Double getNetWeight() {
             return netWeight;
         }
 
-        public void setNetWeight(double netWeight) {
+        public void setNetWeight(Double netWeight) {
             this.netWeight = netWeight;
         }
 
@@ -353,13 +353,13 @@ public class PackingDataRegistRequest {
          * GW(gross weight)
          */
         @SerializedName("grossWeight")
-        private double grossWeight;
+        private Double grossWeight;
 
-        public double getGrossWeight() {
+        public Double getGrossWeight() {
             return grossWeight;
         }
 
-        public void setGrossWeight(double grossWeight) {
+        public void setGrossWeight(Double grossWeight) {
             this.grossWeight = grossWeight;
         }
 
@@ -409,13 +409,13 @@ public class PackingDataRegistRequest {
          * 箱数
          */
         @SerializedName("cartonSu")
-        private int cartonSu;
+        private Integer cartonSu;
 
-        public int getCartonSu() {
+        public Integer getCartonSu() {
             return cartonSu;
         }
 
-        public void setCartonSu(int cartonSu) {
+        public void setCartonSu(Integer cartonSu) {
             this.cartonSu = cartonSu;
         }
 
@@ -423,13 +423,13 @@ public class PackingDataRegistRequest {
          * 荷札数
          */
         @SerializedName("nifudaSu")
-        private int nifudaSu;
+        private Integer nifudaSu;
 
-        public int getNifudaSu() {
+        public Integer getNifudaSu() {
             return nifudaSu;
         }
 
-        public void setNifudaSu(int nifudaSu) {
+        public void setNifudaSu(Integer nifudaSu) {
             this.nifudaSu = nifudaSu;
         }
     }
@@ -438,21 +438,21 @@ public class PackingDataRegistRequest {
     public static class InnerRequestDetail {
         /** 連番 */
         @SerializedName("renban")
-        private int renban;
-        public int getRenban() {
+        private Integer renban;
+        public Integer getRenban() {
             return renban;
         }
-        public void setRenban(int renban) {
+        public void setRenban(Integer renban) {
             this.renban = renban;
         }
 
         /** 行番号 */
         @SerializedName("lineNo")
-        private int lineNo;
-        public int getLineNo() {
+        private Integer lineNo;
+        public Integer getLineNo() {
             return lineNo;
         }
-        public void setLineNo(int lineNo) {
+        public void setLineNo(Integer lineNo) {
             this.lineNo = lineNo;
         }
 
@@ -468,11 +468,11 @@ public class PackingDataRegistRequest {
 
         /** インナー作業内容１使用量 */
         @SerializedName("innerSagyo1Siyo")
-        private double innerSagyo1Siyo;
-        public double getInnerSagyo1Siyo() {
+        private Double innerSagyo1Siyo;
+        public Double getInnerSagyo1Siyo() {
             return innerSagyo1Siyo;
         }
-        public void setInnerSagyo1Siyo(double innerSagyo1Siyo) {
+        public void setInnerSagyo1Siyo(Double innerSagyo1Siyo) {
             this.innerSagyo1Siyo = innerSagyo1Siyo;
         }
 
@@ -488,11 +488,11 @@ public class PackingDataRegistRequest {
 
         /** インナー作業内容２使用量 */
         @SerializedName("innerSagyo2Siyo")
-        private double innerSagyo2Siyo;
-        public double getInnerSagyo2Siyo() {
+        private Double innerSagyo2Siyo;
+        public Double getInnerSagyo2Siyo() {
             return innerSagyo2Siyo;
         }
-        public void setInnerSagyo2Siyo(double innerSagyo2Siyo) {
+        public void setInnerSagyo2Siyo(Double innerSagyo2Siyo) {
             this.innerSagyo2Siyo = innerSagyo2Siyo;
         }
 
@@ -508,11 +508,11 @@ public class PackingDataRegistRequest {
 
         /** インナー作業内容３使用量 */
         @SerializedName("innerSagyo3Siyo")
-        private double innerSagyo3Siyo;
-        public double getInnerSagyo3Siyo() {
+        private Double innerSagyo3Siyo;
+        public Double getInnerSagyo3Siyo() {
             return innerSagyo3Siyo;
         }
-        public void setInnerSagyo3Siyo(double innerSagyo3Siyo) {
+        public void setInnerSagyo3Siyo(Double innerSagyo3Siyo) {
             this.innerSagyo3Siyo = innerSagyo3Siyo;
         }
 
@@ -528,41 +528,41 @@ public class PackingDataRegistRequest {
 
         /** インナー作業内容４使用量 */
         @SerializedName("innerSagyo4Siyo")
-        private double innerSagyo4Siyo;
-        public double getInnerSagyo4Siyo() {
+        private Double innerSagyo4Siyo;
+        public Double getInnerSagyo4Siyo() {
             return innerSagyo4Siyo;
         }
-        public void setInnerSagyo4Siyo(double innerSagyo4Siyo) {
+        public void setInnerSagyo4Siyo(Double innerSagyo4Siyo) {
             this.innerSagyo4Siyo = innerSagyo4Siyo;
         }
 
         /** ラベル枚数 */
         @SerializedName("labelSu")
-        private int labelSu;
-        public int getLabelSu() {
+        private Integer labelSu;
+        public Integer getLabelSu() {
             return labelSu;
         }
-        public void setLabelSu(int labelSu) {
+        public void setLabelSu(Integer labelSu) {
             this.labelSu = labelSu;
         }
 
         /** NW(net weight) */
         @SerializedName("netWeight")
-        private double netWeight;
-        public double getNetWeight() {
+        private Double netWeight;
+        public Double getNetWeight() {
             return netWeight;
         }
-        public void setNetWeight(double netWeight) {
+        public void setNetWeight(Double netWeight) {
             this.netWeight = netWeight;
         }
 
         /** 危険品内容量 */
         @SerializedName("danNaiyoRyo")
-        private double danNaiyoRyo;
-        public double getDanNaiyoRyo() {
+        private Double danNaiyoRyo;
+        public Double getDanNaiyoRyo() {
             return danNaiyoRyo;
         }
-        public void setDanNaiyoRyo(double danNaiyoRyo) {
+        public void setDanNaiyoRyo(Double danNaiyoRyo) {
             this.danNaiyoRyo = danNaiyoRyo;
         }
 
@@ -588,11 +588,11 @@ public class PackingDataRegistRequest {
 
         /** 危険品本数 */
         @SerializedName("danHonsu")
-        private int danHonsu;
-        public int getDanHonsu() {
+        private Integer danHonsu;
+        public Integer getDanHonsu() {
             return danHonsu;
         }
-        public void setDanHonsu(int danHonsu) {
+        public void setDanHonsu(Integer danHonsu) {
             this.danHonsu = danHonsu;
         }
 
@@ -608,11 +608,11 @@ public class PackingDataRegistRequest {
 
         /** 危険品外装容器個数 */
         @SerializedName("danGaisoKosu")
-        private int danGaisoKosu;
-        public int getDanGaisoKosu() {
+        private Integer danGaisoKosu;
+        public Integer getDanGaisoKosu() {
             return danGaisoKosu;
         }
-        public void setDanGaisoKosu(int danGaisoKosu) {
+        public void setDanGaisoKosu(Integer danGaisoKosu) {
             this.danGaisoKosu = danGaisoKosu;
         }
 

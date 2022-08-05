@@ -56,7 +56,7 @@ public class AuthenticationTask extends HttpTaskBase<AuthenticationResponse> {
             e.printStackTrace();
             Application.log.e(TAG, e);
             // -1(その他エラー)
-            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.err_message_E9000);
+            raiseOnError(Constants.HTTP_OTHER_ERROR, R.string.const_err_message_E9000);
             return null;
         }
     }

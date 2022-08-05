@@ -279,55 +279,55 @@ public class PackingFinalPackingFragment extends BaseFragment {
             // 作業内容①
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, outerRecord.getOuterSagyo1());
             mBinding.finalPackingInputSpinner1.setSelection(index);
-            mBinding.finalPackingInputPackingCapacity1.setText(String.format("%.1f",outerRecord.getOuterSagyo1Siyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterSagyo1Siyo()));
+            mBinding.finalPackingInputPackingCapacity1.setText(outerRecord.getOuterSagyo1Siyo() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterSagyo1Siyo()));
             // 作業内容②
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, outerRecord.getOuterSagyo2());
             mBinding.finalPackingInputSpinner2.setSelection(index);
-            mBinding.finalPackingInputPackingCapacity2.setText(String.format("%.1f",outerRecord.getOuterSagyo2Siyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterSagyo2Siyo()));
+            mBinding.finalPackingInputPackingCapacity2.setText(outerRecord.getOuterSagyo2Siyo() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterSagyo2Siyo()));
             // 作業内容③
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, outerRecord.getOuterSagyo3());
             mBinding.finalPackingInputSpinner3.setSelection(index);
-            mBinding.finalPackingInputPackingCapacity3.setText(String.format("%.1f",outerRecord.getOuterSagyo3Siyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterSagyo3Siyo()));
+            mBinding.finalPackingInputPackingCapacity3.setText(outerRecord.getOuterSagyo3Siyo() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterSagyo3Siyo()));
             // 作業内容④
             index = Util.getSpinnerSelectPosition(mWorkDescriptionDataSet, outerRecord.getOuterSagyo4());
             mBinding.finalPackingInputSpinner4.setSelection(index);
-            mBinding.finalPackingInputPackingCapacity4.setText(String.format("%.1f",outerRecord.getOuterSagyo4Siyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterSagyo4Siyo()));
+            mBinding.finalPackingInputPackingCapacity4.setText(outerRecord.getOuterSagyo4Siyo() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterSagyo4Siyo()));
             // ブルーアイス
-            mBinding.finalPackingInputEditPackingBlueIce.setText(String.format("%.1f",outerRecord.getBlueIceSiyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getBlueIceSiyo()));
+            mBinding.finalPackingInputEditPackingBlueIce.setText(outerRecord.getBlueIceSiyo() == null ?
+                    null : String.format("%.1f",outerRecord.getBlueIceSiyo()));
             // ドライアイス
-            mBinding.finalPackingInputDryIce.setText(String.format("%.1f",outerRecord.getDryIceSiyo()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getDryIceSiyo()));
+            mBinding.finalPackingInputDryIce.setText(outerRecord.getDryIceSiyo() == null ?
+                    null : String.format("%.1f",outerRecord.getDryIceSiyo()));
             // 梱包数
-            mBinding.finalPackingInputPackingQuantity.setText(String.valueOf(outerRecord.getKonpoSu()).equals("0") ?
-                    "" : String.valueOf(outerRecord.getKonpoSu()));
+            mBinding.finalPackingInputPackingQuantity.setText(outerRecord.getKonpoSu() == null ?
+                    null : String.valueOf(outerRecord.getKonpoSu()));
             // C/No
             mBinding.finalPackingInputPackingCno.setText(outerRecord.getHyokiCsNumber());
             this.mInitHyokiCaseMarkNum = outerRecord.getHyokiCsNumber();
             // ケースマーク番号初期保存
             spritCaseMarkNum(this.mInitHyokiCaseMarkNum);
             // ラベル枚数入力
-            mBinding.finalPackingInputLabelCount.setText(String.valueOf(outerRecord.getLabelSu()).equals("0") ?
-                    "" : String.valueOf(outerRecord.getLabelSu()));
+            mBinding.finalPackingInputLabelCount.setText(outerRecord.getLabelSu() == null ?
+                    null : String.valueOf(outerRecord.getLabelSu()));
             // L
-            mBinding.finalPackingInputEditLength.setText(String.format("%.1f",outerRecord.getOuterLength()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterLength()));
+            mBinding.finalPackingInputEditLength.setText(outerRecord.getOuterLength() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterLength()));
             // W
-            mBinding.finalPackingInputEditWidth.setText(String.format("%.1f",outerRecord.getOuterWidth()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterWidth()));
+            mBinding.finalPackingInputEditWidth.setText(outerRecord.getOuterWidth() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterWidth()));
             // H
-            mBinding.finalPackingInputEditHeight.setText(String.format("%.1f",outerRecord.getOuterHeight()).equals("0.0") ?
-                    "" : String.format("%.1f",outerRecord.getOuterHeight()));
+            mBinding.finalPackingInputEditHeight.setText(outerRecord.getOuterHeight() == null ?
+                    null : String.format("%.1f",outerRecord.getOuterHeight()));
             // NW
-            mBinding.finalPackingInputNetWeight.setText(String.format("%.3f",outerRecord.getNetWeight()).equals("0.000") ?
-                    "" : String.format("%.3f",outerRecord.getNetWeight()));
+            mBinding.finalPackingInputNetWeight.setText(outerRecord.getNetWeight() == null ?
+                    null : String.format("%.3f",outerRecord.getNetWeight()));
             // GW
-            mBinding.finalPackingInputGrossWeight.setText(String.format("%.3f",outerRecord.getGrossWeight()).equals("0.000") ?
-                    "" : String.format("%.3f",outerRecord.getGrossWeight()));
+            mBinding.finalPackingInputGrossWeight.setText(outerRecord.getGrossWeight() == null ?
+                    null : String.format("%.3f",outerRecord.getGrossWeight()));
             // 備考
             mBinding.finalPackingInputRemarks.setText(outerRecord.getBiko());
             // パレット内訳
@@ -404,61 +404,63 @@ public class PackingFinalPackingFragment extends BaseFragment {
             outer.setHyokiCsNumber(mBinding.finalPackingInputPackingCno.getText().toString());
             // アウター作業内容1
             CategoryInfo sagyo1 = (CategoryInfo) mBinding.finalPackingInputSpinner1.getSelectedItem();
-            outer.setOuterSagyo1(sagyo1.getElement());
+            outer.setOuterSagyo1(sagyo1.getElement().isEmpty() ? null : sagyo1.getElement());
             // アウター作業内容1使用量
             outer.setOuterSagyo1Siyo(mBinding.finalPackingInputPackingCapacity1.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputPackingCapacity1.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputPackingCapacity1.getText().toString()));
             // アウター作業内容2
             CategoryInfo sagyo2 = (CategoryInfo) mBinding.finalPackingInputSpinner2.getSelectedItem();
-            outer.setOuterSagyo2(sagyo2.getElement());
+            outer.setOuterSagyo2(sagyo2.getElement().isEmpty() ? null : sagyo2.getElement());
             // アウター作業内容2使用量
             outer.setOuterSagyo2Siyo(mBinding.finalPackingInputPackingCapacity2.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputPackingCapacity2.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputPackingCapacity2.getText().toString()));
             // アウター作業内容3
             CategoryInfo sagyo3 = (CategoryInfo) mBinding.finalPackingInputSpinner3.getSelectedItem();
-            outer.setOuterSagyo3(sagyo3.getElement());
+            outer.setOuterSagyo3(sagyo3.getElement().isEmpty() ? null : sagyo3.getElement());
             // アウター作業内容3使用量
             outer.setOuterSagyo3Siyo(mBinding.finalPackingInputPackingCapacity3.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputPackingCapacity3.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputPackingCapacity3.getText().toString()));
             // アウター作業内容4
             CategoryInfo sagyo4 = (CategoryInfo) mBinding.finalPackingInputSpinner4.getSelectedItem();
-            outer.setOuterSagyo4(sagyo4.getElement());
+            outer.setOuterSagyo4(sagyo4.getElement().isEmpty() ? null : sagyo4.getElement());
             // アウター作業内容4使用量
             outer.setOuterSagyo4Siyo(mBinding.finalPackingInputPackingCapacity4.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputPackingCapacity4.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputPackingCapacity4.getText().toString()));
             // ブルーアイス使用量
             outer.setBlueIceSiyo(mBinding.finalPackingInputEditPackingBlueIce.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputEditPackingBlueIce.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputEditPackingBlueIce.getText().toString()));
             // ドライアイス使用量
             outer.setDryIceSiyo(mBinding.finalPackingInputDryIce.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputDryIce.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputDryIce.getText().toString()));
             // ラベル枚数
             outer.setLabelSu(mBinding.finalPackingInputLabelCount.getText().toString().isEmpty() ?
-                    0 : Integer.parseInt(mBinding.finalPackingInputLabelCount.getText().toString()));
+                    null : Integer.parseInt(mBinding.finalPackingInputLabelCount.getText().toString()));
             // 梱包数
             outer.setKonpoSu(mBinding.finalPackingInputPackingQuantity.getText().toString().isEmpty() ?
-                    0 : Integer.parseInt(mBinding.finalPackingInputPackingQuantity.getText().toString()));
+                    null : Integer.parseInt(mBinding.finalPackingInputPackingQuantity.getText().toString()));
             // アウター長さ(L)
             outer.setOuterLength(mBinding.finalPackingInputEditLength.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputEditLength.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputEditLength.getText().toString()));
             // アウター幅(W)
             outer.setOuterWidth(mBinding.finalPackingInputEditWidth.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputEditWidth.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputEditWidth.getText().toString()));
             // アウター高さ(H)
             outer.setOuterHeight(mBinding.finalPackingInputEditHeight.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputEditHeight.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputEditHeight.getText().toString()));
             // NW(net weight)
             outer.setNetWeight(mBinding.finalPackingInputNetWeight.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputNetWeight.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputNetWeight.getText().toString()));
             // GW(gross weight)
             outer.setGrossWeight(mBinding.finalPackingInputGrossWeight.getText().toString().isEmpty() ?
-                    0 : Double.parseDouble(mBinding.finalPackingInputGrossWeight.getText().toString()));
+                    null : Double.parseDouble(mBinding.finalPackingInputGrossWeight.getText().toString()));
             // 最終梱包荷姿
-            outer.setSaisyuKonpoNisugata(packingName.getElement());
+            outer.setSaisyuKonpoNisugata(packingName.getElement().isEmpty() ? null : packingName.getElement());
             // 備考
-            outer.setBiko(mBinding.finalPackingInputRemarks.getText().toString());
+            outer.setBiko(mBinding.finalPackingInputRemarks.getText().toString().isEmpty() ?
+                    null : mBinding.finalPackingInputRemarks.getText().toString());
             // パレット内訳
-            outer.setPalettUchiwake(mBinding.finalPackingInputPaletteBreakdown.getText().toString());
+            outer.setPalettUchiwake(mBinding.finalPackingInputPaletteBreakdown.getText().toString().isEmpty() ?
+                    null : mBinding.finalPackingInputPaletteBreakdown.getText().toString());
             // 箱数
             outer.setCartonSu(calcCartonCount());
             // 荷札数

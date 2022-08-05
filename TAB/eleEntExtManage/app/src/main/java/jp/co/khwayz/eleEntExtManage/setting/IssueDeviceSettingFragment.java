@@ -138,7 +138,7 @@ public class IssueDeviceSettingFragment extends BaseFragment {
             Application.affiliationBase = Util.getTextViewValue(mBinding.affiliationBaseText);
             // 所属拠点未入力
             if (TextUtils.isEmpty(Application.affiliationBase) || !Util.isAlphaNum(Application.affiliationBase)) {
-                mUtilListener.showAlertDialog(R.string.const_err_message_E0012);
+                mUtilListener.showAlertDialog(R.string.const_err_message_E0013);
                 return;
             }
 
@@ -147,7 +147,7 @@ public class IssueDeviceSettingFragment extends BaseFragment {
             Application.apiUrl = Util.getTextViewValue(mBinding.apiConnectionDestinationText);
             // URL形式かチェック
             if (!URLUtil.isValidUrl(Application.apiUrl)) {
-                mUtilListener.showAlertDialog(R.string.const_err_message_E0013);
+                mUtilListener.showAlertDialog(R.string.const_err_message_E0012);
                 return;
             }
 

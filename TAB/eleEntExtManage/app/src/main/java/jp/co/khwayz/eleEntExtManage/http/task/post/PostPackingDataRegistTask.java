@@ -21,6 +21,7 @@ import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.http.request.PackingDataRegistRequest;
 import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.HttpTaskBase;
+import jp.co.khwayz.eleEntExtManage.util.Util;
 
 /**
  * 梱包情報登録Task
@@ -76,30 +77,30 @@ public class PostPackingDataRegistTask extends HttpTaskBase<SimpleResponse> {
             // 明細
             for (OuterInfo detail : outerList) {
                 PackingDataRegistRequest.OuterRequestDetail req = new PackingDataRegistRequest.OuterRequestDetail();
-                req.setCsNumber(detail.getCsNumber());
-                req.setHyokiCsNumber(detail.getHyokiCsNumber());
-                req.setOuterSagyo1(detail.getOuterSagyo1());
-                req.setOuterSagyo1Siyo(detail.getOuterSagyo1Siyo());
-                req.setOuterSagyo2(detail.getOuterSagyo2());
-                req.setOuterSagyo2Siyo(detail.getOuterSagyo2Siyo());
-                req.setOuterSagyo3(detail.getOuterSagyo3());
-                req.setOuterSagyo3Siyo(detail.getOuterSagyo3Siyo());
-                req.setOuterSagyo4(detail.getOuterSagyo4());
-                req.setOuterSagyo4Siyo(detail.getOuterSagyo4Siyo());
-                req.setBlueiceSiyo(detail.getBlueIceSiyo());
-                req.setDryiceSiyo(detail.getDryIceSiyo());
-                req.setLabelSu(detail.getLabelSu());
-                req.setKonpoSu(detail.getKonpoSu());
-                req.setOuterLength(detail.getOuterLength());
-                req.setOuterWidth(detail.getOuterWidth());
-                req.setOuterHeight(detail.getOuterHeight());
-                req.setNetWeight(detail.getNetWeight());
-                req.setGrossWeight(detail.getGrossWeight());
-                req.setSaisyuKonpoNisugata(detail.getSaisyuKonpoNisugata());
-                req.setBiko(detail.getBiko());
-                req.setPalettUchiwake(detail.getPalettUchiwake());
-                req.setCartonSu(detail.getCartonSu());
-                req.setNifudaSu(detail.getNifudaSu());
+                req.setCsNumber(Util.getJsonInt(detail.getCsNumber()));
+                req.setHyokiCsNumber(Util.getJsonStr(detail.getHyokiCsNumber()));
+                req.setOuterSagyo1(Util.getJsonStr(detail.getOuterSagyo1()));
+                req.setOuterSagyo1Siyo(Util.getJsonDbl(detail.getOuterSagyo1Siyo()));
+                req.setOuterSagyo2(Util.getJsonStr(detail.getOuterSagyo2()));
+                req.setOuterSagyo2Siyo(Util.getJsonDbl(detail.getOuterSagyo2Siyo()));
+                req.setOuterSagyo3(Util.getJsonStr(detail.getOuterSagyo3()));
+                req.setOuterSagyo3Siyo(Util.getJsonDbl(detail.getOuterSagyo3Siyo()));
+                req.setOuterSagyo4(Util.getJsonStr(detail.getOuterSagyo4()));
+                req.setOuterSagyo4Siyo(Util.getJsonDbl(detail.getOuterSagyo4Siyo()));
+                req.setBlueiceSiyo(Util.getJsonDbl(detail.getBlueIceSiyo()));
+                req.setDryiceSiyo(Util.getJsonDbl(detail.getDryIceSiyo()));
+                req.setLabelSu(Util.getJsonInt(detail.getLabelSu()));
+                req.setKonpoSu(Util.getJsonInt(detail.getKonpoSu()));
+                req.setOuterLength(Util.getJsonDbl(detail.getOuterLength()));
+                req.setOuterWidth(Util.getJsonDbl(detail.getOuterWidth()));
+                req.setOuterHeight(Util.getJsonDbl(detail.getOuterHeight()));
+                req.setNetWeight(Util.getJsonDbl(detail.getNetWeight()));
+                req.setGrossWeight(Util.getJsonDbl(detail.getGrossWeight()));
+                req.setSaisyuKonpoNisugata(Util.getJsonStr(detail.getSaisyuKonpoNisugata()));
+                req.setBiko(Util.getJsonStr(detail.getBiko()));
+                req.setPalettUchiwake(Util.getJsonStr(detail.getPalettUchiwake()));
+                req.setCartonSu(Util.getJsonInt(detail.getCartonSu()));
+                req.setNifudaSu(Util.getJsonInt(detail.getNifudaSu()));
                 // リストに追加
                 requestParam.getOuterList().add(req);
             }
@@ -110,25 +111,25 @@ public class PostPackingDataRegistTask extends HttpTaskBase<SimpleResponse> {
             // 明細
             for (InnerInfo detail : innerList) {
                 PackingDataRegistRequest.InnerRequestDetail req = new PackingDataRegistRequest.InnerRequestDetail();
-                req.setRenban(detail.getRenban());
-                req.setLineNo(detail.getLineNo());
-                req.setInnerSagyo1(detail.getInnerSagyo1());
-                req.setInnerSagyo1Siyo(detail.getInnerSagyo1Siyo());
-                req.setInnerSagyo2(detail.getInnerSagyo2());
-                req.setInnerSagyo2Siyo(detail.getInnerSagyo2Siyo());
-                req.setInnerSagyo3(detail.getInnerSagyo3());
-                req.setInnerSagyo3Siyo(detail.getInnerSagyo3Siyo());
-                req.setInnerSagyo4(detail.getInnerSagyo4());
-                req.setInnerSagyo4Siyo(detail.getInnerSagyo4Siyo());
-                req.setLabelSu(detail.getLabelSu());
-                req.setNetWeight(detail.getNetWeight());
-                req.setDanNaiyoRyo(detail.getDanNaiyoRyo());
-                req.setDanTani(detail.getDanTani());
-                req.setDanNaisoYoki(detail.getDanNaisoYoki());
-                req.setDanHonsu(detail.getDanHonsu());
-                req.setDanGaisoYoki(detail.getDanGaisoYoki());
-                req.setDanGaisoKosu(detail.getDanGaisoKosu());
-                req.setBiko(detail.getBiko());
+                req.setRenban(Util.getJsonInt(detail.getRenban()));
+                req.setLineNo(Util.getJsonInt(detail.getLineNo()));
+                req.setInnerSagyo1(Util.getJsonStr(detail.getInnerSagyo1()));
+                req.setInnerSagyo1Siyo(Util.getJsonDbl(detail.getInnerSagyo1Siyo()));
+                req.setInnerSagyo2(Util.getJsonStr(detail.getInnerSagyo2()));
+                req.setInnerSagyo2Siyo(Util.getJsonDbl(detail.getInnerSagyo2Siyo()));
+                req.setInnerSagyo3(Util.getJsonStr(detail.getInnerSagyo3()));
+                req.setInnerSagyo3Siyo(Util.getJsonDbl(detail.getInnerSagyo3Siyo()));
+                req.setInnerSagyo4(Util.getJsonStr(detail.getInnerSagyo4()));
+                req.setInnerSagyo4Siyo(Util.getJsonDbl(detail.getInnerSagyo4Siyo()));
+                req.setLabelSu(Util.getJsonInt(detail.getLabelSu()));
+                req.setNetWeight(Util.getJsonDbl(detail.getNetWeight()));
+                req.setDanNaiyoRyo(Util.getJsonDbl(detail.getDanNaiyoRyo()));
+                req.setDanTani(Util.getJsonStr(detail.getDanTani()));
+                req.setDanNaisoYoki(Util.getJsonStr(detail.getDanNaisoYoki()));
+                req.setDanHonsu(Util.getJsonInt(detail.getDanHonsu()));
+                req.setDanGaisoYoki(Util.getJsonStr(detail.getDanGaisoYoki()));
+                req.setDanGaisoKosu(Util.getJsonInt(detail.getDanGaisoKosu()));
+                req.setBiko(Util.getJsonStr(detail.getBiko()));
                 // リストに追加
                 requestParam.getInnerList().add(req);
             }

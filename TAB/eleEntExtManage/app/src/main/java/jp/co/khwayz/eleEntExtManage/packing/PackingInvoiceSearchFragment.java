@@ -37,6 +37,7 @@ import jp.co.khwayz.eleEntExtManage.http.response.PickedInvoiceSearchResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.get.PickedInvoiceSearchTask;
 import jp.co.khwayz.eleEntExtManage.picking.PickedInvoiceSearchRecyclerViewAdapter;
 import jp.co.khwayz.eleEntExtManage.picking.PickedInvoiceSearchViewHolder;
+import jp.co.khwayz.eleEntExtManage.util.Util;
 
 /**
  * 梱包Invoice検索画面
@@ -235,7 +236,7 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
         String coolTemp = mBinding.coolSpinner.getSelectedItem().toString();
         String dangerous = mBinding.spinnerDangerous.getSelectedItem().toString();
         CategoryInfo transportSp = (CategoryInfo) mBinding.spinnerTransport.getSelectedItem();
-        String transport = transportSp.getElementName();
+        String transport = transportSp.getElement();
 
         // 検索条件が全て未入力
         if( invoiceNo.isEmpty()
@@ -265,13 +266,13 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
         try {
             // ピッキングInvoice検索
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("invoiceNo", searchInfo.getInvoiceNo());
-            jsonObject.addProperty("shimukeChi", searchInfo.getShimukeChi());
-            jsonObject.addProperty("listHenshinDate", searchInfo.getListHenshinDate());
-            jsonObject.addProperty("syukkaDate", searchInfo.getSyukkaDate());
-            jsonObject.addProperty("horei", searchInfo.getHorei());
-            jsonObject.addProperty("kikenhinKbn", searchInfo.getKikenhinKbn());
-            jsonObject.addProperty("yusoKbn", searchInfo.getYusoKbn());
+            Util.putPropertyStr(jsonObject, "invoiceNo", searchInfo.getInvoiceNo());
+            Util.putPropertyStr(jsonObject, "shimukeChi", searchInfo.getShimukeChi());
+            Util.putPropertyStr(jsonObject, "listHenshinDate", searchInfo.getListHenshinDate());
+            Util.putPropertyStr(jsonObject, "syukkaDate", searchInfo.getSyukkaDate());
+            Util.putPropertyStr(jsonObject, "horei", searchInfo.getHorei());
+            Util.putPropertyStr(jsonObject, "kikenhinKbn", searchInfo.getKikenhinKbn());
+            Util.putPropertyStr(jsonObject, "yusoKbn", searchInfo.getYusoKbn());
             String url = Application.apiUrl + Constants.HTTP_SERVICE_NAME + Constants.API_ADDRESS_PICKEDINVOICE_SEARCH;
             new PickedInvoiceSearchTask(pickedInvoiceSearchCallback, url, jsonObject.toString()).execute();
         } catch (Exception e) {

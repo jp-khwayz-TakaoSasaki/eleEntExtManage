@@ -102,11 +102,11 @@ public class OuterInfo implements Parcelable {
     }
     // ケースマーク番号
     @SerializedName("csNumber")
-    private int csNumber;
-    public int getCsNumber() {
+    private Integer csNumber;
+    public Integer getCsNumber() {
         return csNumber;
     }
-    public void setCsNumber(int csNumber) {
+    public void setCsNumber(Integer csNumber) {
         this.csNumber = csNumber;
     }
     // 表記用ケースマーク番号
@@ -129,11 +129,11 @@ public class OuterInfo implements Parcelable {
     }
     // アウター作業内容1使用料
     @SerializedName("outerSagyo1Siyo")
-    private double outerSagyo1Siyo;
-    public double getOuterSagyo1Siyo() {
+    private Double outerSagyo1Siyo;
+    public Double getOuterSagyo1Siyo() {
         return outerSagyo1Siyo;
     }
-    public void setOuterSagyo1Siyo(double outerSagyo1Siyo) {
+    public void setOuterSagyo1Siyo(Double outerSagyo1Siyo) {
         this.outerSagyo1Siyo = outerSagyo1Siyo;
     }
     // アウター作業内容2
@@ -147,11 +147,11 @@ public class OuterInfo implements Parcelable {
     }
     // アウター作業内容2使用料
     @SerializedName("outerSagyo2Siyo")
-    private double outerSagyo2Siyo;
-    public double getOuterSagyo2Siyo() {
+    private Double outerSagyo2Siyo;
+    public Double getOuterSagyo2Siyo() {
         return outerSagyo2Siyo;
     }
-    public void setOuterSagyo2Siyo(double outerSagyo2Siyo) {
+    public void setOuterSagyo2Siyo(Double outerSagyo2Siyo) {
         this.outerSagyo2Siyo = outerSagyo2Siyo;
     }
     // アウター作業内容3
@@ -165,11 +165,11 @@ public class OuterInfo implements Parcelable {
     }
     // アウター作業内容3使用料
     @SerializedName("outerSagyo3Siyo")
-    private double outerSagyo3Siyo;
-    public double getOuterSagyo3Siyo() {
+    private Double outerSagyo3Siyo;
+    public Double getOuterSagyo3Siyo() {
         return outerSagyo3Siyo;
     }
-    public void setOuterSagyo3Siyo(double outerSagyo3Siyo) {
+    public void setOuterSagyo3Siyo(Double outerSagyo3Siyo) {
         this.outerSagyo3Siyo = outerSagyo3Siyo;
     }
     // アウター作業内容4
@@ -183,92 +183,92 @@ public class OuterInfo implements Parcelable {
     }
     // アウター作業内容4使用料
     @SerializedName("outerSagyo4Siyo")
-    private double outerSagyo4Siyo;
-    public double getOuterSagyo4Siyo() {
+    private Double outerSagyo4Siyo;
+    public Double getOuterSagyo4Siyo() {
         return outerSagyo4Siyo;
     }
-    public void setOuterSagyo4Siyo(double outerSagyo4Siyo) {
+    public void setOuterSagyo4Siyo(Double outerSagyo4Siyo) {
         this.outerSagyo4Siyo = outerSagyo4Siyo;
     }
     // ブル―アイス使用料
     @SerializedName("blueIceSiyo")
-    private double blueIceSiyo;
-    public double getBlueIceSiyo() {
+    private Double blueIceSiyo;
+    public Double getBlueIceSiyo() {
         return blueIceSiyo;
     }
-    public void setBlueIceSiyo(double blueIceSiyo) {
+    public void setBlueIceSiyo(Double blueIceSiyo) {
         this.blueIceSiyo = blueIceSiyo;
     }
     // ドライアイス使用量
     @SerializedName("dryIceSiyo")
-    private double dryIceSiyo;
-    public double getDryIceSiyo() {
+    private Double dryIceSiyo;
+    public Double getDryIceSiyo() {
         return dryIceSiyo;
     }
-    public void setDryIceSiyo(double dryIceSiyo) {
+    public void setDryIceSiyo(Double dryIceSiyo) {
         this.dryIceSiyo = dryIceSiyo;
     }
     // ラベル数
     @SerializedName("labelSu")
-    private int labelSu;
-    public int getLabelSu() {
+    private Integer labelSu;
+    public Integer getLabelSu() {
         return labelSu;
     }
-    public void setLabelSu(int labelSu) {
+    public void setLabelSu(Integer labelSu) {
         this.labelSu = labelSu;
     }
     // 梱包数
     @SerializedName("konpoSu")
-    private int konpoSu;
-    public int getKonpoSu() {
+    private Integer konpoSu;
+    public Integer getKonpoSu() {
         return konpoSu;
     }
-    public void setKonpoSu(int konpoSu) {
+    public void setKonpoSu(Integer konpoSu) {
         this.konpoSu = konpoSu;
     }
     // アウター長さ(L)
     @SerializedName("outerLength")
-    private double outerLength;
-    public double getOuterLength() {
+    private Double outerLength;
+    public Double getOuterLength() {
         return outerLength;
     }
-    public void setOuterLength(double outerLength) {
+    public void setOuterLength(Double outerLength) {
         this.outerLength = outerLength;
     }
     // アウター幅(W)
     @SerializedName("outerWidth")
-    private double outerWidth;
-    public double getOuterWidth() {
+    private Double outerWidth;
+    public Double getOuterWidth() {
         return outerWidth;
     }
-    public void setOuterWidth(double outerWidth) {
+    public void setOuterWidth(Double outerWidth) {
         this.outerWidth = outerWidth;
     }
     // アウター高さ(H)
     @SerializedName("outerHeight")
-    private double outerHeight;
-    public double getOuterHeight() {
+    private Double outerHeight;
+    public Double getOuterHeight() {
         return outerHeight;
     }
-    public void setOuterHeight(double outerHeight) {
+    public void setOuterHeight(Double outerHeight) {
         this.outerHeight = outerHeight;
     }
     // NW(net weight)
     @SerializedName("netWeight")
-    private double netWeight;
-    public double getNetWeight() {
+    private Double netWeight;
+    public Double getNetWeight() {
         return netWeight;
     }
-    public void setNetWeight(double netWeight) {
+    public void setNetWeight(Double netWeight) {
         this.netWeight = netWeight;
     }
     // GW(gross weight)
     @SerializedName("grossWeight")
-    private double grossWeight;
-    public double getGrossWeight() {
+    private Double grossWeight;
+    public Double getGrossWeight() {
         return grossWeight;
     }
-    public void setGrossWeight(double grossWeight) {
+    public void setGrossWeight(Double grossWeight) {
         this.grossWeight = grossWeight;
     }
     // 最終梱包荷姿
@@ -300,20 +300,20 @@ public class OuterInfo implements Parcelable {
     }
     // 箱数
     @SerializedName("cartonSu")
-    private int cartonSu;
-    public int getCartonSu() {
+    private Integer cartonSu;
+    public Integer getCartonSu() {
         return cartonSu;
     }
-    public void setCartonSu(int cartonSu) {
+    public void setCartonSu(Integer cartonSu) {
         this.cartonSu = cartonSu;
     }
     // 荷札数
     @SerializedName("nifudaSu")
-    private int nifudaSu;
-    public int getNifudaSu() {
+    private Integer nifudaSu;
+    public Integer getNifudaSu() {
         return nifudaSu;
     }
-    public void setNifudaSu(int nifudaSu) {
+    public void setNifudaSu(Integer nifudaSu) {
         this.nifudaSu = nifudaSu;
     }
 }

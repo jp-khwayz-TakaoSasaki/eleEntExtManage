@@ -30,7 +30,6 @@ import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingListDisplayBindin
 import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.get.PackingRelatedInfoGetTask;
 import jp.co.khwayz.eleEntExtManage.http.task.post.PostPackingDataRegistTask;
-import jp.co.khwayz.eleEntExtManage.http.task.post.PostPickingDataRegistTask;
 import jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment;
 import jp.co.khwayz.eleEntExtManage.packing.task.PackingCancelTask;
 
@@ -326,7 +325,7 @@ public class PackingListDisplayFragment extends BaseFragment
     /**
      * 梱包情報登録Callback
      */
-    PostPickingDataRegistTask.Callback<SimpleResponse> packingInfoRegistCallback = new PostPickingDataRegistTask.Callback<SimpleResponse>() {
+    PostPackingDataRegistTask.Callback<SimpleResponse> packingInfoRegistCallback = new PostPackingDataRegistTask.Callback<SimpleResponse>() {
         @Override
         public void onPreExecute(boolean showProgress) {
             // ProgressDialogを表示する
@@ -489,10 +488,10 @@ public class PackingListDisplayFragment extends BaseFragment
             PackingOuter new_item = new PackingOuter(
                     item.getHyokiCsNumber(),
                     item.getSaisyuKonpoNisugata(),
-                    String.format("%,.1f", item.getOuterLength()),
-                    String.format("%,.1f", item.getOuterWidth()),
-                    String.format("%,.1f", item.getOuterHeight()),
-                    String.format("%,.3f", item.getNetWeight()),
+                    item.getOuterLength() == null ? "" : String.format("%,.1f", item.getOuterLength()),
+                    item.getOuterWidth() == null ? "" : String.format("%,.1f", item.getOuterWidth()),
+                    item.getOuterHeight() == null ? "" : String.format("%,.1f", item.getOuterHeight()),
+                    item.getNetWeight() == null ? "" : String.format("%,.3f", item.getNetWeight()),
                     item.getNifudaSu()
             );
 

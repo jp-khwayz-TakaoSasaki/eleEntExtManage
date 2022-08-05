@@ -24,6 +24,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals("release")) {
+            // releaseビルドのみ、ファイル名にVesionNameを付与
+            variant.outputs.all {
+                def applicationName = "TB-eleEntExtManage"
+                def versionName = variant.versionName
+                def newName = "${applicationName}-${versionName}.apk"
+                outputFileName = newName
+            }
+        }
+    }
     buildFeatures {
         viewBinding true
     }

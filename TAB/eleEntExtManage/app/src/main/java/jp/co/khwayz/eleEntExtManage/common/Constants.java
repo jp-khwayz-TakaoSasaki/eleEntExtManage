@@ -10,6 +10,7 @@ public class Constants {
      */
     public static final int HTTP_OTHER_ERROR = -1;
     public static final int HTTP_RESPONSE_STATUS_CODE_OK = 200;
+    public static final int HTTP_RESPONSE_STATUS_CODE_BAD_REQUEST = 400;
     public static final int HTTP_RESPONSE_STATUS_CODE_NOT_FOUND = 404;
     public static final int HTTP_RESPONSE_STATUS_CODE_REQUEST_TIMEOUT = 408;
     public static final int HTTP_RESPONSE_STATUS_CODE_INTERNAL_SERVER_ERROR = 500;
@@ -60,7 +61,7 @@ public class Constants {
     public static final String PREFS_BUZZER_ENABLE = "PREFS_BUZZER_ENABLE";
 
     // テスト用初期URL定義
-    public static final String PREFS_DEFAULT_API_URL = "http://192.168.11.21:8080/";
+    public static final String PREFS_DEFAULT_API_URL = "http://172.16.20.109:18080";
     public static final int PREFS_DEFAULT_SESSION_FLAG = 0;
     public static final int PREFS_DEFAULT_POWER_LEVEL = 30;
     public static final ScannerChanel PREFS_DEFAULT_PREFS_CHANNEL = ScannerChanel.Default;

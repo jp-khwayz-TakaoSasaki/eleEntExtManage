@@ -38,6 +38,7 @@ import jp.co.khwayz.eleEntExtManage.http.response.SimpleResponse;
 import jp.co.khwayz.eleEntExtManage.http.task.get.CaseMarkPrintInvoiceSearchTask;
 import jp.co.khwayz.eleEntExtManage.http.task.post.PostCaseMarkPrintedRegistTask;
 import jp.co.khwayz.eleEntExtManage.pdf_print.CustomDocumentPrintAdapter;
+import jp.co.khwayz.eleEntExtManage.util.Util;
 
 public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrintRecyclerViewAdapter.OnItemClickListener {
 
@@ -197,7 +198,8 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         CategoryInfo destinationSp = (CategoryInfo)mBinding.spCasemarkPrintDestination.getSelectedItem();
         String shimukeChi = destinationSp.getElementName();
         String shipDate = mBinding.tvCasemarkPrintShipDate.getText().toString();
-        String printStatus = mBinding.spPrintStatus.getSelectedItem().toString();
+        String printStatus = mBinding.spPrintStatus.getSelectedItem().toString().equals(Constants.CaseMarkPintStatusChoices.NotPrinted.getCaseMarkPrintStatusChoices()) ?
+                String.valueOf(Constants.CaseMarkPintStatusChoices.NotPrinted.ordinal()) : String.valueOf(Constants.CaseMarkPintStatusChoices.Printed.ordinal());
 
         // 検索条件が全て未入力
         if( invoiceNo.isEmpty()
@@ -221,9 +223,9 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
         try {
             // ケースマーク情報受信
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("invoiceNo", invoiceNo);
-            jsonObject.addProperty("shimukeChi", shimukeChi);
-            jsonObject.addProperty("syukkaDate", shipDate);
+            Util.putPropertyStr(jsonObject, "invoiceNo", invoiceNo);
+            Util.putPropertyStr(jsonObject, "shimukeChi", shimukeChi);
+            Util.putPropertyStr(jsonObject, "syukkaDate", shipDate);
             jsonObject.addProperty("printState", printStatus);
             String url = Application.apiUrl + Constants.HTTP_SERVICE_NAME + Constants.API_ADDRESS_CASEMARN_PRINT_INVOICE_SEARCH;
             new CaseMarkPrintInvoiceSearchTask(caseMarkPrintInvoiceSearchCallback, url, jsonObject.toString()).execute();

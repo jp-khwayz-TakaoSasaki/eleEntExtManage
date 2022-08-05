@@ -538,9 +538,10 @@ public class PackingScanFragment extends BaseFragment
         } else {
             mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByCaseMark(
                     Application.dbHelper.getWritableDatabase(),mInvoiceNo, mCaseMarkNo));
-            for(PackingScanInfo item : mPackingScanInfoList){
-                item.setOnSelectFlag(Constants.FLAG_TRUE);
-            }
+            // 検証時有効にする
+//            for(PackingScanInfo item : mPackingScanInfoList){
+//                item.setOnSelectFlag(Constants.FLAG_TRUE);
+//            }
         }
         mPackingScanAdapter.notifyDataSetChanged();
 

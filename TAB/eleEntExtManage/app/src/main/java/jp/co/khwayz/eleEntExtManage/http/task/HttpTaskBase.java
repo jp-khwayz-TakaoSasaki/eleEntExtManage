@@ -175,17 +175,21 @@ public abstract class HttpTaskBase<T> {
                 // エラーを返却する
                 result.setErrorFlag(true);
                 switch (responseCode) {
+                    case Constants.HTTP_RESPONSE_STATUS_CODE_BAD_REQUEST:
+                        // 400(BAD REQUEST)
+                        result.setErrorMsgId(R.string.const_err_message_E9018);
+                        break;
                     case Constants.HTTP_RESPONSE_STATUS_CODE_NOT_FOUND:
                         // 404(NOT FOUND)
-                        result.setErrorMsgId(R.string.err_message_E9003);
+                        result.setErrorMsgId(R.string.const_err_message_E9003);
                         break;
                     case Constants.HTTP_RESPONSE_STATUS_CODE_INTERNAL_SERVER_ERROR:
                         // server error
-                        result.setErrorMsgId(R.string.err_message_E9001);
+                        result.setErrorMsgId(R.string.const_err_message_E9001);
                         break;
                     default:
                         // server communication error
-                        result.setErrorMsgId(R.string.err_message_E9004);
+                        result.setErrorMsgId(R.string.const_err_message_E9004);
                         break;
                 }
             }

@@ -135,9 +135,9 @@ public class IssueRegCheckFragment extends BaseFragment implements BarcodeDataDe
         super.mainSetting();
         // JSON作成
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("invoiceNo", mInvoiceNo);
-        jsonObject.addProperty("shimukeChi", mDestination);
-        jsonObject.addProperty("syukkaDate", mShipDate);
+        Util.putPropertyStr(jsonObject, "invoiceNo", mInvoiceNo);
+        Util.putPropertyStr(jsonObject, "shimukeChi", mDestination);
+        Util.putPropertyStr(jsonObject, "syukkaDate", mShipDate);
         // 検索データ取得
         new GetIssueRegInvoiceSearchTask(getCallback, jsonObject.toString()).execute();
     }

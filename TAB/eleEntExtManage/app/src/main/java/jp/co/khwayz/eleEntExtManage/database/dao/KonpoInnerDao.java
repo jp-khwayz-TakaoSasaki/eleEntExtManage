@@ -44,7 +44,7 @@ public class KonpoInnerDao {
             + C_INVOICE_NO + " TEXT NOT NULL,"
             + C_RENBAN + " INTEGER NOT NULL,"
             + C_LINE_NO + " INTEGER NOT NULL,"
-            + C_INNER_SAGYO_1 + " TEXT NOT NULL,"
+            + C_INNER_SAGYO_1 + " TEXT,"
             + C_INNER_SAGYO_1_SIYO + " REAL,"
             + C_INNER_SAGYO_2 + " TEXT,"
             + C_INNER_SAGYO_2_SIYO + " REAL,"
@@ -95,24 +95,35 @@ public class KonpoInnerDao {
         try (Cursor cursor = db.rawQuery(sql, args)) {
             while (cursor.moveToNext()) {
                 InnerInfo item = new InnerInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
-                item.setRenban(cursor.getInt(cursor.getColumnIndex(C_RENBAN)));
-                item.setLineNo(cursor.getInt(cursor.getColumnIndex(C_LINE_NO)));
+                item.setRenban(cursor.isNull(cursor.getColumnIndex(C_RENBAN)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_RENBAN)));
+                item.setLineNo(cursor.isNull(cursor.getColumnIndex(C_LINE_NO)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LINE_NO)));
                 item.setInnerSagyo1(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_1)));
-                item.setInnerSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)));
+                item.setInnerSagyo1Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)));
                 item.setInnerSagyo2(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_2)));
-                item.setInnerSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)));
+                item.setInnerSagyo2Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)));
                 item.setInnerSagyo3(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_3)));
-                item.setInnerSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)));
+                item.setInnerSagyo3Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)));
                 item.setInnerSagyo4(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_4)));
-                item.setInnerSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)));
-                item.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
-                item.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
-                item.setDanNaiyoRyo(cursor.getInt(cursor.getColumnIndex(C_DAN_NAIYO_RYO)));
+                item.setInnerSagyo4Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)));
+                item.setLabelSu(cursor.isNull(cursor.getColumnIndex(C_LABEL_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                item.setNetWeight(cursor.isNull(cursor.getColumnIndex(C_NET_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                item.setDanNaiyoRyo(cursor.isNull(cursor.getColumnIndex(C_DAN_NAIYO_RYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_DAN_NAIYO_RYO)));
                 item.setDanTani(cursor.getString(cursor.getColumnIndex(C_DAN_TANI)));
                 item.setDanNaisoYoki(cursor.getString(cursor.getColumnIndex(C_DAN_NAISO_YOKI)));
-                item.setDanHonsu(cursor.getInt(cursor.getColumnIndex(C_DAN_HONSU)));
+                item.setDanHonsu(cursor.isNull(cursor.getColumnIndex(C_DAN_HONSU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_DAN_HONSU)));
                 item.setDanGaisoYoki(cursor.getString(cursor.getColumnIndex(C_DAN_GAISO_YOKI)));
-                item.setDanGaisoKosu(cursor.getInt(cursor.getColumnIndex(C_DAN_GAISO_KOSU)));
+                item.setDanGaisoKosu(cursor.isNull(cursor.getColumnIndex(C_DAN_GAISO_KOSU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_DAN_GAISO_KOSU)));
                 item.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
                 result.add(item);
             }
@@ -242,24 +253,35 @@ public class KonpoInnerDao {
         try (Cursor cursor = db.rawQuery(sql, args)) {
             while (cursor.moveToNext()) {
                 result = new InnerInfo(cursor.getString(cursor.getColumnIndex(C_INVOICE_NO)));
-                result.setRenban(cursor.getInt(cursor.getColumnIndex(C_RENBAN)));
-                result.setLineNo(cursor.getInt(cursor.getColumnIndex(C_LINE_NO)));
+                result.setRenban(cursor.isNull(cursor.getColumnIndex(C_RENBAN)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_RENBAN)));
+                result.setLineNo(cursor.isNull(cursor.getColumnIndex(C_LINE_NO)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LINE_NO)));
                 result.setInnerSagyo1(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_1)));
-                result.setInnerSagyo1Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)));
+                result.setInnerSagyo1Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_1_SIYO)));
                 result.setInnerSagyo2(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_2)));
-                result.setInnerSagyo2Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)));
+                result.setInnerSagyo2Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_2_SIYO)));
                 result.setInnerSagyo3(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_3)));
-                result.setInnerSagyo3Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)));
+                result.setInnerSagyo3Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_3_SIYO)));
                 result.setInnerSagyo4(cursor.getString(cursor.getColumnIndex(C_INNER_SAGYO_4)));
-                result.setInnerSagyo4Siyo(cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)));
-                result.setLabelSu(cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
-                result.setNetWeight(cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
-                result.setDanNaiyoRyo(cursor.getDouble(cursor.getColumnIndex(C_DAN_NAIYO_RYO)));
+                result.setInnerSagyo4Siyo(cursor.isNull(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_INNER_SAGYO_4_SIYO)));
+                result.setLabelSu(cursor.isNull(cursor.getColumnIndex(C_LABEL_SU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_LABEL_SU)));
+                result.setNetWeight(cursor.isNull(cursor.getColumnIndex(C_NET_WEIGHT)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_NET_WEIGHT)));
+                result.setDanNaiyoRyo(cursor.isNull(cursor.getColumnIndex(C_DAN_NAIYO_RYO)) ?
+                        null : cursor.getDouble(cursor.getColumnIndex(C_DAN_NAIYO_RYO)));
                 result.setDanTani(cursor.getString(cursor.getColumnIndex(C_DAN_TANI)));
                 result.setDanNaisoYoki(cursor.getString(cursor.getColumnIndex(C_DAN_NAISO_YOKI)));
-                result.setDanHonsu(cursor.getInt(cursor.getColumnIndex(C_DAN_HONSU)));
+                result.setDanHonsu(cursor.isNull(cursor.getColumnIndex(C_DAN_HONSU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_DAN_HONSU)));
                 result.setDanGaisoYoki(cursor.getString(cursor.getColumnIndex(C_DAN_GAISO_YOKI)));
-                result.setDanGaisoKosu(cursor.getInt(cursor.getColumnIndex(C_DAN_GAISO_KOSU)));
+                result.setDanGaisoKosu(cursor.isNull(cursor.getColumnIndex(C_DAN_GAISO_KOSU)) ?
+                        null : cursor.getInt(cursor.getColumnIndex(C_DAN_GAISO_KOSU)));
                 result.setBiko(cursor.getString(cursor.getColumnIndex(C_BIKO)));
 
                 break;
