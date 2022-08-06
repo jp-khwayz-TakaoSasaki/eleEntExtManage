@@ -284,57 +284,81 @@ public class PackingSinglePackingFragment extends BaseFragment {
     }
 
     private void confirmationButton() {
+        // ******************************************************
+        // インナーテーブル保存情報を画面から取得
+        // ******************************************************
+        InnerInfo innerInfoItem = new InnerInfo(mInvoiceNo);
+        innerInfoItem.setRenban(mRenban);
+        innerInfoItem.setLineNo(mLineNo);
+        // 作業内容①
+        CategoryInfo infoSpSagyo1 = (CategoryInfo) mBinding.packingSinglePackagingSpinner1.getSelectedItem();
+        innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElement().isEmpty() ? null : infoSpSagyo1.getElement());
+        innerInfoItem.setInnerSagyo1Siyo(mBinding.packingSinglePackagingPackingCapacity1.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
+        // 作業内容②
+        CategoryInfo infoSpSagyo2 = (CategoryInfo) mBinding.packingSinglePackagingSpinner2.getSelectedItem();
+        innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElement().isEmpty() ? null : infoSpSagyo2.getElement());
+        innerInfoItem.setInnerSagyo2Siyo(mBinding.packingSinglePackagingPackingCapacity2.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
+        // 作業内容③
+        CategoryInfo infoSpSagyo3 = (CategoryInfo) mBinding.packingSinglePackagingSpinner3.getSelectedItem();
+        innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElement().isEmpty() ? null : infoSpSagyo3.getElement());
+        innerInfoItem.setInnerSagyo3Siyo(mBinding.packingSinglePackagingPackingCapacity3.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
+        // 作業内容④
+        CategoryInfo infoSpSagyo4 = (CategoryInfo) mBinding.packingSinglePackagingSpinner4.getSelectedItem();
+        innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElement().isEmpty() ? null : infoSpSagyo4.getElement());
+        innerInfoItem.setInnerSagyo4Siyo(mBinding.packingSinglePackagingPackingCapacity4.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
+        // ラベル枚数
+        innerInfoItem.setLabelSu(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString().isEmpty() ?
+                null : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
+        // NW
+        innerInfoItem.setNetWeight(mBinding.packingSinglePackagingPackingNetWeight.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
+        // 内容量
+        innerInfoItem.setDanNaiyoRyo(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString().isEmpty() ?
+                null : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
+        // 単位
+        CategoryInfo infoDanTani = (CategoryInfo) mBinding.packingSinglePackagingSpinnerUnit.getSelectedItem();
+        innerInfoItem.setDanTani(infoDanTani.getElement().isEmpty() ? null : infoDanTani.getElement());
+        // 内装容器
+        CategoryInfo infoDanNaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerInteriorContainer.getSelectedItem();
+        innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElement().isEmpty() ? null : infoDanNaisoYoki.getElement());
+        // 本数
+        innerInfoItem.setDanHonsu(mBinding.packingSinglePackagingPackingNumber.getText().toString().isEmpty() ?
+                null : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
+        // 外装容器
+        CategoryInfo infoDanGaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerOuterContainer.getSelectedItem();
+        innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElement().isEmpty() ? null : infoDanGaisoYoki.getElement());
+        // 備考
+        innerInfoItem.setBiko(mBinding.packingSinglePackagingRemarks.getText().toString().isEmpty()?
+                null : mBinding.packingSinglePackagingRemarks.getText().toString());
+
+        // 未入力チェック
+        if(innerInfoItem.getInnerSagyo1() == null &&
+                innerInfoItem.getInnerSagyo1Siyo() == null &&
+                innerInfoItem.getInnerSagyo2() == null &&
+                innerInfoItem.getInnerSagyo2Siyo() == null &&
+                innerInfoItem.getInnerSagyo3() == null &&
+                innerInfoItem.getInnerSagyo3Siyo() == null &&
+                innerInfoItem.getInnerSagyo4() == null &&
+                innerInfoItem.getInnerSagyo4Siyo() == null &&
+                innerInfoItem.getLabelSu() == null &&
+                innerInfoItem.getNetWeight() == null &&
+                innerInfoItem.getDanNaiyoRyo() == null &&
+                innerInfoItem.getDanTani() == null &&
+                innerInfoItem.getDanNaisoYoki() == null &&
+                innerInfoItem.getDanHonsu() == null &&
+                innerInfoItem.getDanGaisoYoki() == null &&
+                innerInfoItem.getBiko() == null
+        ){
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2025));
+            return;
+        }
+
         // リスナー生成
         DialogInterface.OnClickListener listener = (dialog, which) -> {
-            // ******************************************************
-            // インナーテーブル保存情報を画面から取得
-            // ******************************************************
-            InnerInfo innerInfoItem = new InnerInfo(mInvoiceNo);
-            innerInfoItem.setRenban(mRenban);
-            innerInfoItem.setLineNo(mLineNo);
-            // 作業内容①
-            CategoryInfo infoSpSagyo1 = (CategoryInfo) mBinding.packingSinglePackagingSpinner1.getSelectedItem();
-            innerInfoItem.setInnerSagyo1(infoSpSagyo1.getElement().isEmpty() ? null : infoSpSagyo1.getElement());
-            innerInfoItem.setInnerSagyo1Siyo(mBinding.packingSinglePackagingPackingCapacity1.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity1.getText().toString()));
-            // 作業内容②
-            CategoryInfo infoSpSagyo2 = (CategoryInfo) mBinding.packingSinglePackagingSpinner2.getSelectedItem();
-            innerInfoItem.setInnerSagyo2(infoSpSagyo2.getElement().isEmpty() ? null : infoSpSagyo2.getElement());
-            innerInfoItem.setInnerSagyo2Siyo(mBinding.packingSinglePackagingPackingCapacity2.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity2.getText().toString()));
-            // 作業内容③
-            CategoryInfo infoSpSagyo3 = (CategoryInfo) mBinding.packingSinglePackagingSpinner3.getSelectedItem();
-            innerInfoItem.setInnerSagyo3(infoSpSagyo3.getElement().isEmpty() ? null : infoSpSagyo3.getElement());
-            innerInfoItem.setInnerSagyo3Siyo(mBinding.packingSinglePackagingPackingCapacity3.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity3.getText().toString()));
-            // 作業内容④
-            CategoryInfo infoSpSagyo4 = (CategoryInfo) mBinding.packingSinglePackagingSpinner4.getSelectedItem();
-            innerInfoItem.setInnerSagyo4(infoSpSagyo4.getElement().isEmpty() ? null : infoSpSagyo4.getElement());
-            innerInfoItem.setInnerSagyo4Siyo(mBinding.packingSinglePackagingPackingCapacity4.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingCapacity4.getText().toString()));
-            // ラベル枚数
-            innerInfoItem.setLabelSu(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString().isEmpty() ?
-                    null : Integer.parseInt(mBinding.packingSinglePackagingPackingLabelNumberOfSheets.getText().toString()));
-            // NW
-            innerInfoItem.setNetWeight(mBinding.packingSinglePackagingPackingNetWeight.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingNetWeight.getText().toString()));
-            // 内容量
-            innerInfoItem.setDanNaiyoRyo(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString().isEmpty() ?
-                    null : Double.parseDouble(mBinding.packingSinglePackagingPackingInternalCapacity.getText().toString()));
-            // 単位
-            CategoryInfo infoDanTani = (CategoryInfo) mBinding.packingSinglePackagingSpinnerUnit.getSelectedItem();
-            innerInfoItem.setDanTani(infoDanTani.getElement().isEmpty() ? null : infoDanTani.getElement());
-            // 内装容器
-            CategoryInfo infoDanNaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerInteriorContainer.getSelectedItem();
-            innerInfoItem.setDanNaisoYoki(infoDanNaisoYoki.getElement().isEmpty() ? null : infoDanNaisoYoki.getElement());
-            // 本数
-            innerInfoItem.setDanHonsu(mBinding.packingSinglePackagingPackingNumber.getText().toString().isEmpty() ?
-                    null : Integer.parseInt(mBinding.packingSinglePackagingPackingNumber.getText().toString()));
-            // 外装容器
-            CategoryInfo infoDanGaisoYoki = (CategoryInfo) mBinding.packingSinglePackagingSpinnerOuterContainer.getSelectedItem();
-            innerInfoItem.setDanGaisoYoki(infoDanGaisoYoki.getElement().isEmpty() ? null : infoDanGaisoYoki.getElement());
-            // 備考
-            innerInfoItem.setBiko(mBinding.packingSinglePackagingRemarks.getText().toString());
 
             // ******************************************************
             // 更新キー情報構築
@@ -349,7 +373,6 @@ public class PackingSinglePackingFragment extends BaseFragment {
                 SyukkoShijiKeyInfo item = new SyukkoShijiKeyInfo(mRenban, mLineNo);
                 updateKeyInfo.add(item);
             }
-
 
             // 単独梱包登録処理
             new SinglePackingRegistTask(singlePackingRegistCallBack

@@ -429,6 +429,8 @@
     <string name="err_message_E2022">E2022</string>
     <string name="err_message_E2023">E2023</string>
     <string name="err_message_E2024">E2024</string>
+    <string name="err_message_E2025">E2025</string>
+    <string name="err_message_E2026">E2026</string>
     <string name="err_message_E9000">E9000</string>
     <string name="err_message_E9001">E9001</string>
     <string name="err_message_E9002">E9002</string>
@@ -488,5 +490,4 @@
     <string name="plant_name">プラント名</string>
     <string name="search_results_colon">検索結果：</string>
     <string name="info_message_I0005">I0005</string>
-    <string name="err_message_E2026">E2026</string>
 </resources>
