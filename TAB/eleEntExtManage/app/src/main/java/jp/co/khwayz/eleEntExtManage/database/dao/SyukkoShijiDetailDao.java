@@ -235,7 +235,8 @@ public class SyukkoShijiDetailDao {
                         ,Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_RENBAN)))
                         ,Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_LINE_NO))));
                 item.setCsNumber(Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_CS_NUMBER))));
-                item.setOverPackNo(Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_OVERPACK_NO))));
+                item.setOverPackNo(cursor.isNull(cursor.getColumnIndex(C_OVERPACK_NO)) ?
+                        null : Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_OVERPACK_NO))));
                 item.setKonpozumiFlag(cursor.getString(cursor.getColumnIndex(C_KONPOZUMI_FLG)));
                 result.add(item);
             }
@@ -288,12 +289,13 @@ public class SyukkoShijiDetailDao {
                 Cursor cursor = db.rawQuery(sql, args);
                 while (cursor.moveToNext()) {
                     OverPackListInfo item = new OverPackListInfo(
-                            cursor.getString(cursor.getColumnIndex(C_OVERPACK_NO)).equals("0")
-                                    ? "" :cursor.getString(cursor.getColumnIndex(C_OVERPACK_NO))
+                            cursor.isNull(cursor.getColumnIndex(C_OVERPACK_NO)) ?
+                                    null :cursor.getString(cursor.getColumnIndex(C_OVERPACK_NO))
                             ,cursor.getString(cursor.getColumnIndex(C_HACHU_NO))
                             ,cursor.getString(cursor.getColumnIndex(C_HACHU_EDA))
                             ,cursor.getString(cursor.getColumnIndex(C_JUCHU_NO))
-                            ,cursor.getString(cursor.getColumnIndex(C_COMBINE_NO))
+                            ,cursor.isNull(cursor.getColumnIndex(C_COMBINE_NO)) ?
+                                    null :cursor.getString(cursor.getColumnIndex(C_COMBINE_NO))
                             ,Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_RENBAN)))
                             ,Integer.parseInt(cursor.getString(cursor.getColumnIndex(C_LINE_NO))));
                     result.add(item);
@@ -515,9 +517,9 @@ public class SyukkoShijiDetailDao {
         try {
             // トランザクション開始
             db.beginTransaction();
-
+            String nullStr=null;
             ContentValues contentValues = new ContentValues();
-            contentValues.put(C_OVERPACK_NO, 0);
+            contentValues.put(C_OVERPACK_NO, nullStr);
             String[] whereSql = {invoiceNo, overPackNo};
             db.update(TABLE_NAME, contentValues, "INVOICE_NO = ? AND OVERPACK_NO = ?", whereSql);
         } finally {

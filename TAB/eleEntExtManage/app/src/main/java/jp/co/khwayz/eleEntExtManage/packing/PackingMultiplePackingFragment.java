@@ -185,17 +185,18 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
         mOverPackListInfoAdapter.setSelectedPosition(selectedPostion);
         mOverPackListInfoAdapter.notifyDataSetChanged();
 
+        String updateOverPackNo = this.mOverPackInfoList.get(selectedPostion).getOverPackNo();
         // 削除対象オーバーパック番号更新
-        overPackNo.setText(this.mOverPackInfoList.get(selectedPostion).getOverPackNo().equals("0") ?
-                "" : this.mOverPackInfoList.get(selectedPostion).getOverPackNo());
+        overPackNo.setText(updateOverPackNo == null ?
+                null : updateOverPackNo);
 
         // 梱包資材更新
         mBinding.spOverPackPackingMaterial1.setSelection(0);
         mBinding.spOverPackPackingMaterial2.setSelection(0);
-        if(!this.mOverPackInfoList.get(selectedPostion).getOverPackNo().isEmpty()){
+        if(updateOverPackNo != null){
             // 登録済み梱包資材取得
             ArrayList<OverPackKonpoShizaiInfo> konpoShizaiList = new OverpackKonpoShizaiDao().getOverPackKonpoShizaiListByOverPackNo(
-                    Application.dbHelper.getWritableDatabase(), mInvoiceNo, this.mOverPackInfoList.get(selectedPostion).getOverPackNo());
+                    Application.dbHelper.getWritableDatabase(), mInvoiceNo, updateOverPackNo);
             if(konpoShizaiList.size() >= 1) {
                 int packingMaterialIndex = getSpinnerSelectPosition(konpoShizaiList.get(0).getPackingMaterial());
                 mBinding.spOverPackPackingMaterial1.setSelection(packingMaterialIndex);
@@ -236,7 +237,7 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
      */
     private void onConfirmClick(){
         // 複数梱包設定行あり
-        OverPackListInfo item = mOverPackInfoList.stream().filter(v -> !v.getOverPackNo().isEmpty()).findFirst().orElse(null);
+        OverPackListInfo item = mOverPackInfoList.stream().filter(v -> v.getOverPackNo() != null).findFirst().orElse(null);
         if(item != null){
             mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2012));
             return;
@@ -307,18 +308,22 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
      * オーバーパック取消
      */
     private void deleteOverPack() {
+        // 対象番号
+        String deleteOverPackNo = overPackNo.getText().toString();
 
-        // 複数梱包あり
-        if (!overPackNo.getText().toString().isEmpty()) {
-
-            // メッセージを表示
-            DialogInterface.OnClickListener listener = (dialog, which) -> {
-                // オーバーパック解除
-                releaseOverPackNo();
-            };
-            mUtilListener.showConfirmDialog(R.string.info_message_I0021, listener
-                    , String.valueOf(overPackNo.getText().toString()));
+        // 番号未選択
+        if(deleteOverPackNo.isEmpty()) {
+            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2027));
+            return;
         }
+
+        // メッセージを表示
+        DialogInterface.OnClickListener listener = (dialog, which) -> {
+            // オーバーパック解除
+            releaseOverPackNo();
+        };
+        mUtilListener.showConfirmDialog(R.string.info_message_I0021, listener
+                , String.valueOf(overPackNo.getText().toString()));
     }
 
     /**
@@ -337,7 +342,7 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
         // 画面から消去
         mOverPackInfoList.forEach(list -> updateOverPackNo(list, deleteOverPackNo));
         mOverPackListInfoAdapter.notifyDataSetChanged();
-        overPackNo.setText("");
+        overPackNo.setText(null);
 
         // 梱包資材更新
         mBinding.spOverPackPackingMaterial1.setSelection(0);
@@ -351,8 +356,11 @@ public class PackingMultiplePackingFragment extends BaseFragment implements Over
      * オーバーパック番号書換え
      */
     private void updateOverPackNo(OverPackListInfo listInfo, String updateNo){
+        if(listInfo.getOverPackNo() == null){
+            return;
+        }
         if(listInfo.getOverPackNo().equals(updateNo)){
-            listInfo.setOverPackNo("");
+            listInfo.setOverPackNo(null);
         }
     }
 

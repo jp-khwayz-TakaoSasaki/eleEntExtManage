@@ -142,8 +142,8 @@ public class PostPackingDataRegistTask extends HttpTaskBase<SimpleResponse> {
                 PackingDataRegistRequest.SyukkoDetailRequestDetail req = new PackingDataRegistRequest.SyukkoDetailRequestDetail();
                 req.setRenban(detail.getRenban());
                 req.setLineNo(detail.getLineNo());
-                req.setCsNumber(detail.getCsNumber());
-                req.setOverPackNo(detail.getOverPackNo());
+                req.setCsNumber(Util.getJsonInt(detail.getCsNumber()));
+                req.setOverPackNo(Util.getJsonInt(detail.getOverPackNo()));
                 req.setKonpozumiFlg(detail.getKonpozumiFlag());
                 // リストに追加
                 requestParam.getSyukkoList().add(req);

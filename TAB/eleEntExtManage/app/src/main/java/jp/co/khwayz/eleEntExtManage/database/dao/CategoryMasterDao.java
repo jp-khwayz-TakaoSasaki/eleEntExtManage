@@ -64,6 +64,7 @@ public class CategoryMasterDao {
         }
     }
 
+    // 区分マスタ―取得
     public ArrayList<CategoryInfo> getCategoryList(SQLiteDatabase db, String category) {
         final String sql = "SELECT * FROM " + TABLE_NAME + " WHERE KBN = ? ORDER BY " + C_SORT_ORDER;
         String[] args = new String[1];

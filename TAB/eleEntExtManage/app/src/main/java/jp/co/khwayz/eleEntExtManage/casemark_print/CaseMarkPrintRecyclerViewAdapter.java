@@ -54,7 +54,7 @@ public class CaseMarkPrintRecyclerViewAdapter extends RecyclerView.Adapter<CaseM
         holder.getDestination().setText(invoiceInfo.getDestination());
         holder.getShipDate().setText(invoiceInfo.getShipDate());
         holder.getShippingMode().setText(invoiceInfo.getShippingMode());
-        holder.getPrintStatus().setText(invoiceInfo.getPrintStatus().equals("0") ? Constants.CASEMARK_NOT_PRINTED : Constants.CASEMARK_PRINTED);
+        holder.getPrintStatus().setText(invoiceInfo.getPrintStatus().equals("1") ? Constants.CASEMARK_PRINTED : Constants.CASEMARK_NOT_PRINTED);
 
         if(position == selectedPosition) {
             holder.getRow().setBackgroundColor(Color.parseColor("#FF03A9F4"));

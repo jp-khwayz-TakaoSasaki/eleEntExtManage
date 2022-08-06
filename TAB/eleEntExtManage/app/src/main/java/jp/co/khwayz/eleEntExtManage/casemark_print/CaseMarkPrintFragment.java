@@ -298,7 +298,7 @@ public class CaseMarkPrintFragment extends BaseFragment implements CaseMarkPrint
                     item.getInvoiceNo()
                     ,item.getDestination()
                     ,item.getShipDate()
-                    ,item.getShippingMode()
+                    ,new CategoryMasterDao().getCategory(Application.dbHelper.getReadableDatabase(),"EYUSOMEANS",item.getShippingMode()).getElementName()
                     ,item.getPrintStatus());
             this.invoiceInfoList.add(new_item);
         }

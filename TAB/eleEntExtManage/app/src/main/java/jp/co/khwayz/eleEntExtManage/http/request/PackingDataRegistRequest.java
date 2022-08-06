@@ -630,35 +630,35 @@ public class PackingDataRegistRequest {
 
     // 出庫指示明細リスト
     public static class SyukkoDetailRequestDetail {
-        public int getRenban() {
+        public Integer getRenban() {
             return renban;
         }
 
-        public void setRenban(int renban) {
+        public void setRenban(Integer renban) {
             this.renban = renban;
         }
 
-        public int getLineNo() {
+        public Integer getLineNo() {
             return lineNo;
         }
 
-        public void setLineNo(int lineNo) {
+        public void setLineNo(Integer lineNo) {
             this.lineNo = lineNo;
         }
 
-        public int getCsNumber() {
+        public Integer getCsNumber() {
             return csNumber;
         }
 
-        public void setCsNumber(int csNumber) {
+        public void setCsNumber(Integer csNumber) {
             this.csNumber = csNumber;
         }
 
-        public int getOverPackNo() {
+        public Integer getOverPackNo() {
             return overPackNo;
         }
 
-        public void setOverPackNo(int overPackNo) {
+        public void setOverPackNo(Integer overPackNo) {
             this.overPackNo = overPackNo;
         }
 
@@ -674,22 +674,22 @@ public class PackingDataRegistRequest {
          * 連番
          */
         @SerializedName("renban")
-        public int renban;
+        public Integer renban;
         /**
          * 行番号
          */
         @SerializedName("lineNo")
-        public int lineNo;
+        public Integer lineNo;
         /**
          * ケースマーク番号
          */
         @SerializedName("csNumber")
-        public int csNumber;
+        public Integer csNumber;
         /**
          * オーバーパック番号
          */
         @SerializedName("overPackNo")
-        public int overPackNo;
+        public Integer overPackNo;
         /**
          * 梱包済フラグ
          */

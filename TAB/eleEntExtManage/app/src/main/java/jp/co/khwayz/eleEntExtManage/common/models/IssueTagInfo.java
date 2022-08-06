@@ -120,20 +120,20 @@ public class IssueTagInfo implements Parcelable, Cloneable {
     }
     /** ケースマーク番号 */
     @SerializedName("csNumber")
-    private int csNumber;
-    public int getCsNumber() {
+    private Integer csNumber;
+    public Integer getCsNumber() {
         return csNumber;
     }
-    public void setCsNumber(int csNumber) {
+    public void setCsNumber(Integer csNumber) {
         this.csNumber = csNumber;
     }
     /** オーバーパック番号 */
     @SerializedName("overPackNo")
-    private int overPackNo;
-    public int getOverPackNo() {
+    private Integer overPackNo;
+    public Integer getOverPackNo() {
         return overPackNo;
     }
-    public void setOverPackNo(int overPackNo) {
+    public void setOverPackNo(Integer overPackNo) {
         this.overPackNo = overPackNo;
     }
     /** 入庫荷姿 */
@@ -165,11 +165,11 @@ public class IssueTagInfo implements Parcelable, Cloneable {
     }
     /** 同梱番号 */
     @SerializedName("combineNo")
-    private long combineNo;
-    public long getCombineNo() {
+    private Long combineNo;
+    public Long getCombineNo() {
         return combineNo;
     }
-    public void setCombineNo(long combineNo) {
+    public void setCombineNo(Long combineNo) {
         this.combineNo = combineNo;
     }
 

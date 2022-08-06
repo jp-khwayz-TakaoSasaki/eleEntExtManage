@@ -38,7 +38,7 @@ public class PackingScanRecyclerViewAdapter extends RecyclerView.Adapter<Packing
     public void onBindViewHolder(@NonNull PackingScanViewHolder holder, final int position) {
         PackingScanInfo item = this.packingScanInfoList.get(position);
         holder.getNo().setText(String.valueOf(item.getNo()));
-        holder.getOverPack().setText(item.getOverPack().equals("0") ? "0" : item.getOverPack());
+        holder.getOverPack().setText(item.getOverPack());
         holder.getPurchaseOrderNo().setText(item.getPurchaseOrderNo());
         holder.getBranchNo().setText(String.format("%04d",item.getBranchNo()));
         holder.getOrderNo().setText(item.getOrderNo());

@@ -376,8 +376,8 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
             new_item.setListReplyDesiredDate(item.getListReplyDesiredDate());
             new_item.setIssueDate(item.getIssueDate());
             new_item.setLineCount(item.getLineCount());
-            new_item.setTransportTemprature(item.getTransportTemprature());
-            new_item.setDangerousGoods(item.getDangerousGoods().isEmpty() ? "" : "✔");
+            new_item.setTransportTemprature(new CategoryMasterDao().getCategory(Application.dbHelper.getReadableDatabase(),"EYUSOONDO",item.getTransportTemprature()).getElementName());
+            new_item.setDangerousGoods((item.getDangerousGoods() == null || item.getDangerousGoods().isEmpty()) ? "" : "✔");
             new_item.setRemarks(item.getRemarks());
             new_item.setPickingHoldFlag(item.getPickingHoldFlag().equals("0") ? "" : "✔");
             this.invoiceInfoList.add(new_item);

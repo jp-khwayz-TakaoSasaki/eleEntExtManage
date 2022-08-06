@@ -219,7 +219,7 @@ public class KonpoOuterDao {
                 values.put(C_SHIMUKECHI, item.getShimukeChi());
                 values.put(C_CS_NUMBER, item.getCsNumber());
                 values.put(C_HYOKI_CS_NUMBER, item.getHyoukiCsNumber());
-                values.put(C_CS_PRINT_FLG, item.getCsPrintFlg());
+                values.put(C_CS_PRINT_FLG, item.getCsPrintFlg() == null ? "0" : item.getCsPrintFlg());
                 values.put(C_YUSO_MODE, item.getYusoMode());
                 values.put(C_CASEMARK1, item.getCasemark1());
                 values.put(C_CASEMARK2, item.getCasemark2());

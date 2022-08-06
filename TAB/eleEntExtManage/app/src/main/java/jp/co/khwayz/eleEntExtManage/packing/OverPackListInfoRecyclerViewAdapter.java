@@ -47,11 +47,11 @@ public class OverPackListInfoRecyclerViewAdapter extends RecyclerView.Adapter<Ov
     @Override
     public void onBindViewHolder(@NonNull OverPackListInfoViewHolder holder, final int position) {
         OverPackListInfo overPackListInfoList = this.overPackListInfoList.get(position);
-        holder.getOverPackNo().setText(overPackListInfoList.getOverPackNo().equals("0") ? "" : overPackListInfoList.getOverPackNo());
+        holder.getOverPackNo().setText(overPackListInfoList.getOverPackNo() == null ? null : overPackListInfoList.getOverPackNo());
         holder.getPurchaseOrderNo().setText(overPackListInfoList.getPurchaseOrderNo());
         holder.getBranchNo().setText(String.format("%04d",Integer.parseInt(overPackListInfoList.getBranchNo())));
         holder.getOrderNo().setText(overPackListInfoList.getOrderNo());
-        holder.getBundledNo().setText(overPackListInfoList.getBundledNo());
+        holder.getBundledNo().setText(overPackListInfoList.getBundledNo() == null ? null : overPackListInfoList.getBundledNo());
 
         /*** 複数選択の残骸 START
         if(overPackListInfoList.isSelectFlg()) {

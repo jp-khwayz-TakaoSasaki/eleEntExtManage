@@ -539,9 +539,9 @@ public class PackingScanFragment extends BaseFragment
             mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByCaseMark(
                     Application.dbHelper.getWritableDatabase(),mInvoiceNo, mCaseMarkNo));
             // 検証時有効にする
-//            for(PackingScanInfo item : mPackingScanInfoList){
-//                item.setOnSelectFlag(Constants.FLAG_TRUE);
-//            }
+            for(PackingScanInfo item : mPackingScanInfoList){
+                item.setOnSelectFlag(Constants.FLAG_TRUE);
+            }
         }
         mPackingScanAdapter.notifyDataSetChanged();
 
@@ -565,13 +565,13 @@ public class PackingScanFragment extends BaseFragment
     private int getCartonCount() {
         // 複数梱包じゃない件数
         int notMultipulCount = (int)mPackingScanInfoList.stream()
-                .filter(item -> item.getOverPack().isEmpty() || item.getOverPack().equals("0")).count();
+                .filter(item -> item.getOverPack() == null).count();
 
         // 複数梱包、オーバーパック番号でリストをソート
         Comparator<PackingScanInfo> comp = Comparator.comparing(e -> e.getOverPack());
         ArrayList<String> list = new ArrayList<>();
         mPackingScanInfoList.stream()
-                .filter(item -> !item.getOverPack().isEmpty() && !item.getOverPack().equals("0")).sorted(comp).forEach(v -> list.add(v.getOverPack()));
+                .filter(item -> item.getOverPack() != null).sorted(comp).forEach(v -> list.add(v.getOverPack()));
         // オーバーパック番号が重複しない件数
         int multipulCount = 0;
         String beforeNo = "0";

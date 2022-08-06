@@ -23,6 +23,7 @@ import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.OuterInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.PickedInvoiceSearchInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.KonpoOuterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiHeaderDao;
@@ -487,7 +488,7 @@ public class PackingListDisplayFragment extends BaseFragment
         for (OuterInfo item : list) {
             PackingOuter new_item = new PackingOuter(
                     item.getHyokiCsNumber(),
-                    item.getSaisyuKonpoNisugata(),
+                    new CategoryMasterDao().getCategory(Application.dbHelper.getReadableDatabase(),"ESAISHUKONPO",item.getSaisyuKonpoNisugata()).getElementName(),
                     item.getOuterLength() == null ? "" : String.format("%,.1f", item.getOuterLength()),
                     item.getOuterWidth() == null ? "" : String.format("%,.1f", item.getOuterWidth()),
                     item.getOuterHeight() == null ? "" : String.format("%,.1f", item.getOuterHeight()),
