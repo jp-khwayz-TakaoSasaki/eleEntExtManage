@@ -98,6 +98,15 @@ public class IssueLoginFragment extends BaseFragment {
         mListener.setFooterButton(null, null, loginButtonInfo, null, settingButtonInfo);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Application.currentFragment = this;
+        // 入力済みデータクリア
+        mBinding.editTextLoginId.setText(null);
+        mBinding.editTextPassword.setText(null);
+    }
+
     /**
      * 設定ボタン押下
      */
