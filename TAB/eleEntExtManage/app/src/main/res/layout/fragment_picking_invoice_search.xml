@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_extra_large"
                 android:paddingStart="@dimen/default_padding"
-                android:maxLength="10"
-                android:inputType="textEmailAddress"
+                android:maxLength="15"
+                android:inputType="textVisiblePassword"
                 android:theme="@style/EditTextStyle"/>
         </com.google.android.material.textfield.TextInputLayout>
 

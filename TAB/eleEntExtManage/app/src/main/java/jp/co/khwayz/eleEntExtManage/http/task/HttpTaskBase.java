@@ -200,7 +200,7 @@ public abstract class HttpTaskBase<T> {
             // 408(Request Timeout)
             result.setErrorFlag(true);
             result.setHttpStatusCode(Constants.HTTP_RESPONSE_STATUS_CODE_REQUEST_TIMEOUT);
-            result.setErrorMsgId(R.string.err_message_E9002);
+            result.setErrorMsgId(R.string.const_err_message_E9002);
             return result;
         } catch (final IOException | JsonSyntaxException e) {
             e.printStackTrace();
@@ -208,7 +208,7 @@ public abstract class HttpTaskBase<T> {
             // -1(その他エラー)
             result.setErrorFlag(true);
             result.setHttpStatusCode(Constants.HTTP_OTHER_ERROR);
-            result.setErrorMsgId(R.string.err_message_E9000);
+            result.setErrorMsgId(R.string.const_err_message_E9000);
             return result;
         } finally {
             if(response != null && response.body() != null) {
