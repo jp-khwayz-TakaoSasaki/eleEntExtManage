@@ -507,6 +507,7 @@ public class PickingCargoScanFragment extends BaseFragment
             }
             SyukkoInvoiceDetailInfo new_item = new SyukkoInvoiceDetailInfo(item.getInvoiceNo());
             new_item.setInvoiceNo(item.getInvoiceNo());
+            new_item.setRenban(item.getRenban());
             new_item.setLineNo(item.getLineNo());
             new_item.setPlaceOrderNo(item.getPlaceOrderNo());
             new_item.setReceiveOrderNo(item.getReceiveOrderNo());
