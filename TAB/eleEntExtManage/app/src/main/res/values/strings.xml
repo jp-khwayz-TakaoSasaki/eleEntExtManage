@@ -385,6 +385,14 @@
     <string name="auth_err_message_E2018">API接続先をURL形式で入力してください。</string>
     <string name="const_err_message_E9000">アプリケーションエラーが発生しました。\n管理者へ連絡してください。</string>
     <string name="const_err_message_E9001">サーバー処理でエラーが発生しました。\n管理者へ連絡してください。</string>
+    <string name="const_err_message_E9005">リーダーと接続されていません。\nリーダー接続を行ってください。</string>
+    <string name="const_err_message_E9006">ペアリングされているリーダーが見つかりません。</string>
+    <string name="const_err_message_E9007">リーダーが未選択です。リーダーを選択してください</string>
+    <string name="const_err_message_E9008">リーダーとの接続に失敗しました。リーダーを確認してください。</string>
+    <string name="const_err_message_E9009">指定されたリーダーと接続されています。</string>
+    <string name="const_err_message_E9010">他のリーダーと接続されています。接続解除して再度実行してください。</string>
+    <string name="const_err_message_E9011">リーダーと切断されました。</string>
+    <string name="const_err_message_E9012">リーダーが充電中です。</string>
     <string name="auth_info_message_I0001">ログイン認証しています。\nしばらくお待ちください。</string>
     <string name="auth_info_message_I0002">パスワードを変更しています。\nしばらくお待ちください。</string>
     <string name="auth_info_message_I0003">マスタデータ取得中です。\nしばらくお待ちください。</string>
@@ -392,6 +400,8 @@
     <string name="const_err_message_E9003">接続しようとしているWebAPIが見つかりません。</string>
     <string name="const_err_message_E9004">サーバー通信でエラーが発生しました。\n管理者へ連絡してください。</string>
     <string name="const_err_message_E9018">不正なパラメータを送信しています。</string>
+    <string name="const_info_message_I0029">リーダーに接続しています。\nしばらくお待ちください。</string>
+    <string name="const_info_message_I0032">リーダーと接続しました。</string>
 
     <!-- SQLiteのメッセージマスタのキー -->
     <string name="err_message_E0010">E0010</string>

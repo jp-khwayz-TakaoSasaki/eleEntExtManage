@@ -101,7 +101,7 @@ public class PairingReaderActivity extends BaseActivity implements PairingReader
             String readerName = mListAdapter.getSelectedItem();
             // 未選択の場合
             if (readerName == null) {
-                showSnackBarOnUiThread(R.string.err_message_E1006, Constants.MSG_OPTION_READER, Constants.MSG_OPTION_READER);
+                showSnackBarOnUiThread(R.string.const_err_message_E9007);
                 return;
             }
 
@@ -109,10 +109,10 @@ public class PairingReaderActivity extends BaseActivity implements PairingReader
             if (Application.commScanner != null) {
                 // 選択されたリーダーに接続済みの場合
                 if (Application.commScanner.getBTLocalName().equals(readerName)) {
-                    showSnackBarOnUiThread(R.string.err_message_E9008);
+                    showSnackBarOnUiThread(R.string.const_err_message_E9009);
                 } else {
                     // 他のリーダーと接続されている
-                    showSnackBarOnUiThread(R.string.err_message_E9009);
+                    showSnackBarOnUiThread(R.string.const_err_message_E9010);
 //                    // 接続されているリーダーとの接続を解除
 //                    Application.disConnectReader();
                 }
@@ -149,7 +149,7 @@ public class PairingReaderActivity extends BaseActivity implements PairingReader
     @Override
     public void onPreExecute() {
         // ProgressDialog表示
-        showProgressDialog(getString((R.string.info_message_I1006)));
+        showProgressDialog(getString((R.string.const_info_message_I0029)));
     }
 
     @Override
@@ -167,7 +167,7 @@ public class PairingReaderActivity extends BaseActivity implements PairingReader
         }
 
         // 完了通知
-        showInformationDialog(R.string.info_message_I0008, (dialog, which) -> {
+        showInformationDialog(R.string.const_info_message_I0032, (dialog, which) -> {
             // 画面終了
             setResult(RESULT_OK);
             finish();
@@ -179,7 +179,7 @@ public class PairingReaderActivity extends BaseActivity implements PairingReader
         // ProgressDialogを閉じる
         dismissProgressDialog();
         // エラーメッセージを表示
-        showSnackBarOnUiThread(R.string.err_message_E9007);
+        showSnackBarOnUiThread(R.string.const_err_message_E9008);
     }
     // endregion
 }
