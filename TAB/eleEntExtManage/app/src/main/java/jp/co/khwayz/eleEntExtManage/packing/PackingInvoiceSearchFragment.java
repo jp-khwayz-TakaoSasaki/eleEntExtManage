@@ -437,7 +437,7 @@ public class PackingInvoiceSearchFragment extends BaseFragment implements Picked
                 mBinding.textviewShipDate.getText().toString(),
                 mBinding.coolSpinner.getSelectedItem().toString(),
                 mBinding.spinnerDangerous.getSelectedItem().toString(),
-                transportSp.getElementName()
+                transportSp.getElement()
         );
 
         // 梱包アウターテーブルクリア

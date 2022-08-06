@@ -427,15 +427,15 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
         // 検索条件保存
         CategoryInfo destinationSp = (CategoryInfo)mBinding.destinationSpinner.getSelectedItem();
         CategoryInfo transportSp = (CategoryInfo) mBinding.spinnerTransport.getSelectedItem();
-        Application.invoiceSearchInfo = new InvoiceSearchInfo(
-                mBinding.invoiceNoText.getText().toString(),
-                destinationSp.getElementName(),
-                mBinding.textviewPickingdeadline.getText().toString(),
-                mBinding.textviewShipDate.getText().toString(),
-                mBinding.coolSpinner.getSelectedItem().toString(),
-                mBinding.spinnerDangerous.getSelectedItem().toString(),
-                transportSp.getElementName()
-        );
+//        Application.invoiceSearchInfo = new InvoiceSearchInfo(
+//                mBinding.invoiceNoText.getText().toString(),
+//                destinationSp.getElementName(),
+//                mBinding.textviewPickingdeadline.getText().toString(),
+//                mBinding.textviewShipDate.getText().toString(),
+//                mBinding.coolSpinner.getSelectedItem().toString(),
+//                mBinding.spinnerDangerous.getSelectedItem().toString(),
+//                transportSp.getElement()
+//        );
 
         // 出庫指示明細テーブルクリア
         new SyukkoShijiDetailDao().upgradeTable(Application.dbHelper.getWritableDatabase());
