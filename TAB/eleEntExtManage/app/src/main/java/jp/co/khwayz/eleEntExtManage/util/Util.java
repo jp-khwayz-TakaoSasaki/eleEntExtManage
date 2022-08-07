@@ -193,6 +193,9 @@ public class Util {
     @Nullable
     public static TagInfo convertQrCodeToTagInfo(@NotNull String qrCode) {
         String splitValue;
+        // Lengthチェック
+        if (qrCode.length() != 26) { return null; }
+
         // 企業コード(9桁)
         String corporate = qrCode.substring(0, 9);
         // 企業コードが違う場合は読み飛ばし

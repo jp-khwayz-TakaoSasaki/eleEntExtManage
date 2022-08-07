@@ -203,8 +203,17 @@ public class CaseMarkPasteScanFragment extends BaseFragment
 
     @Override
     public void onItemClick(CaseMarkPasteScanViewHolder holder) {
-        caseMarkPasteScanAdapter.setSelectedPosition(holder.getAdapterPosition());
-        caseMarkPasteScanAdapter.notifyDataSetChanged();
+        // タップ位置のデータ取得
+        CaseMarkPasteScanRecyclerViewAdapter adapter = (CaseMarkPasteScanRecyclerViewAdapter) this.mTagScanListView.getAdapter();
+        int position = holder.getAdapterPosition();
+        CaseMarkPasteScanInfo updateData = this.mTagScanInfoList.get(position);
+
+        // 選択済みの場合
+        if(updateData.getOnSelectFlag().equals(Constants.FLAG_TRUE)){
+            // 選択済フラグ更新
+            updateData.setOnSelectFlag(Constants.FLAG_FALSE);
+            caseMarkPasteScanAdapter.notifyDataSetChanged();
+        }
     }
 
     /**

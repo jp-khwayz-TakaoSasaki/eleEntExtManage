@@ -401,20 +401,26 @@ public class PickingCargoScanFragment extends BaseFragment
      */
     @Override
     public void onItemClick(TagInvoiceViewHolder holder) {
-        // タップ位置のデータ取得
-        PickingCargoScanListRecyclerViewAdapter adapter = (PickingCargoScanListRecyclerViewAdapter)this.mTagScanList.getAdapter();
-        int position = holder.getAdapterPosition();
-        SyukkoInvoiceDetailInfo updateData = this.mPickingInvoiceDetailList.get(position);
+        // タグ読取の場合
+        if(mActionMode){
+            // タップ位置のデータ取得
+            PickingCargoScanListRecyclerViewAdapter adapter = (PickingCargoScanListRecyclerViewAdapter)this.mTagScanList.getAdapter();
+            int position = holder.getAdapterPosition();
+            SyukkoInvoiceDetailInfo updateData = this.mPickingInvoiceDetailList.get(position);
 
-        // ピッキング済フラグ更新
-        updateData.setPickingFlag(Constants.FLAG_FALSE);
-        new SyukkoShijiDetailDao().updatePickingFlg(Application.dbHelper.getWritableDatabase()
-                , updateData.getInvoiceNo(), updateData.getRenban().toString(), updateData.getLineNo().toString(), Constants.FLAG_FALSE);
-        mTagListAdapter.notifyDataSetChanged();
+            // 選択済みの場合
+            if(updateData.getPickingFlag().equals(Constants.FLAG_TRUE)) {
+                // ピッキング済フラグ更新
+                updateData.setPickingFlag(Constants.FLAG_FALSE);
+                new SyukkoShijiDetailDao().updatePickingFlg(Application.dbHelper.getWritableDatabase()
+                        , updateData.getInvoiceNo(), updateData.getRenban().toString(), updateData.getLineNo().toString(), Constants.FLAG_FALSE);
+                mTagListAdapter.notifyDataSetChanged();
 
-        // 件数更新（分子にピッキング済み件数セット）
-        this.mListCheckedCount--;
-        mBinding.cargoScanViewReadCount.setText(this.mListCheckedCount + "/" + this.mListTotalCount);
+                // 件数更新（分子にピッキング済み件数セット）
+                this.mListCheckedCount--;
+                mBinding.cargoScanViewReadCount.setText(this.mListCheckedCount + "/" + this.mListTotalCount);
+            }
+        }
     }
 
     /**
