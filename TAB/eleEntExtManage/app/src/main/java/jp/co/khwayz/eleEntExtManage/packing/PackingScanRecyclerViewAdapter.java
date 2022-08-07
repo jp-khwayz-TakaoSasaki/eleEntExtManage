@@ -40,7 +40,7 @@ public class PackingScanRecyclerViewAdapter extends RecyclerView.Adapter<Packing
         holder.getNo().setText(String.valueOf(item.getNo()));
         holder.getOverPack().setText(item.getOverPack());
         holder.getPurchaseOrderNo().setText(item.getPurchaseOrderNo());
-        holder.getBranchNo().setText(String.format("%04d",item.getBranchNo()));
+        holder.getBranchNo().setText(String.format("%03d",item.getBranchNo()));
         holder.getOrderNo().setText(item.getOrderNo());
         holder.getItemCode().setText(item.getItemCode());
         holder.getItemName().setText(item.getItemName());

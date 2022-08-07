@@ -48,7 +48,7 @@ public class CaseMarkPasteScanRecyclerViewAdapter extends RecyclerView.Adapter<C
         holder.getNo().setText(String.valueOf(tagScanInfo.getNo()));
         holder.getCaseMarkNo().setText(String.valueOf(tagScanInfo.getCaseMarkNo()));
         holder.getPurchaseOrderNo().setText(tagScanInfo.getPurchaseOrderNo());
-        holder.getBranchNo().setText(String.format("%04d",tagScanInfo.getBranchNo()));
+        holder.getBranchNo().setText(String.format("%03d",tagScanInfo.getBranchNo()));
         holder.getOrderNo().setText(tagScanInfo.getOrderNo());
         holder.getItemCode().setText(tagScanInfo.getItemCode());
         holder.getItemName().setText(tagScanInfo.getItemName());

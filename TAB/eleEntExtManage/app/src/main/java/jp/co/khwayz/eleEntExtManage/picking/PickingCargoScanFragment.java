@@ -611,20 +611,24 @@ public class PickingCargoScanFragment extends BaseFragment
                     if(!this.mActionMode){
                         // QRコードからロケ番号取得
                         this.mLocationNumber = qrCode;
+                        // モード切替
+                        changeActionMode(true);
+                        // RFID読取モードに変更
+                        qrButton();
 
-                        // 作業確認メッセージ
-                        // 警告メッセージ表示
-                        MessageDialogFragment dialog = new MessageDialogFragment(getContext());
-                        dialog.setMessage(String.format(mUtilListener.getDataBaseMessage(R.string.info_message_I0017), this.mLocationNumber));
-                        dialog.setPositiveButton(getString(R.string.ok), v -> {
-                            dialog.dismiss();
-                            // モード切替
-                            changeActionMode(true);
-                            // RFID読取モードに変更
-                            qrButton();
-                        });
-                        dialog.setNegativeButton(getString(R.string.cancel), v -> dialog.dismiss());
-                        dialog.show(getActivity().getSupportFragmentManager(), "MessageDialogFragment");
+//                        // 作業確認メッセージ
+//                        // 警告メッセージ表示
+//                        MessageDialogFragment dialog = new MessageDialogFragment(getContext());
+//                        dialog.setMessage(String.format(mUtilListener.getDataBaseMessage(R.string.info_message_I0017), this.mLocationNumber));
+//                        dialog.setPositiveButton(getString(R.string.ok), v -> {
+//                            dialog.dismiss();
+//                            // モード切替
+//                            changeActionMode(true);
+//                            // RFID読取モードに変更
+//                            qrButton();
+//                        });
+//                        dialog.setNegativeButton(getString(R.string.cancel), v -> dialog.dismiss());
+//                        dialog.show(getActivity().getSupportFragmentManager(), "MessageDialogFragment");
 
                     } else {
                         // 荷札読取モードの場合
@@ -724,7 +728,6 @@ public class PickingCargoScanFragment extends BaseFragment
 
         // ピッキング済の場合
         if(updateData.getPickingFlag().equals(Constants.FLAG_TRUE)){
-            mUtilListener.showAlertDialog(mUtilListener.getDataBaseMessage(R.string.err_message_E2007));
             return;
         }
 

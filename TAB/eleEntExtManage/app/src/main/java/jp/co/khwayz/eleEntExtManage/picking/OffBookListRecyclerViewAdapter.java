@@ -31,7 +31,7 @@ public class OffBookListRecyclerViewAdapter extends RecyclerView.Adapter<OffBook
     public void onBindViewHolder(@NonNull OffBookListViewHolder holder, final int position) {
         TagInfo scanItem = this.tagScanInfoList.get(position);
         holder.getOrderNo().setText(scanItem.getPlaceOrderNo());
-        holder.getBranchNo().setText(String.format("%04d",scanItem.getBranchNo()));
+        holder.getBranchNo().setText(String.format("%03d",scanItem.getBranchNo()));
     }
 
     @Override

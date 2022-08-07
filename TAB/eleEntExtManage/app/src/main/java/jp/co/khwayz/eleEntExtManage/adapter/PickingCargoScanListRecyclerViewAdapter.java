@@ -53,7 +53,7 @@ public class PickingCargoScanListRecyclerViewAdapter extends RecyclerView.Adapte
     public void onBindViewHolder(@NonNull TagInvoiceViewHolder holder, final int position) {
         SyukkoInvoiceDetailInfo scanItem = this.tagScanInfoList.get(position);
         holder.getOrderNo().setText(scanItem.getPlaceOrderNo());
-        holder.getBranchNo().setText(String.format("%04d",scanItem.getBranchNo()));
+        holder.getBranchNo().setText(String.format("%03d",scanItem.getBranchNo()));
         holder.getPurchaseOrderNo().setText(scanItem.getReceiveOrderNo());
         holder.getItemCode().setText(scanItem.getItemCode());
         holder.getItemName().setText(scanItem.getItemName());

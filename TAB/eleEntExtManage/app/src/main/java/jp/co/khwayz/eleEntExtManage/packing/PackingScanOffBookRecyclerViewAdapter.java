@@ -41,7 +41,7 @@ public class PackingScanOffBookRecyclerViewAdapter extends RecyclerView.Adapter<
         TagInfo scanItem = this.TagInfoList.get(position);
 
         holder.getOrderNo().setText(scanItem.getPlaceOrderNo());
-        holder.getBranchNo().setText(String.valueOf(String.format("%04d",scanItem.getBranchNo())));
+        holder.getBranchNo().setText(String.valueOf(String.format("%03d",scanItem.getBranchNo())));
 
         // 単一選択用 選択時背景色変更
 //        if(position == selectedPosition) {
