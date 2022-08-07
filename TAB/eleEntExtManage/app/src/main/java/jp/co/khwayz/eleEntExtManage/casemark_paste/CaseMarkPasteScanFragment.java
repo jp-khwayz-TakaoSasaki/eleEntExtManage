@@ -33,6 +33,7 @@ import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.CaseMarkDetailInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.CategoryInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentCaseMarkPasteScanBinding;
 import jp.co.khwayz.eleEntExtManage.dialog_fragment.ManagePwInputDialogFragment;
 import jp.co.khwayz.eleEntExtManage.http.response.CaseMarkPasteTagGetResponse;
@@ -672,7 +673,8 @@ public class CaseMarkPasteScanFragment extends BaseFragment
             new_item.setStock(item.getZaikoSuryo());
             new_item.setShipmentQuantity(item.getSyukkaSuryo());
             new_item.setShipmentUnit(item.getSyukkaTani());
-            new_item.setPackingForm(item.getKonpoKeitai());
+            new_item.setPackingForm(new CategoryMasterDao().getCategory(
+                    Application.dbHelper.getReadableDatabase(),"ENISUGATA",item.getKonpoKeitai()).getElementName());
             new_item.setOnSelectFlag(Constants.FLAG_FALSE);
             this.mTagScanInfoList.add(new_item);
         }

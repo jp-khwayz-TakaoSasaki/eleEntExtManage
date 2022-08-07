@@ -33,6 +33,7 @@ import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoInvoiceDetailInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPickingCargoScanBinding;
 import jp.co.khwayz.eleEntExtManage.dialog_fragment.MessageDialogFragment;
@@ -525,7 +526,8 @@ public class PickingCargoScanFragment extends BaseFragment
             new_item.setUnit(item.getUnit());
             new_item.setStockQuantity(item.getStockQuantity());
             new_item.setPickingFlag(item.getPickingFlag());
-            new_item.setPackingType(item.getPackingType());
+            new_item.setPackingType(new CategoryMasterDao().getCategory(
+                    Application.dbHelper.getReadableDatabase(),"ENISUGATA",item.getPackingType()).getElementName());
             new_item.setLocationNo(item.getLocationNo());
             this.mPickingInvoiceDetailList.add(new_item);
         }

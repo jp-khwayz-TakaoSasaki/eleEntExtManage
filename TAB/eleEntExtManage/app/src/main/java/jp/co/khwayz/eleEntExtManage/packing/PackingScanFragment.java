@@ -31,6 +31,7 @@ import jp.co.khwayz.eleEntExtManage.common.BaseFragment;
 import jp.co.khwayz.eleEntExtManage.common.Constants;
 import jp.co.khwayz.eleEntExtManage.common.models.SyukkoShijiKeyInfo;
 import jp.co.khwayz.eleEntExtManage.common.models.TagInfo;
+import jp.co.khwayz.eleEntExtManage.database.dao.CategoryMasterDao;
 import jp.co.khwayz.eleEntExtManage.database.dao.SyukkoShijiDetailDao;
 import jp.co.khwayz.eleEntExtManage.databinding.FragmentPackingScanBinding;
 import jp.co.khwayz.eleEntExtManage.instr_cfm.CheckPackInstructionsFragment;
@@ -533,15 +534,21 @@ public class PackingScanFragment extends BaseFragment
         // スキャンリスト構築
         this.mPackingScanInfoList.clear();
         if(mCaseMarkNo.isEmpty()) {
-            mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByInvoice(
+            this.mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByInvoice(
                     Application.dbHelper.getWritableDatabase(),mInvoiceNo));
         } else {
-            mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByCaseMark(
+            this.mPackingScanInfoList.addAll(new SyukkoShijiDetailDao().getPackingScanListByCaseMark(
                     Application.dbHelper.getWritableDatabase(),mInvoiceNo, mCaseMarkNo));
             // 検証時有効にする
 //            for(PackingScanInfo item : mPackingScanInfoList){
 //                item.setOnSelectFlag(Constants.FLAG_TRUE);
 //            }
+        }
+        // 入庫荷姿変換
+        for(PackingScanInfo item : this.mPackingScanInfoList){
+            item.setReceiptAppearance(new CategoryMasterDao().getCategory(
+                    Application.dbHelper.getReadableDatabase(),"ENISUGATA",item.getReceiptAppearance()).getElementName());
+
         }
         mPackingScanAdapter.notifyDataSetChanged();
 

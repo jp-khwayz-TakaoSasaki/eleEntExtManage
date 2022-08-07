@@ -376,7 +376,8 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
             new_item.setListReplyDesiredDate(item.getListReplyDesiredDate());
             new_item.setIssueDate(item.getIssueDate());
             new_item.setLineCount(item.getLineCount());
-            new_item.setTransportTemprature(new CategoryMasterDao().getCategory(Application.dbHelper.getReadableDatabase(),"EYUSOONDO",item.getTransportTemprature()).getElementName());
+            new_item.setTransportTemprature(new CategoryMasterDao().getCategory(
+                    Application.dbHelper.getReadableDatabase(),"EYUSOONDO",item.getTransportTemprature()).getElementName());
             new_item.setDangerousGoods((item.getDangerousGoods() == null || item.getDangerousGoods().isEmpty()) ? "" : "✔");
             new_item.setRemarks(item.getRemarks());
             new_item.setPickingHoldFlag(item.getPickingHoldFlag().equals("0") ? "" : "✔");
@@ -427,15 +428,15 @@ public class PickingInvoiceSearchFragment extends BaseFragment implements Invoic
         // 検索条件保存
         CategoryInfo destinationSp = (CategoryInfo)mBinding.destinationSpinner.getSelectedItem();
         CategoryInfo transportSp = (CategoryInfo) mBinding.spinnerTransport.getSelectedItem();
-//        Application.invoiceSearchInfo = new InvoiceSearchInfo(
-//                mBinding.invoiceNoText.getText().toString(),
-//                destinationSp.getElementName(),
-//                mBinding.textviewPickingdeadline.getText().toString(),
-//                mBinding.textviewShipDate.getText().toString(),
-//                mBinding.coolSpinner.getSelectedItem().toString(),
-//                mBinding.spinnerDangerous.getSelectedItem().toString(),
-//                transportSp.getElement()
-//        );
+        Application.invoiceSearchInfo = new InvoiceSearchInfo(
+                mBinding.invoiceNoText.getText().toString(),
+                destinationSp.getElementName(),
+                mBinding.textviewPickingdeadline.getText().toString(),
+                mBinding.textviewShipDate.getText().toString(),
+                mBinding.coolSpinner.getSelectedItem().toString(),
+                mBinding.spinnerDangerous.getSelectedItem().toString(),
+                transportSp.getElement()
+        );
 
         // 出庫指示明細テーブルクリア
         new SyukkoShijiDetailDao().upgradeTable(Application.dbHelper.getWritableDatabase());
