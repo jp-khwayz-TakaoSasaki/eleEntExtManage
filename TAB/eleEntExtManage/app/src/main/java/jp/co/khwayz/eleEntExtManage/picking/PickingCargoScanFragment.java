@@ -619,7 +619,10 @@ public class PickingCargoScanFragment extends BaseFragment
                         dialog.setPositiveButton(getString(R.string.ok), v -> {
                             dialog.dismiss();
                             // モード切替
-                            changeActionMode(true);                        });
+                            changeActionMode(true);
+                            // RFID読取モードに変更
+                            qrButton();
+                        });
                         dialog.setNegativeButton(getString(R.string.cancel), v -> dialog.dismiss());
                         dialog.show(getActivity().getSupportFragmentManager(), "MessageDialogFragment");
 

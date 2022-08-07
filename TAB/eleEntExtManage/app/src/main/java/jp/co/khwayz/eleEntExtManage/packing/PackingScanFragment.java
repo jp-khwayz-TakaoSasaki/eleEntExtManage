@@ -166,7 +166,7 @@ public class PackingScanFragment extends BaseFragment
         ButtonInfo overPack = new ButtonInfo(getString(R.string.button_label_multiple_packing), v -> inputMultiplePackingButton());
 
         // QRボタン
-        ButtonInfo qr = new ButtonInfo(getString(R.string.button_label_rfid), v -> qrButton());
+        ButtonInfo qr = new ButtonInfo(getString(R.string.QR), v -> qrButton());
 
         mListener.setFooterButton(null, instructions, inputPackingInfo, overPack, qr);
     }
@@ -194,7 +194,7 @@ public class PackingScanFragment extends BaseFragment
         }
 
         // スキャナー接続
-        mScanMode = Constants.ScanMode.QR;
+        mScanMode = Constants.ScanMode.RFID;
         openScanner();
     }
 
