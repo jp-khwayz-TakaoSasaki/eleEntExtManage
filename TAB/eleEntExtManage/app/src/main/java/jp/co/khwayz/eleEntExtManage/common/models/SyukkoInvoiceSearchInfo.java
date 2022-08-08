@@ -109,7 +109,7 @@ public class SyukkoInvoiceSearchInfo implements Parcelable {
         this.pickingHoldFlag = pickingHoldFlag;
     }
     // リスト返信希望日
-    @SerializedName("listHenshinDate")
+    @SerializedName("comHensinKibobi")
     private String listReplyDesiredDate;
     public String getListReplyDesiredDate() {
         return listReplyDesiredDate;
